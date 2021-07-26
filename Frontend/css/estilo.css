@@ -91,3 +91,21 @@ p{
 }
   
 
+form {
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 1px solid black;
+  border-radius: 1%;
+}
+
+form div{
+  
+  
+}
+
+#cabeca{
+
+}
+.container-fluid{
+  margin-bottom: 2%;
+}
