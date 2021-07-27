@@ -14,7 +14,7 @@ table {
     th{
         background-color: #dddddd;
     }
-    h2{
+    h3{
         text-align: center;
     }
 
@@ -108,4 +108,9 @@ form div{
 }
 .container-fluid{
   margin-bottom: 2%;
+}
+
+.conteudo-pagina{
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
