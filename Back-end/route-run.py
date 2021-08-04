@@ -15,7 +15,7 @@ def listar_pacientes():
     for paciente in pacientes:
         retorno.append(paciente.json())
     resposta = jsonify(retorno)
-    #resposta.headers.add("Access-COntrol-Aloww-Origin", "*")
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
 """
