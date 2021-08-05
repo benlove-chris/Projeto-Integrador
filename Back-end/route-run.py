@@ -18,15 +18,18 @@ def listar_pacientes():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-"""
-#incluir - Em contrução
-@app.route("/incluir_paciente", methods = ['post'])
+#incluir/cadastrar
 
-def incluir_paciente():
-    pass
+CORS(app)
+@app.route("/cadastrar_paciente", methods=['post'])
 
-"""
-    
-    
+def cadastrar_paciente():
+    dados = request.get_json()
+    novo_paciente = Paciente(**dados)
+    db.session.add(novo_paciente)
+    db.session.commit()
+
+    return {"resultado":'ok'}
+
 
 app.run(debug = True)
