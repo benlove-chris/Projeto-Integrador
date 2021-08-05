@@ -1,4 +1,3 @@
-/*
 $( document ).ready(function() {
     
     $("#conteudoInicial").removeClass("invisible");
@@ -24,7 +23,7 @@ $( document ).ready(function() {
               lin = "<tr>" + 
               "<td>" + pacientes[i].nome + "</td>" + 
               "<td>" + pacientes[i].sobrenome + "</td>" + 
-              
+             
               "</tr>";
 
               // adicionar a linha da tabela em um acumulador
@@ -44,7 +43,6 @@ $( document ).ready(function() {
     });
 
   });
-*/
 
 
 
@@ -59,8 +57,7 @@ $( document ).ready(function() {
 
 
 
-
-
+/*
 //Meu js
 
 $("#link_listar_pacientes").click(function(){
@@ -97,16 +94,13 @@ $("#link_listar_pacientes").click(function(){
 			//colocar as linhas na tabela
 			$("#corpoTabelaPacientes").html(linhas);
 
-			$("#tabelaPlantas").addClass("invisible");
-
-            // exibir a tabela
-            $("#tabelaPlantas").removeClass("invisible");
-
 			
 
-	            // exibir a tabela
-	        
+            // exibir a tabela
+           // $("#conteudoInicial").addClass("invisible");
+            
 		}
 
 
 	});
+*/
