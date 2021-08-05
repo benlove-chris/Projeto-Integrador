@@ -1,3 +1,4 @@
+/*
 $( document ).ready(function() {
     
     $("#conteudoInicial").removeClass("invisible");
@@ -43,6 +44,7 @@ $( document ).ready(function() {
     });
 
   });
+*/
 
 
 
@@ -57,7 +59,6 @@ $( document ).ready(function() {
 
 
 
-/*
 //Meu js
 
 $("#link_listar_pacientes").click(function(){
@@ -103,4 +104,3 @@ $("#link_listar_pacientes").click(function(){
 
 
 	});
-*/
