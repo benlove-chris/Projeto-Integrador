@@ -20,7 +20,8 @@ def listar_pacientes():
 
 #incluir/cadastrar
 
-CORS(app)
+
+
 @app.route("/cadastrar_paciente", methods=['post'])
 
 def cadastrar_paciente():

@@ -8,6 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
 caminho = os.path.dirname(os.path.abspath(__file__))
 arquivobd = os.path.join(caminho, "Pacientes.db")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + arquivobd

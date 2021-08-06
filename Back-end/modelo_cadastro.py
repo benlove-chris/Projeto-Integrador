@@ -18,7 +18,7 @@ class Paciente(db.Model):
     estado = db.Column(db.String(30))
     """
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.id}, {self.nome}, {self.sobrenome}"
 
     def json(self):
