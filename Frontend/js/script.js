@@ -78,13 +78,14 @@ $("#link_listar_pacientes").click(function(){
 	function listar_pacientes(pacientes){
 		//
 		linhas = ""
+        linhass = "link https://getbootstrap.com/docs/versions/"
 
 		//
 
 		for (var i in pacientes) {
 			//
 			lin = "<tr>" + 
-			"<td>" + "<strong>" + pacientes[i].nome + "</strong>" + "</td>" +
+			"<td>" + pacientes[i].nome  + "</td>" +
 			"<td>" + pacientes[i].sobrenome + "</td>" +
 			"</tr>";
 
@@ -95,7 +96,7 @@ $("#link_listar_pacientes").click(function(){
 			//colocar as linhas na tabela
 			$("#corpoTabelaPacientes").html(linhas);
 
-			
+			$("#htmls").html(linhass)
 
             // exibir a tabela
            // $("#conteudoInicial").addClass("invisible");
