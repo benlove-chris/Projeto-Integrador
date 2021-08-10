@@ -92,8 +92,8 @@ p{
   
 
 form {
-  margin-left: 10%;
-  margin-right: 10%;
+  
+  
   border: 1px solid black;
   border-radius: 1%;
 }
@@ -113,4 +113,8 @@ form div{
 .conteudo-pagina{
   margin-top: 2%;
   margin-bottom: 5%;
+}
+
+#botao_cadastrar_paciente {
+
 }
