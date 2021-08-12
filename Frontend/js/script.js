@@ -85,7 +85,7 @@ $("#link_listar_pacientes").click(function(){
 		for (var i in pacientes) {
 			//
 			lin = "<tr>" + 
-			"<td>" + pacientes[i].nome  + "</td>" +
+			"<td> " + pacientes[i].nome  + " </td>" +
 			"<td>" + pacientes[i].sobrenome + "</td>" +
 			"</tr>";
 
