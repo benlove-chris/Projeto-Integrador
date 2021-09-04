@@ -4,16 +4,101 @@
 	<meta charset="utf-8">
 	<title>paciente</title>
 	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 </head>
 <body>
+<div class="container mt-4">
 	<h4>Pagina do paciente x</h4>
-	<ul>
-		<li>Historico de consultas</li>
-		<li>Dados do paciente</li>
-		
-	</ul>
 	
 
+	
+	<ul>
+	  <li><a href="#dados-paciente">Dados do paciente</a></li>
+	  <li><a href="#historico-consulta">Historico de consulta do paciente</a></li>
+	  <li><a href="#exames-paciente">Exames</a></li>
+	  
+	</ul>
+
+
+
+	<div id="dados-paciente">
+		<h4>Dados do paciente - o cadastrado</h4>
+		
+		<table id="tabelaPacientes" >
+            	<thead>
+                	<tr>
+                  		<th scope="col"><a href="#">Nome</a></th>
+                  		<th scope="col">Sobrenome</th>
+                	</tr>
+              	</thead>
+			<tbody id="corpoTabelaPacientes">
+            <!-- -->
+            	<tr>
+                	<td scope="col" >paciente</td>
+                	<td scope="col" >Sobrenome</td>
+            	</tr>
+
+        	</tbody>
+        </table>
+		
+	</div>
+
+	<div id="historico-consulta">
+		<h4>Historico de consulta do paciente</h4>
+		<h4>Cabeçalho | Data - Motivo - Médico executante </h4>
+
+		<table id="tabelaPacientes" >
+            	<thead>
+                	<tr>
+                  		<th scope="col">Data </th>
+                  		<th scope="col">Médico executante</th>
+                  		<th scope="col">Motivo</th>
+                	</tr>
+              	</thead>
+			<tbody id="corpoTabelaPacientes">
+            <!-- -->
+            	<tr>
+                	<td scope="col" >paciente</td>
+                	<td scope="col" >Sobrenome</td>
+                	<td scope="col" >Sobrenome</td>
+            	</tr>
+
+        	</tbody>
+        </table>
+		
+
+		
+	</div>
+
+	<div id="exames-paciente">
+		<h4>Historicos de exames do paciente</h4>
+		<h4>Cabeçalho(tabela) - Data - médico solicitante - consulta?(data da consulta) </h4>
+		
+		<table id="tabelaPacientes" >
+            	<thead>
+                	<tr>
+                  		<th scope="col">Data </th>
+                  		<th scope="col">Médico solicitante</th>
+                  		<th scope="col">data da consulta?</th>
+                	</tr>
+              	</thead>
+			<tbody id="corpoTabelaPacientes">
+            <!-- -->
+            	<tr>
+                	<td scope="col" >paciente</td>
+                	<td scope="col" >Sobrenome</td>
+            	</tr>
+
+        	</tbody>
+        </table>
+
+	</div>
+
+</div>
 
 </body>
 </html>

@@ -78,16 +78,41 @@ $("#link_listar_pacientes").click(function(){
 	function listar_pacientes(pacientes){
 		//
 		linhas = ""
-        linhass = "link https://getbootstrap.com/docs/versions/"
+        linhass = "Alguma coisa"
 
 		//
 
-		for (var i in pacientes) {
+
+		for (var paciente in pacientes) {
+            if (pacientes[paciente].nome === 'Carlos'){
+                console.log(pacientes[paciente].nome);    
+            }
+            
 			//
-			lin = "<tr>" + 
+            /*
+			
+            lin = "<tr>" + 
 			"<td> " + pacientes[i].nome  + " </td>" +
 			"<td>" + pacientes[i].sobrenome + "</td>" +
 			"</tr>";
+
+            */
+            
+            var link = pacientes[paciente].nome;
+
+            lin = "<tr>" + 
+                    
+                    //"<td> <a href='../html/paciente.html#historico-consulta" + "'>"+ pacientes[paciente].nome + "</td>" + 
+                    "<td> <a href='"+link+ "'>"+ pacientes[paciente].nome + "</td>" + 
+
+                    "<td>" + pacientes[paciente].id+ "</td>" + 
+                    "<td>" + pacientes[paciente].sobrenome+ "</td>" + 
+                    "</a>"
+                "</tr>"
+            
+            /////////////////////////
+
+            /////////////////////////
 
 			//
 			linhas = linhas + lin;
