@@ -48,6 +48,104 @@ $( document ).ready(function() {
 
 
 
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+$( document ).ready(function() {
+    alert("GLO");
+
+
+    //alert("Oi!")};
+    $.ajax({
+        url: 'http://localhost:5000/listar_pacientes',
+        method: 'GET',
+        dataType: 'json',
+        success: listar_pacientes,
+        error: function(){
+            alert("Erro ao ler os dados :) \nverifique o backend");}
+    });
+
+    //ccccccccccccccccccccccccccccccccc
+    
+
+    function listar_pacientes(pacientes){
+        //
+        linhas = ""
+        linhass = "Alguma coisa"
+
+        //
+
+
+        for (var paciente in pacientes) {
+            if (pacientes[paciente].nome === 'Carlos'){
+                //if (pacientes[paciente].nome === 'nomeclicado'){
+                console.log(pacientes[paciente].nome);    
+            }
+            
+            //
+            /*
+            
+            lin = "<tr>" + 
+            "<td> " + pacientes[i].nome  + " </td>" +
+            "<td>" + pacientes[i].sobrenome + "</td>" +
+            "</tr>";
+
+            */
+            
+            var link = pacientes[paciente].nome;
+
+            lin = "<tr>" + 
+                    
+                    //"<td> <a href='../html/paciente.html#historico-consulta" + "'>"+ pacientes[paciente].nome + "</td>" + 
+                    "<td> <a href='"+link+ "'>"+ pacientes[paciente].nome + "</td>" + 
+
+                    "<td>" + pacientes[paciente].id+ "</td>" + 
+                    "<td>" + pacientes[paciente].sobrenome+ "</td>" + 
+                    "</a>"
+                "</tr>"
+            
+            /////////////////////////
+
+            /////////////////////////
+
+            //
+            linhas = linhas + lin;
+        }
+
+            //colocar as linhas na tabela
+            $("#corpoTabelaPacientes").html(linhas);
+
+            $("#htmls").html(linhass)
+
+            // exibir a tabela
+           // $("#conteudoInicial").addClass("invisible");
+            
+        }
+
+
+    });
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
