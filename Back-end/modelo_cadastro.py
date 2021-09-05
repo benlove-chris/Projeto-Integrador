@@ -2,7 +2,7 @@ from config import *
 
 class Paciente(db.Model):
     #Atributos do paciente
-    id = db.Column(db.Integer, primary_key=True)
+    id_paciente = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     sobrenome = db.Column(db.String(255))
 
@@ -24,12 +24,12 @@ class Paciente(db.Model):
 
     #Método para expressar o paciente em forma de texto
     def __str__(self):
-        return f"{self.id}, {self.nome}, {self.sobrenome}"
+        return f"{self.id_paciente}, {self.nome}, {self.sobrenome}"
 
     #Expressao da classe no formato json
     def json(self):
         return{
-            "id": self.id,
+            "id_paciente": self.id_paciente,
             "nome": self.nome,
             "sobrenome": self.sobrenome
         }
@@ -37,7 +37,7 @@ class Paciente(db.Model):
 
 class Medico(db.Model):
     #Atributos do médico
-    id = db.Column(db.Integer, primary_key=True)
+    id_medico = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     sobrenome = db.Column(db.String(255))
     cpf = db.Column(db.String(11))
@@ -45,19 +45,19 @@ class Medico(db.Model):
     sexo =  db.Column(db.String(10))
 
     #Atributo de chave estrangeira
-    paciente_id = db.Column(db.Integer, db.ForeignKey(Paciente.id), nullable=False)
+    paciente_id = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
     
     #Atributo de relacionamento
     paciente = db.relationship("Paciente")
 
     #Expressão da classe em forma de texto
     def __str__(self):
-        return f"{self.id}, {self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc}, {self.sexo}" + str(self.paciente)
+        return f"{self.id_medico}, {self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc}, {self.sexo}" + str(self.paciente)
 
     #Expressao da classe no formato json
     def json(self):
         return{
-            "id": self.id,
+            "id_medico": self.id_medico,
             "nome": self.nome,
             "sobrenome": self.sobrenome,
             "cpf": self.cpf,

@@ -53,7 +53,7 @@ $( document ).ready(function() {
 
 
 $( document ).ready(function() {
-    alert("GLO");
+    //alert("Script");
 
 
     //alert("Oi!")};
@@ -67,7 +67,7 @@ $( document ).ready(function() {
     });
 
     //ccccccccccccccccccccccccccccccccc
-    
+
 
     function listar_pacientes(pacientes){
         //
@@ -82,27 +82,18 @@ $( document ).ready(function() {
                 //if (pacientes[paciente].nome === 'nomeclicado'){
                 console.log(pacientes[paciente].nome);    
             }
+           
+           
             
-            //
-            /*
-            
-            lin = "<tr>" + 
-            "<td> " + pacientes[i].nome  + " </td>" +
-            "<td>" + pacientes[i].sobrenome + "</td>" +
-            "</tr>";
-
-            */
-            
-            var link = pacientes[paciente].nome;
+            //var link = pacientes[paciente].nome;
 
             lin = "<tr>" + 
                     
-                    //"<td> <a href='../html/paciente.html#historico-consulta" + "'>"+ pacientes[paciente].nome + "</td>" + 
-                    "<td> <a href='"+link+ "'>"+ pacientes[paciente].nome + "</td>" + 
-
-                    "<td>" + pacientes[paciente].id+ "</td>" + 
+                    "<td> <a href='../html/paciente.html?id_paciente="+pacientes[paciente].id_paciente+"'>"+ pacientes[paciente].nome + "</td>" + 
+                    //"<td> <a href='../html/paciente.html#historico-consulta"+ pacientes[paciente].nome + "</td>" + "</a>"+ 
                     "<td>" + pacientes[paciente].sobrenome+ "</td>" + 
-                    "</a>"
+                    "<td>" + pacientes[paciente].id_paciente+ "</td>" + 
+                    
                 "</tr>"
             
             /////////////////////////
@@ -158,7 +149,7 @@ $( document ).ready(function() {
 
 
 //Meu js
-
+/*
 $("#link_listar_pacientes").click(function(){
 
 	//alert("Oi!")};
@@ -171,7 +162,7 @@ $("#link_listar_pacientes").click(function(){
 			alert("Erro ao ler os dados :) \nverifique o backend");}
 	});
 
-	//ccccccccccccccccccccccccccccccccc
+	//listar pacientes
 
 	function listar_pacientes(pacientes){
 		//
@@ -182,19 +173,6 @@ $("#link_listar_pacientes").click(function(){
 
 
 		for (var paciente in pacientes) {
-            if (pacientes[paciente].nome === 'Carlos'){
-                console.log(pacientes[paciente].nome);    
-            }
-            
-			//
-            /*
-			
-            lin = "<tr>" + 
-			"<td> " + pacientes[i].nome  + " </td>" +
-			"<td>" + pacientes[i].sobrenome + "</td>" +
-			"</tr>";
-
-            */
             
             var link = pacientes[paciente].nome;
 
@@ -228,11 +206,12 @@ $("#link_listar_pacientes").click(function(){
 
 
 	});
-/*
-$("#botao_cadastrar_paciente").click(function()
-    {alert("Ola")});
 
 */
+
+
+
+
 //incluir
 $("#botao_cadastrar_paciente").click(function(){
     //obter dados do formulario
