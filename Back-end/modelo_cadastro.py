@@ -1,6 +1,34 @@
 from config import * 
 # modelos
 
+class Medico(db.Model):
+
+    #Atributos do médico
+    id_medico = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(255))
+    sobrenome = db.Column(db.String(255))
+    cpf = db.Column(db.String(11))
+    data_nasc = db.Column(db.String(255))
+    sexo =  db.Column(db.String(10))
+
+    
+
+    #Expressão da classe em forma de texto
+    def __str__(self):
+        return f"{self.id_medico}, {self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc}, {self.sexo}"
+
+    #Expressao da classe no formato json
+    def json(self):
+        return{
+            "id_medico": self.id_medico,
+            "nome": self.nome,
+            "sobrenome": self.sobrenome,
+            "cpf": self.cpf,
+            "data de nascimento": self.data_nasc,
+            "sexo": self.sexo
+        }
+
+
 class Paciente(db.Model):
     #Atributos do paciente
     id_paciente = db.Column(db.Integer, primary_key=True)
@@ -23,6 +51,8 @@ class Paciente(db.Model):
     estado = db.Column(db.String(30))
     """
 
+    
+
     #Método para expressar o paciente em forma de texto
     def __str__(self):
         return f"{self.id_paciente}, {self.nome}, {self.sobrenome}"
@@ -34,54 +64,30 @@ class Paciente(db.Model):
             "nome": self.nome,
             "sobrenome": self.sobrenome
         }
-
-class Medico(db.Model):
-
-    #Atributos do médico
-    id_medico = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255))
-    sobrenome = db.Column(db.String(255))
-    cpf = db.Column(db.String(11))
-    data_nasc = db.Column(db.String(255))
-    sexo =  db.Column(db.String(10))
-
-    #Atributo de chave estrangeira
-    paciente_id = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
-    
-    #Atributo de relacionamento
-    paciente = db.relationship("Paciente")
-
-    #Expressão da classe em forma de texto
-    def __str__(self):
-        return f"{self.id_medico}, {self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc}, {self.sexo}" + str(self.paciente)
-
-    #Expressao da classe no formato json
-    def json(self):
-        return{
-            "id_medico": self.id_medico,
-            "nome": self.nome,
-            "sobrenome": self.sobrenome,
-            "cpf": self.cpf,
-            "data de nascimento": self.data_nasc,
-            "sexo": self.sexo,
-            "paciente_id": self.paciente_id,
-            "paciente": self.paciente.json()
-        }
         
-class ConsultaRealizado(db.Model):
+class MarcarConsulta(db.Model):
     id_consulta = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(255)) # data da consulta
-    motivo = db.Column(db.String(255)) # motivo: consulta por dor de cabeça, de barriga
+    motivo = db.Column(db.String(255)) # motivo: consulta por dor de cabeça, de barriga(sitomas)
 
     # atributo de chave estrangeira
     paciente_id = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
+    medico_id = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
+
     # atributo de relacionamento, para acesso aos dados via objeto
     paciente = db.relationship("Paciente")    
+    medico = db.relationship("Medico")    
 
     
     def __str__(self): 
         # expressão da classe em forma de texto
-        return f"{self.data}, {self.motivo}, {self.paciente}" 
+        return f"{self.id_consulta}, {self.data}, {self.motivo}, {self.paciente}, {self.medico} " 
+
+    def strestiloso(self):
+        # estiloso
+        return f"O paciente {self.paciente.nome} tem uma consulta marcado para o dia \
+            {self.data} com o médico {self.medico.nome} devido à {self.motivo}."
+
 
     def json(self):
         # expressao da classe no formato json
@@ -90,7 +96,9 @@ class ConsultaRealizado(db.Model):
             "data": self.data,
             "motivo": self.motivo,
             "paciente_id": self.paciente_id,
-            "paciente": self.paciente.json()
+            "paciente": self.paciente.json(),
+            "medico_id": self.medico_id,
+            "medico": self.medico.json()
         }
 
 
@@ -104,7 +112,6 @@ if __name__ == "__main__":
     db.create_all()
 
     #Teste da classe Paciente
-    print("\nPacientes: ")
     paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira")
     paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart")
     paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus")
@@ -115,21 +122,22 @@ if __name__ == "__main__":
     db.session.add(paciente3)
     db.session.commit()
 
-    
+    """
     pacientes = db.session.query(Paciente).all()
     for paciente in pacientes:
         #Exibe o paciente
-        print(f"\nOlá, {paciente.nome}")
+        print(f"Olá, {paciente.nome}")
         #Exibe o paciente em json
         print(paciente.json())
+    """
 
 
 
     #Teste da classe Medico
-    print("\nMédicos: ")
-    medico1 = Medico(nome = "Paulo", sobrenome = "McCartney", cpf = "012.546.213-10", data_nasc = "12/09/1974", sexo = "Masculino", paciente=paciente1)
-    medico2 = Medico(nome = "João", sobrenome = "Lennon", cpf = "845.685.489-95", data_nasc = "26/07/1968", sexo = "Masculino", paciente=paciente2)
-    medico3 = Medico(nome = "Jorge", sobrenome = "Harrison", cpf = "365.781.259.58", data_nasc = "08/04/1984", sexo = "Masculino", paciente=paciente3)
+
+    medico1 = Medico(nome = "Paulo", sobrenome = "McCartney", cpf = "012.546.213-10", data_nasc = "12/09/1974", sexo = "Masculino")
+    medico2 = Medico(nome = "João", sobrenome = "Lennon", cpf = "845.685.489-95", data_nasc = "26/07/1968", sexo = "Masculino")
+    medico3 = Medico(nome = "Jorge", sobrenome = "Harrison", cpf = "365.781.259.58", data_nasc = "08/04/1984", sexo = "Masculino")
     
     #Persistir
     db.session.add(medico1)
@@ -138,13 +146,24 @@ if __name__ == "__main__":
     db.session.commit()
 
 
-    medicos = db.session.query(Medico).all()
-    for medico in medicos:
-        #Exibe a classe em texto
-        print(f"\nOlá, {medico.nome}, seu paciente é {medico.paciente.nome}")
-        #Exibe a classe em json
-        print(medico.json())
 
-    # teste da classe ConsultaRealizado
+    # teste da classe MarcarConsulta
 
-    print("\nConsultas realizados: ")
+    consulta1 = MarcarConsulta(data="05/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
+    consulta2 = MarcarConsulta(data="06/08/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
+    consulta3 = MarcarConsulta(data="07/08/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
+
+    #Persistir
+    db.session.add(consulta1)
+    db.session.add(consulta2)
+    db.session.add(consulta3)
+    db.session.commit()
+
+    # prints
+    print(paciente1)
+    print(medico2)
+    print(consulta3)
+    
+    print(f"\nDetalhado: {consulta2.strestiloso()}")
+    print(f"\nDetalhado: {consulta1.strestiloso()}")
+    print(f"\nDetalhado: {consulta3.strestiloso()}")
