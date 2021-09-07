@@ -1,5 +1,5 @@
 from config import *
-from modelo_cadastro import Paciente
+from modelo_cadastro import *
 
 @app.route("/")
 
@@ -37,6 +37,28 @@ def dados_paciente(id_paciente):
     dados = Paciente.query.get_or_404(id_paciente)
     return (dados.json())
 
+#listar dados de uma pessoas especifica
+@app.route("/listar_consulta/<int:paciente_id>", methods=['GET'])
+
+def dados_consulta(paciente_id):
+    #dados = Paciente.query.get()
+    retorno = []
+    #dados = MarcarConsulta.query.get_or_404(paciente_id)
+    consultas = db.session.query(MarcarConsulta).all()
+    for consulta in consultas:
+        if consulta.paciente_id_consulta == paciente_id:
+            retorno.append(consulta.json())
+    
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+    
+    #for d in dados:
+        #a.append(d.json())
+        
+    #return a
+
+#print(dados_consulta(1))
 
 
 #incluir/cadastrar

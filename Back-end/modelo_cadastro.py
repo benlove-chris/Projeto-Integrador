@@ -71,8 +71,8 @@ class MarcarConsulta(db.Model):
     motivo = db.Column(db.String(255)) # motivo: consulta por dor de cabeça, de barriga(sitomas)
 
     # atributo de chave estrangeira
-    paciente_id = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
-    medico_id = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
+    paciente_id_consulta = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
+    medico_id_consulta = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
 
     # atributo de relacionamento, para acesso aos dados via objeto
     paciente = db.relationship("Paciente")    
@@ -95,9 +95,9 @@ class MarcarConsulta(db.Model):
             "id": self.id_consulta,
             "data": self.data,
             "motivo": self.motivo,
-            "paciente_id": self.paciente_id,
+            "paciente_id_consulta": self.paciente_id_consulta,
             "paciente": self.paciente.json(),
-            "medico_id": self.medico_id,
+            "medico_id_consulta": self.medico_id_consulta,
             "medico": self.medico.json()
         }
 
@@ -149,9 +149,9 @@ if __name__ == "__main__":
 
     # teste da classe MarcarConsulta
 
-    consulta1 = MarcarConsulta(data="05/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
-    consulta2 = MarcarConsulta(data="06/08/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
-    consulta3 = MarcarConsulta(data="07/08/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
+    consulta1 = MarcarConsulta(data="04/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
+    consulta2 = MarcarConsulta(data="06/09/2021", motivo="dor no joelho", paciente=paciente1, medico=medico2)
+    consulta3 = MarcarConsulta(data="07/10/2021", motivo="dor nas costas", paciente=paciente2, medico=medico3)
 
     #Persistir
     db.session.add(consulta1)
@@ -160,8 +160,12 @@ if __name__ == "__main__":
     db.session.commit()
 
     # prints
+    """
     print(paciente1)
     print(medico2)
+    """
+    print(consulta1)
+    print(consulta2)
     print(consulta3)
     
     print(f"\nDetalhado: {consulta2.strestiloso()}")
