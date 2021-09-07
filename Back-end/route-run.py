@@ -29,7 +29,7 @@ def dados_sala(id_sala):
     return (sala_esp.json())
 """
 
-#listar dados de uma pessoas especifica
+#listar dados de uma pessoa especifica
 @app.route("/listar_paciente/<int:id_paciente>", methods=['GET'])
 
 def dados_paciente(id_paciente):
@@ -37,7 +37,7 @@ def dados_paciente(id_paciente):
     dados = Paciente.query.get_or_404(id_paciente)
     return (dados.json())
 
-#listar dados de uma pessoas especifica
+#listar consultas de um paciente
 @app.route("/listar_consulta/<int:paciente_id>", methods=['GET'])
 
 def dados_consulta(paciente_id):
@@ -53,12 +53,7 @@ def dados_consulta(paciente_id):
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
     
-    #for d in dados:
-        #a.append(d.json())
-        
-    #return a
-
-#print(dados_consulta(1))
+    
 
 
 #incluir/cadastrar

@@ -135,9 +135,9 @@ if __name__ == "__main__":
 
     #Teste da classe Medico
 
-    medico1 = Medico(nome = "Paulo", sobrenome = "McCartney", cpf = "012.546.213-10", data_nasc = "12/09/1974", sexo = "Masculino")
-    medico2 = Medico(nome = "João", sobrenome = "Lennon", cpf = "845.685.489-95", data_nasc = "26/07/1968", sexo = "Masculino")
-    medico3 = Medico(nome = "Jorge", sobrenome = "Harrison", cpf = "365.781.259.58", data_nasc = "08/04/1984", sexo = "Masculino")
+    medico1 = Medico(nome = "Paulo Cesar", sobrenome = "McCartney", cpf = "012.546.213-10", data_nasc = "12/09/1974", sexo = "Masculino")
+    medico2 = Medico(nome = "João Barra", sobrenome = "Lennon", cpf = "845.685.489-95", data_nasc = "26/07/1968", sexo = "Masculino")
+    medico3 = Medico(nome = "Jorge Santos", sobrenome = "Harrison", cpf = "365.781.259.58", data_nasc = "08/04/1984", sexo = "Masculino")
     
     #Persistir
     db.session.add(medico1)
