@@ -119,9 +119,7 @@ form div{
 
 }
 
-ul{
-  background-color: ;
-}
+
 
 
 
@@ -175,7 +173,7 @@ li a {
   text-decoration: none;
 }
 
-*/
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -199,3 +197,4 @@ li a {
 li a:hover {
   background-color: black;
 }
+*/
