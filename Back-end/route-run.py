@@ -19,6 +19,18 @@ def listar_pacientes():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
+@app.route("/listar_medicos", methods=['GET'])
+
+def listar_medicos():
+    medicos = db.session.query(Medico).all()
+    retorno = []
+
+    for medico in medicos:
+        retorno.append(medico.json())
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
 """
 # Rota para pegar os dados de uma sala específica
 @geral.route("/dados_sala/<int:id_sala>",  methods=['POST','GET'])
@@ -63,6 +75,18 @@ def cadastrar_paciente():
     dados = request.get_json()
     novo_paciente = Paciente(**dados)
     db.session.add(novo_paciente)
+    db.session.commit()
+
+    return {"resultado":'ok'}
+
+
+# marcar consulta
+@app.route("/marcar_consulta", methods=['POST'])
+
+def marcar_consulta():
+    dados = request.get_json()
+    nova_consulta = MarcarConsulta(**dados)
+    db.session.add(nova_consulta)
     db.session.commit()
 
     return {"resultado":'ok'}

@@ -221,6 +221,7 @@ $("#botao_cadastrar_paciente").click(function(){
 
     //json - preparar para envio
     dados = JSON.stringify({nome: nome, sobrenome: sobrenome});
+    console.log(dados) //{"nome":"Benlove Anelus","sobrenome":"Hernandez"}
 
     //mandar para o back-end
 
