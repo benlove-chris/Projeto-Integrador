@@ -75,8 +75,8 @@ class MarcarConsulta(db.Model):
     medico_id_consulta = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
 
     # atributo de relacionamento, para acesso aos dados via objeto
-    paciente = db.relationship("Paciente")    
-    medico = db.relationship("Medico")    
+    paciente = db.relationship("Paciente", foreign_keys=paciente_id_consulta)    
+    medico = db.relationship("Medico", foreign_keys=medico_id_consulta)    
 
     
     def __str__(self): 

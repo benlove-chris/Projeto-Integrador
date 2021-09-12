@@ -212,6 +212,18 @@ $("#link_listar_pacientes").click(function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 //incluir
 $("#botao_cadastrar_paciente").click(function(){
     //obter dados do formulario

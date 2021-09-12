@@ -84,12 +84,17 @@ def cadastrar_paciente():
 @app.route("/marcar_consulta", methods=['POST'])
 
 def marcar_consulta():
+
+    resposta = jsonify({"resultado": "ok"})
     dados = request.get_json()
     nova_consulta = MarcarConsulta(**dados)
+    #nova_consulta.headers.add("Access-Control-Allow-Origin", "*")
     db.session.add(nova_consulta)
     db.session.commit()
 
-    return {"resultado":'ok'}
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+
+    return resposta
 
 
 app.run(debug = True)
