@@ -113,8 +113,8 @@
         </table>
 
 
-        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Marcar consulta</button>
-
+        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo">Marcar consulta</button>
+<!--
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -152,6 +152,76 @@
 	    </div>
 	  </div>
 	</div>
+-->
+
+<div class="modal fade" id="modalPessoa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="marcarpara">Marcar consulta para {paciente} </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                    	<div class="form-group">
+						            <label for="motivoConsulta" class="col-form-label">Motivo da consulta</label>
+						            <textarea class="form-control" id="motivoConsulta"></textarea>
+						          </div>
+
+
+
+                    	<div class="form-group">
+						            <label for="dataConsulta" class="col-form-label">Data da consulta</label>
+						            <input type="date" class="form-control" id="dataConsulta">
+						          </div>
+    
+                            
+                      <p class="text-muted small">*comentario - descrição </p>
+
+                      <div class="form-group">
+                      	<label for="selectMedico">Médico executante</label>
+                        <select class="form-control search-slt" id="selectMedico" name="selectMedico">
+                        	<option value="" id="">Luiz fernandez</option>
+                        	<option value="" id="">Cris </option>
+                        </select>
+                      </div>
+
+
+                        
+                        
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
+					        <button type="submit" class="btn btn-primary" onclick="marcarConsulta()">Marcar consulta</button>
+					      </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
 		
@@ -159,7 +229,7 @@
 	</div>
 
 	<div id="exames-paciente">
-		<h4>Historicos de exames do paciente</h4>
+		<h4>Historicos de exames do paciente - Opcional(por enquanto)</h4>
 		<h4>Cabeçalho(tabela) - Data - médico solicitante - consulta?(data da consulta) </h4>
 		
 		<table id="tabelaPacientes" >
