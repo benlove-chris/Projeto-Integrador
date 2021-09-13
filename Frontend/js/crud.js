@@ -12,7 +12,7 @@ function cadastrarPaciente(){
     dados = JSON.stringify({nome: nome, sobrenome: sobrenome});
     console.log(dados) //{"nome":"Benlove Anelus","sobrenome":"Hernandez"}
 
-    //mandar para o back-end
+    //mandar para o back-end -
 
     $.ajax({
             url : 'http://localhost:5000/cadastrar_paciente',
