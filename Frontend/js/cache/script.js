@@ -52,11 +52,13 @@ $( document ).ready(function() {
 
 
 
-$( document ).ready(function() {
+//$( document ).ready(function() {
     //alert("Script");
 
 
-    //alert("Oi!")};
+function listarPacientes() {
+
+
     $.ajax({
         url: 'http://localhost:5000/listar_pacientes',
         method: 'GET',
@@ -115,7 +117,7 @@ $( document ).ready(function() {
         }
 
 
-    });
+    };
 
 
 
