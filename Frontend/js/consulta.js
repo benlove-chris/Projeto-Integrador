@@ -6,22 +6,22 @@ function marcarConsulta () {
 
 	
     //entrada
-	var dataConsultaDado = document.getElementById('dataConsulta').value;
+	
+    var dataConsultaDado = document.getElementById('dataConsulta').value;
    	var motivoConsultaDado = document.getElementById('motivoConsulta').value;
    	let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
-   	//var medico_id_consulta = document.getElementById('medico_id').value;
-    var medico_id_consulta = 2;
+   	var medico_id_consulta = document.getElementById('selectMedico').value;
     
    	
     
     /*
-    // para teste
+    //para teste
     let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
-   	var motivoConsultaDado = "dor de dentes";
-   	var dataConsultaDado = "30-05-0503";
+   	var motivoConsultaDado = "dor no joelho";
+   	var dataConsultaDado = "20-10-2021";
    	var medico_id_consulta = 2;
-    */
     
+    */
 
 
 	var dados = JSON.stringify({data: dataConsultaDado, motivo: motivoConsultaDado, paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});

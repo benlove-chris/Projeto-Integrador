@@ -179,7 +179,8 @@ function MedicosParaSelecionar() {
     function medicos_select(medicos){
         for (var medico in medicos) {
             //opt = "<option>" + medicos[medico].sobrenome+ "</option>";
-            opt = "<option value= '" + medicos[medico].id_medico+"'>"+ medicos[medico].sobrenome + "</option>";
+            opt = "<option value= '" + medicos[medico].id_medico+"'>"+ medicos[medico].nome + "</option>";
+            console.log(opt);
 
             $("#selectMedico").append(opt)
         }
