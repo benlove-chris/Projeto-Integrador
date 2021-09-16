@@ -91,7 +91,7 @@ function listarDadosPaciente(){
 }
 
 
-
+/*---------------------------------*/
 function listar_paciente(paciente){
     $("#nome-paciente").text(paciente.nome + " "+paciente.sobrenome) 
     
@@ -106,6 +106,7 @@ function listar_paciente(paciente){
     $("#corpoDados").html(linha);
 
 }
+
 
 //Consulta
 function listarDadosConsulta(){
@@ -128,6 +129,7 @@ function listarDadosConsulta(){
 
 
 
+/*---------------------------------*/
 
 function listar_consulta(paciente) {
     //$("#nome-paciente").text(paciente.nome + " "+paciente.sobrenome) 
@@ -172,11 +174,12 @@ function MedicosParaSelecionar() {
         error: function(){
             alert("Erro ao ler os dados :) \nverifique o backend");}
     });
-    
+
 
     function medicos_select(medicos){
         for (var medico in medicos) {
-            opt = "<option>" + medicos[medico].sobrenome+ "</option>";
+            //opt = "<option>" + medicos[medico].sobrenome+ "</option>";
+            opt = "<option value= '" + medicos[medico].id_medico+"'>"+ medicos[medico].sobrenome + "</option>";
 
             $("#selectMedico").append(opt)
         }

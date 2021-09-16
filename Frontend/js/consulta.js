@@ -4,19 +4,24 @@ function marcarConsulta () {
 
 
 
-	/*
+	
+    //entrada
 	var dataConsultaDado = document.getElementById('dataConsulta').value;
    	var motivoConsultaDado = document.getElementById('motivoConsulta').value;
-   	var paciente_id__consulta = document.getElementById('paciente_id').value;
-   	var medico_id__consulta = document.getElementById('medico_id').value;
-
-   	*/
-
+   	let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
+   	//var medico_id_consulta = document.getElementById('medico_id').value;
+    var medico_id_consulta = 2;
+    
+   	
+    
+    /*
+    // para teste
+    let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
    	var motivoConsultaDado = "dor de dentes";
    	var dataConsultaDado = "30-05-0503";
-   	var paciente_id_consulta = 4;
    	var medico_id_consulta = 2;
-   	//var medicoExecutante = "Jorge Santos";
+    */
+    
 
 
 	var dados = JSON.stringify({data: dataConsultaDado, motivo: motivoConsultaDado, paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
