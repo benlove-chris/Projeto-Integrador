@@ -113,7 +113,7 @@
         </table>
 
 
-        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo">Marcar consulta</button>
+        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
 <!--
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
@@ -186,8 +186,10 @@
                       <div class="form-group">
                       	<label for="selectMedico">Médico executante</label>
                         <select class="form-control search-slt" id="selectMedico" name="selectMedico">
-                        	<option value="" id="">Luiz fernandez</option>
+                        	<!--<option value="" id="">Luiz fernandez</option>
                         	<option value="" id="">Cris </option>
+                        -->
+                        	
                         </select>
                       </div>
 
@@ -199,7 +201,7 @@
                 </div>
                 <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
-					        <button type="submit" class="btn btn-primary" onclick="marcarConsulta()">Marcar consulta</button>
+					        <button type="submit" class="btn btn-primary" onclick="marcarConsulta(); listarMedicos()">Marcar consulta</button>
 					      </div>
             </div>
         </div>

@@ -161,6 +161,30 @@ function listar_consulta(paciente) {
 
 
 
+/*---------------------------------*/
+function MedicosParaSelecionar() {
+
+    $.ajax({
+        url: 'http://localhost:5000/listar_medicos',
+        method: 'GET',
+        dataType: 'json',
+        success: medicos_select,
+        error: function(){
+            alert("Erro ao ler os dados :) \nverifique o backend");}
+    });
+    
+
+    function medicos_select(medicos){
+        for (var medico in medicos) {
+            opt = "<option>" + medicos[medico].sobrenome+ "</option>";
+
+            $("#selectMedico").append(opt)
+        }
+
+    }
+
+
+};
 
 
 
