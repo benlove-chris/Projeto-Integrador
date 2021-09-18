@@ -12,16 +12,17 @@ body{
 }
 
 .nav-pills{
-  width: 30%;
+  width: 70%;
   background-color: red;  
-  display: inline-block;
+  
   margin: 0 auto;
 
   
   
 }
 .nav-item{
-  width: 30%;
+  width: 25%;
+   /*80%-reponsive*/
 }
 .nav-pills .nav-link{
   font-weight: bold;
@@ -33,10 +34,15 @@ body{
   border-radius: px;
   height: 80px;
 
+
+}
+.nav-pills #home{
+  background-color: green;
 }
 .nav-pills .nav-link.active{
   background: #fff;
   color: #000;
+
 
 }
 .tab-content{
@@ -61,3 +67,8 @@ body{
   
 }
 
+/* tab /> */
+
+#nome-paciente{
+  text-align: center;
+}
