@@ -8,12 +8,12 @@
 
 
 
-<!--
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!--da primeira-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -25,91 +25,82 @@
 </head>
 <body onload="listarDadosPaciente(), listarDadosConsulta();">
   
-  
-  <!--nav-->
-
-  <ul class="nav nav-pills" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link" href="cadastrados.html" id="home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="pill" href="#dados-paciente">Dados</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="pill" href="#historico-consulta">Historico</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="pill" href="#exames-paciente">Exames</a>
-      </li>
-  </ul>
+<!--nav-->
+<ul class="nav nav-pills" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" href="cadastrados.html" id="home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#dados-paciente">Dados</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#historico-consulta">Historico</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#exames-paciente">Exames</a>
+    </li>
+</ul>
 
 <h3 id="nome-paciente"><u>Pagina do paciente x</u></h3>
-<div class="content">
 
+<div class="content">
     <div class="tab-content">
       <div id="dados-paciente" class="container tab-pane active">
           <h4>Dados do paciente - o cadastrado</h4>
-            <table id="tabelaPacientes" >
-                <thead>
-                  <tr>
-                      <th scope="col"><a href="#">Nome</a></th>
-                      <th scope="col">Sobrenome</th>
-                  </tr>
-                </thead>
-                <tbody id="corpoDados">
-                    <!-- -->
-                    <!-- -->
-                    <!-- -->  
-
-                </tbody>
-            </table>
+          <table id="tabelaPacientes" >
+              <thead>
+                <tr>
+                  <th scope="col"><a href="#">Nome</a></th>
+                  <th scope="col">Sobrenome</th>
+                </tr>
+              </thead>
+              
+              <tbody id="corpoDados">
+                  <!-- -->
+                  <!-- -->
+              </tbody>
+          </table>
             
       </div>
       
 
-      
+    <!--historico de consulta-->
     <div id="historico-consulta" class="container tab-pane fade">
-    <h4>Historico de consulta do paciente</h4>
-    
-
-    <table id="tabelaConsulta" onload="listarDadosConsulta()" >
+      <h4>Historico de consulta do paciente</h4>
+          <table id="tabelaConsulta"" >
               <thead>
-                  <tr>
-                      <th scope="col">Data </th>
-                      <th scope="col">Médico executante</th>
-                      <th scope="col">Motivo</th>
-                      <th scope="col">Ação</th>
-                  </tr>
-                </thead>
-            <tbody id="corpoConsulta">
-              <tr>
-                <!--example-->
-                <td>aaaa-dd-mm</td>
-                <td>Dr Carlao</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td><button>editar consulta</button><button>desmarcar consulta</button></td>
-              </tr>
-      <!-- consulta-->            
-      <!-- -->
-
-          </tbody>
-        </table>
-
-
-      <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
+                <tr>
+                    <th scope="col">Data </th>
+                    <th scope="col">Médico executante</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Ação</th>
+                </tr>
+              </thead>
+              
+              <tbody id="corpoConsulta">
+                <!--dados no js-->
+                <tr>
+                  <!--example-->
+                  <td>aaaa-dd-mm</td>
+                  <td>Dr Carlao</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                  <td><button>editar consulta</button><button>desmarcar consulta</button></td>
+                </tr>
+              </tbody>
+          </table>
+        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
 
       <!--modal -->
       <div class="modal fade" id="modalPessoa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
               aria-hidden="true">
-              <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <div class="modal-header">
-
                           <h4 class="modal-title" id="marcarpara">Marcar consulta para {paciente} </h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
@@ -135,15 +126,12 @@
                             <div class="form-group">
                               <label for="selectMedico">Médico executante</label>
                               <select class="form-control search-slt" id="selectMedico" name="selectMedico">
-                                <!--<option value="" id="">Luiz fernandez</option>
-                                <option value="" id="">Cris </option>
-                              -->
-                                
+                                <!--Dados no js-->
                               </select>
                             </div>
                           </form>
-                      </div>
-                      <!--modal footer-->
+                    </div>
+                    <!--modal footer-->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
                         <button type="submit" class="btn btn-primary" onclick="marcarConsulta();">Marcar consulta</button>
@@ -153,49 +141,40 @@
               </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       
-        <div id="exames-paciente" class="container tab-pane fade">
-        <h4>Historicos de exames do paciente - Opcional(por enquanto)</h4>
-        <h4>Cabeçalho(tabela) - Data - médico solicitante - consulta?(data da consulta) </h4>
-        
-        <table id="tabelaPacientes" >
-                  <thead>
-                      <tr>
-                          <th scope="col">Data </th>
-                          <th scope="col">Médico solicitante</th>
-                          <th scope="col">data da consulta?</th>
-                      </tr>
-                    </thead>
-          <tbody id="corpoTabelaPacientes">
-                <!-- -->
-                  <tr>
-                      <td scope="col" >paciente</td>
-                      <td scope="col" >Sobrenome</td>
-                  </tr>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="exames-paciente" class="container tab-pane fade">
+          <h4>Historicos de exames do paciente - Opcional(por enquanto)</h4>
+          <h4>Cabeçalho(tabela) - Data - médico solicitante - consulta?(data da consulta) </h4>
+          
+            <table id="tabelaPacientes" >  
+              <thead>
+                    <tr>
+                      <th scope="col">Data </th>
+                      <th scope="col">Médico solicitante</th>
+                      <th scope="col">data da consulta?</th>
+                    </tr>
+              </thead>
+              
+              <tbody id="corpoTabelaPacientes">
+                  <!-- -->
+                <tr>
+                    <td scope="col" >paciente</td>
+                    <td scope="col" >Sobrenome</td>
+                </tr>
               </tbody>
             </table>
 

@@ -145,6 +145,10 @@ function listar_consulta(paciente) {
                     "<td>" + paciente[consulta].data+ "</td>" + 
                     "<td>" + paciente[consulta].medico.nome+ "</td>" + 
                     "<td>" + paciente[consulta].motivo+ "</td>" + 
+                    "<td>" + 
+            "<a href='#' title='Editar' data-toggle='modal' data-target='#modalPessoaEditar'>"+
+            "<i class='fas fa-edit text-primary'></i></a>" + 
+        "</td>" +
                 '</tr>'
 
         linhas += lin;
