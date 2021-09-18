@@ -60,13 +60,26 @@
 	<h3 id="nome-paciente"><u>Pagina do paciente x</u></h3>
 	
 
-	
+	<!--
 	<ul>
 	  <li><a href="#dados-paciente">Dados do paciente</a></li>
 	  <li><a href="#historico-consulta">Historico de consulta do paciente</a></li>
 	  <li><a href="#exames-paciente">Exames</a></li>
 	  
 	</ul>
+-->
+
+	<ul class="nav nav-pills" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href="#dados-paciente">Dados</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#historico-consulta">Historico</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#exames-paciente">Exames</a>
+      </li>
+  </ul>
 
 
 
@@ -189,7 +202,7 @@
                         	<!--<option value="" id="">Luiz fernandez</option>
                         	<option value="" id="">Cris </option>
                         -->
-
+                        	
                         </select>
                       </div>
 
@@ -201,7 +214,7 @@
                 </div>
                 <div class="modal-footer">
 					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
-					        <button type="submit" class="btn btn-primary" onclick="marcarConsulta()">Marcar consulta</button>
+					        <button type="submit" class="btn btn-primary" onclick="marcarConsulta();">Marcar consulta</button>
 					      </div>
             </div>
         </div>
