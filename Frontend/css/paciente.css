@@ -2,7 +2,7 @@ body{
   background: #16a085;
  }
 .content{
-  width: 450px;
+  width: 80%;
   height: auto;
   margin: 0 auto;
   padding: 30px;
@@ -47,9 +47,9 @@ body{
 }
 .tab-content{
  /*position: absolute;*/
-  width: 450px;
+
   height: auto;
-  margin-top: -50px;
+  
   background: #fff;
   color: #000;
   border-radius: 30px;
@@ -72,3 +72,10 @@ body{
 #nome-paciente{
   text-align: center;
 }
+
+td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 20px;
+      position: relative;
+    }

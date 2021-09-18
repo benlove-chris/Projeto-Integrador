@@ -8,12 +8,12 @@
 
 
 
-
+<!--
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 
 <!--da primeira-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -23,7 +23,7 @@
 
 
 </head>
-<body>
+<body onload="listarDadosPaciente(), listarDadosConsulta();">
   
   
   <!--nav-->
@@ -70,17 +70,30 @@
       
     <div id="historico-consulta" class="container tab-pane fade">
     <h4>Historico de consulta do paciente</h4>
-    <h4>Cabeçalho | Data - Motivo - Médico executante </h4>
+    
 
-    <table id="tabelaPacientes" >
+    <table id="tabelaConsulta" onload="listarDadosConsulta()" >
               <thead>
                   <tr>
                       <th scope="col">Data </th>
                       <th scope="col">Médico executante</th>
                       <th scope="col">Motivo</th>
+                      <th scope="col">Ação</th>
                   </tr>
                 </thead>
             <tbody id="corpoConsulta">
+              <tr>
+                <!--example-->
+                <td>aaaa-dd-mm</td>
+                <td>Dr Carlao</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                <td><button>editar consulta</button><button>desmarcar consulta</button></td>
+              </tr>
       <!-- consulta-->            
       <!-- -->
 
@@ -104,7 +117,7 @@
                       </div>
                       
                       <div class="modal-body">
-                          <form>
+                          <form onload="listarDadosConsulta()">
 
                             <div class="form-group">
                               <label for="motivoConsulta" class="col-form-label">Motivo da consulta</label>
