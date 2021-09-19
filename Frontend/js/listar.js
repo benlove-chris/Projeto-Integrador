@@ -147,58 +147,29 @@ function listar_consulta(paciente) {
                     "<td>" + paciente[consulta].medico.nome+ "</td>" + 
                     "<td>" + paciente[consulta].motivo+ "</td>" + 
 
-                    //"<td>"+ '<button type="submit" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">DELETE </button>'+"</td>"+
-                    "<td>"+ '<button data-toggle="modal"  class="btn btn-primary" data-target="#modalConsultaDelete" onclick="modalConsultaDeleteBtn; ">DELETE </button>'+"</td>"+
+                    "<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Desmarcar <br> Consulta</button>'+"</td>"+
+                    "<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Mudar <br> Consulta</button>'+"</td>"+
+                    
                 "</tr>"
-                 //onClick="chamarModalConsultaDelete('+ 'asa()' +");" + '>'+ '
-                //onClick='chamarModalConsultaDelete("+ sala.id_sala+");'>"
+                 
                 
-
         $("#corpoConsulta").append(lin)
     }
-        //"<a href='#' title='Apagar' data-toggle='modal' data-target='#modalSalaDelete' onClick='chamarModalSalaDelete(" +sala.id_sala+");'>"+
-    
-    //$("#corpoConsulta").html(linhas);
+        
 
 }
-//$("#modalConsultaDeleteBtn").click(function(){alert("Funcionado")});
+
+
+
 function chamarModalConsultaDelete(id_consulta){
+    
     
     console.log('id_consulta,',id_consulta);
     $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
-    $("#modalConsultaDeleteBtn").click( function(){
-        $.ajax({
-        
-        url: 'http://localhost:5000/desmarcar_consulta/'+id_consulta,
-        type: 'DELETE',
-        dataType: 'json', contentType: 'application/json',
-        data: JSON.stringify({ id_consulta: id_consulta}), 
-        success: function(retorno){
-            if (retorno.resultado == "ok") {
-                $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
-                alert("Pessoa apagada com sucesso!");
-                
-                
-            });
-            
-        }
-            else {
-                alert(retorno.resultado + " : " + retorno.detalhes);
-            }
-        },
-        error: function (error){
-            alert("Ocorreu um erro ao apagar essa pessoa!");
-        }
-    })
-
-    });
-    /*$("#modalConsultaDeleteBtn").click(function(){
-        alert("HEllo world");
-    });*/
+    
 
 
 }
-
 
 
 /*Apagar*/
@@ -233,7 +204,7 @@ function apagarConsulta(id_consulta){
     })
 };
 
-/*Apagar*/
+/*Apagar </> */
 
 
 
