@@ -92,7 +92,7 @@ class MarcarConsulta(db.Model):
     def json(self):
         # expressao da classe no formato json
         return {
-            "id": self.id_consulta,
+            "id_consulta": self.id_consulta,
             "data": self.data,
             "motivo": self.motivo,
             "paciente_id_consulta": self.paciente_id_consulta,

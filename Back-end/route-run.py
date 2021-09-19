@@ -97,4 +97,27 @@ def marcar_consulta():
     return resposta
 
 
+@app.route("/desmarcar_consulta/<int:id_consulta>", methods=['DELETE'])
+
+def desmarcar_consulta(id_consulta):
+    
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
+    
+    try: #Tentar realizar a exclusão
+        consulta = MarcarConsulta.query.get(id_consulta)
+
+        db.session.delete(consulta)
+        #redistribuir_consulta()
+        db.session.commit()
+        
+        
+    
+        
+    except Exception as e:  #Envie mensagem em caso de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
+
 app.run(debug = True)

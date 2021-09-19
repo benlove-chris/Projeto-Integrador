@@ -67,7 +67,7 @@
     <!--historico de consulta-->
     <div id="historico-consulta" class="container tab-pane fade">
       <h4>Historico de consulta do paciente</h4>
-          <table id="tabelaConsulta"" >
+          <table id="tabelaConsulta">
               <thead>
                 <tr>
                     <th scope="col">Data </th>
@@ -79,8 +79,9 @@
               
               <tbody id="corpoConsulta">
                 <!--dados no js-->
+                <!--
                 <tr>
-                  <!--example-->
+                 example
                   <td>aaaa-dd-mm</td>
                   <td>Dr Carlao</td>
                   <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -89,8 +90,10 @@
                   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                  <td><button>editar consulta</button><button>desmarcar consulta</button></td>
+                  <td><button>editar consulta</button><button id="delet">desmarcar consulta</button></td>
                 </tr>
+              
+              <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoaDelete" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Delete</button>-->
               </tbody>
           </table>
         <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
@@ -140,6 +143,35 @@
                   </div>
               </div>
             </div>
+
+
+            <!--modal delete-->
+            <div class="modal fade" id="modalConsultaDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+
+                          <h4 class="modal-title" id="myModalLabel">Apagar pessoa?</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <p>Ao apagar essa pessoa, o balanço das salas pode ser afetado, fazendo com que as outra sejam
+                              <u>automaticamente rearranjadas</u>.</p>
+                          <p>Tem certeza que deseja continuar?</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-danger" id="modalConsultaDeleteBtn"
+                              data-dismiss="modal">Apagar</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+
         </div>
       
 
