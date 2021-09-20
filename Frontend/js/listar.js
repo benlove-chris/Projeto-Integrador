@@ -147,8 +147,21 @@ function listar_consulta(paciente) {
                     "<td>" + paciente[consulta].medico.nome+ "</td>" + 
                     "<td>" + paciente[consulta].motivo+ "</td>" + 
 
-                    "<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Desmarcar <br> Consulta</button>'+"</td>"+
-                    "<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Mudar <br> Consulta</button>'+"</td>"+
+                    //"<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Desmarcar <br> Consulta</button>'+"</td>"+
+                    //"<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Mudar <br> Consulta</button>'+"</td>"+
+                    "<td>"+
+                                            
+                        '<ul class="list-inline m-0">'+
+                            '<li class="list-inline-item">'+
+                                '<button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>'+
+                            '</li>'+
+                            '<li class="list-inline-item">'+
+                              '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">'+
+                              '<i class="fa fa-trash"></i></button>'+
+                          '</li>'+
+                            
+                        '</ul>'+
+                    "</td>"+
                     
                 "</tr>"
                  
@@ -162,6 +175,7 @@ function listar_consulta(paciente) {
 
 
 function chamarModalConsultaDelete(id_consulta){
+    //alert("Tudo fuuncionado");
     
     
     console.log('id_consulta,',id_consulta);
