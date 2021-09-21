@@ -10,7 +10,7 @@
 
 ## 🖼 Screenshot das telas da aplicação <br/>
 
-<img src="assets/.png">
+<img src="assets/ img.png">
 <br/>
 
 ## 🚀 Tecnologias utilizadas <br/>
