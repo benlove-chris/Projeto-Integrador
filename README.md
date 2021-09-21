@@ -42,10 +42,10 @@ git clone https://github.com/benlove-chris/Projeto-Integrador.git
             <a href="https://github.com/benlove-chris">
                 <sub><b>Benlove Anelus</b></sub>
             </a>
-          <br><a href="https://github.com/benlove-chris">
+          <br><a href="https://github.com/carlos-landeira">
                 <sub><b>Carlos Eduardo</b></sub>
             </a>
-          <br><a href="https://github.com/benlove-chris">
+          <br><a href="https://github.com/GabrielSpeckart">
                 <sub><b>Gabriel Speckart</b></sub>
             </a>
         </td>    
