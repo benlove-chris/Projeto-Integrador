@@ -13,7 +13,7 @@ body{
 
 .nav-pills{
   width: 70%;
-  background-color: red;  
+  background-color: #4d4d4d;  
   
   margin: 0 auto;
 
@@ -29,18 +29,19 @@ body{
   padding-top: 13px;
   text-align: center;
   margin-right: 1%;
-  background: #343436;
+  background: #4d4d4d;
+  background-color: red;
   color: #fff;
   border-radius: px;
-  height: 80px;
+  height: 60px;
 
 
 }
 .nav-pills #home{
-  background-color: green;
+  background-color: #1a1a1a;
 }
 .nav-pills .nav-link.active{
-  background: #fff;
+  background: #4d4d4d;
   color: #000;
 
 
