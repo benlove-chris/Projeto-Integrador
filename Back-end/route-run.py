@@ -72,6 +72,7 @@ def dados_consulta(paciente_id):
 @app.route("/cadastrar_paciente", methods=['POST'])
 
 def cadastrar_paciente():
+    #db.create_all()
     dados = request.get_json()
     novo_paciente = Paciente(**dados)
     db.session.add(novo_paciente)

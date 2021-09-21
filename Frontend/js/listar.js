@@ -202,7 +202,7 @@ function apagarConsulta(id_consulta){
         success: function(retorno){
             if (retorno.resultado == "ok") {
                 $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
-                alert("Pessoa apagada com sucesso!");
+                alert("Consulta marcado com sucesso!");
                 
                 
             });
@@ -213,7 +213,7 @@ function apagarConsulta(id_consulta){
             }
         },
         error: function (error){
-            alert("Ocorreu um erro ao apagar essa pessoa!");
+            alert("Ocorreu um erro ao marcar essa consulta!");
         }
     })
 };
