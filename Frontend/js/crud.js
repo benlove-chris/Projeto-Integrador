@@ -1,5 +1,5 @@
 
-//incluir
+//cadastrar paciente
 
 function cadastrarPaciente(){
  
@@ -42,6 +42,13 @@ function cadastrarPaciente(){
 
     };
 
+
+//cadastrar médido
+
+
+function cadastrarMedico(){
+    //
+};
 
 
 
