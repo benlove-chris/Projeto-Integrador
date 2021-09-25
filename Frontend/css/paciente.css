@@ -43,11 +43,6 @@ body{
 
 
 }
-ul.nav li.active a {background-color:red;} 
-
-li .active{
-  background-color: red;
-}
 
 
 .nav-pills #home{
@@ -55,11 +50,7 @@ li .active{
 
 }
 
-.nav-pills .nav-link.active{
-  color: #000;
 
-
-}
 
 
 .tab-content{
@@ -98,5 +89,4 @@ td, th {
       padding: 20px;
       position: relative;
     }
-
 
