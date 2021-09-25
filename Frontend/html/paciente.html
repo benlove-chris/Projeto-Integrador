@@ -30,6 +30,12 @@
         background: black;
         color: yellow;
         }
+        
+
+        #modalConsulta{
+          color: darkblue;
+
+        }
 
   </style>
   
@@ -123,13 +129,13 @@
                   <td><button>editar consulta</button><button id="delet">desmarcar consulta</button></td>
                 </tr>
               
-              <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoaDelete" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Delete</button>-->
+              <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalConsultaDelete" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Delete</button>-->
               </tbody>
           </table>
-        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalPessoa" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
+        <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalConsulta" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
 
       <!--modal -->
-      <div class="modal fade" id="modalPessoa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      <div class="modal fade" id="modalConsulta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
               aria-hidden="true">
             <div class="modal-dialog" role="document">
                   <div class="modal-content">

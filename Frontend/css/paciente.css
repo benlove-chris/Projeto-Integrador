@@ -53,9 +53,7 @@ body{
 
 
 
-.tab-content{
-  color: white;
-}
+
 .tab-content{
  /*position: absolute;*/
 
@@ -89,4 +87,3 @@ td, th {
       padding: 20px;
       position: relative;
     }
-
