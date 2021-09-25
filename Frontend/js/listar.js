@@ -70,7 +70,7 @@ function listarPacientes() {
 
 
 
-// especifica
+// listar dados do paciente
 function listarDadosPaciente(){
     //alert("especifica");
     let id_paciente = document.location.search.replace(/^.*?\=/,'');
@@ -108,7 +108,7 @@ function listar_paciente(paciente){
 }
 
 
-//Consulta
+//lista dados da consulta do paciente
 function listarDadosConsulta(){
     let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
@@ -153,7 +153,7 @@ function listar_consulta(paciente) {
                                             
                         '<ul class="list-inline m-0">'+
                             '<li class="list-inline-item">'+
-                                '<button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>'+
+                                '<button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>'+
                             '</li>'+
                             '<li class="list-inline-item">'+
                               '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">'+
@@ -176,50 +176,12 @@ function listar_consulta(paciente) {
 
 function chamarModalConsultaDelete(id_consulta){
     //alert("Tudo fuuncionado");
-    
-    
     console.log('id_consulta,',id_consulta);
     $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
     
 
 
 }
-
-
-/*Apagar*/
-
-function apagarConsulta(id_consulta){
-    //alert("Apgar")}
-    //id_consulta = 5;
-    
-    
-    $.ajax({
-        
-        url: 'http://localhost:5000/desmarcar_consulta/'+id_consulta,
-        type: 'DELETE',
-        dataType: 'json', contentType: 'application/json',
-        data: JSON.stringify({ id_consulta: id_consulta}), 
-        success: function(retorno){
-            if (retorno.resultado == "ok") {
-                $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
-                alert("Consulta marcado com sucesso!");
-                
-                
-            });
-            
-        }
-            else {
-                alert(retorno.resultado + " : " + retorno.detalhes);
-            }
-        },
-        error: function (error){
-            alert("Ocorreu um erro ao marcar essa consulta!");
-        }
-    })
-};
-
-/*Apagar </> */
-
 
 
 

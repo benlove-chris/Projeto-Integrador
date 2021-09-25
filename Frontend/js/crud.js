@@ -53,6 +53,42 @@ function cadastrarMedico(){
 
 
 
+/*Apagar*/
+
+function apagarConsulta(id_consulta){
+    //alert("Apgar")}
+    //id_consulta = 5;
+    
+    
+    $.ajax({
+        
+        url: 'http://localhost:5000/desmarcar_consulta/'+id_consulta,
+        type: 'DELETE',
+        dataType: 'json', contentType: 'application/json',
+        data: JSON.stringify({ id_consulta: id_consulta}), 
+        success: function(retorno){
+            if (retorno.resultado == "ok") {
+                $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
+                alert("Consulta desmarcada com sucesso!");
+                
+                
+            });
+            
+        }
+            else {
+                alert(retorno.resultado + " : " + retorno.detalhes);
+            }
+        },
+        error: function (error){
+            alert("Ocorreu um erro ao marcar essa consulta!");
+        }
+    })
+};
+
+/*Apagar </> */
+
+
+
 
 
 
