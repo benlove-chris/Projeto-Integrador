@@ -49,6 +49,16 @@ def dados_paciente(id_paciente):
     dados = Paciente.query.get_or_404(id_paciente)
     return (dados.json())
 
+
+
+#listar dados de uma consulta especifica
+@app.route("/listar_consulta_esp/<int:id_consulta>", methods=['GET'])
+
+def dados_consulta_esp(id_consulta):
+    #dados = Paciente.query.get()
+    dados = MarcarConsulta.query.get_or_404(id_consulta)
+    return (dados.json())
+
 #listar consultas de um paciente
 @app.route("/listar_consulta/<int:paciente_id>", methods=['GET'])
 
@@ -64,8 +74,19 @@ def dados_consulta(paciente_id):
     resposta = jsonify(retorno)
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
+
+"""
+# Rota para pegar os dados de uma pessoa específica
+@app.route("/dados_consulta/<int:>",  methods=['POST','GET'])
+def dados_pessoa(cpf):
     
+    if len(cpf) != 11:
+        cpf = "0" + cpf
+        
+    pessoa = Pessoa.query.get_or_404(cpf)
     
+    return (pessoa.json())    
+"""
 
 
 #incluir/cadastrar

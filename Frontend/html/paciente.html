@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>tab 5</title>
+  <title>pagina do paciente</title>
   <link rel="stylesheet" type="text/css" href="../css/paciente.css">
  
 
@@ -32,10 +32,15 @@
         }
         
 
-        #modalConsulta{
+    #modalConsulta, #modalConsultaRemarcar{
           color: darkblue;
 
         }
+
+    #motivoConsultaRemarcar{
+      
+      height: 200px;
+    }
 
   </style>
   
@@ -206,6 +211,60 @@
                   </div>
               </div>
             </div>
+
+
+            <!--modal remarcar consulta-->
+            <div class="modal fade" id="modalConsultaRemarcar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <h4 class="modal-title" id="myModalLabel">Remarcar essa consulta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                
+                  <div class="modal-body">
+                            <form onload="listarDadosConsulta()">
+
+                              <div class="form-group">
+
+                                <label for="motivoConsultaRemarcar" class="col-form-label">Motivo da consulta</label>
+                                <p class="text-muted small">*comentario - descrição </p>
+                                <textarea class="form-control mw-500" id="motivoConsultaRemarcar"></textarea>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="dataConsultaRemarcar" class="col-form-label">Data da consulta</label>
+                                <input type="date" class="form-control" id="dataConsultaRemarcar">
+                              </div>
+            
+                                    
+                              
+
+                              <div class="form-group">
+                                <label for="selectMedicoRemarcar">Médico executante</label>
+                                <select class="form-control search-slt" id="selectMedicoRemarcar" name="selectMedicoRemarcar">
+                                  <!--Dados no js-->
+                                  
+                                  <option>a</option>
+                                  <option>testando</option>
+
+                                </select>
+                              </div>
+                            </form>
+                      </div>
+
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary" id="btnRemarcarConsulta" onClick=""
+                          disabled>Remarcar</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!--modals end-->
 
 
 

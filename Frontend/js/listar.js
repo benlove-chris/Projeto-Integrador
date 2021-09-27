@@ -147,18 +147,20 @@ function listar_consulta(paciente) {
                     "<td>" + paciente[consulta].medico.nome+ "</td>" + 
                     "<td>" + paciente[consulta].motivo+ "</td>" + 
 
-                    //"<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Desmarcar <br> Consulta</button>'+"</td>"+
-                    //"<td>"+ '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-primary" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">Mudar <br> Consulta</button>'+"</td>"+
-                    "<td>"+
-                                            
+                    // btn btn-primary btn-sm rounded-0 - edit/remarcar class
+                    // btn btn-danger btn-sm rounded-0 - delet/desmarcar class
+                    
+                    "<td>"+                             
                         '<ul class="list-inline m-0">'+
                             '<li class="list-inline-item">'+
-                                '<button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>'+
+                              '<button class="" data-toggle="modal" data-target="#modalConsultaRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalConsultaRemarcar('+paciente[consulta].id_consulta+ '), MedicosParaSelecionar() ; ">'+
+                              '<i class="fa fa-edit"></i></button>'+
                             '</li>'+
+                            
                             '<li class="list-inline-item">'+
-                              '<button data-toggle="modal" data-target="#modalConsultaDelete" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">'+
+                              '<button class="" data-toggle="modal" data-target="#modalConsultaDelete"  type="button" data-toggle="tooltip" data-placement="top" title="Desmarcar" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">'+
                               '<i class="fa fa-trash"></i></button>'+
-                          '</li>'+
+                            '</li>'+
                             
                         '</ul>'+
                     "</td>"+
@@ -174,19 +176,13 @@ function listar_consulta(paciente) {
 
 
 
-function chamarModalConsultaDelete(id_consulta){
-    //alert("Tudo fuuncionado");
-    console.log('id_consulta,',id_consulta);
-    $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
-    
 
-
-}
 
 
 
 /*---------------------------------*/
 function MedicosParaSelecionar() {
+    
 
     $.ajax({
         url: 'http://localhost:5000/listar_medicos',
@@ -205,6 +201,7 @@ function MedicosParaSelecionar() {
             console.log(opt);
 
             $("#selectMedico").append(opt)
+            $("#selectMedicoRemarcar").append(opt)
         }
 
     }

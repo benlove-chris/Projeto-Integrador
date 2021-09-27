@@ -54,6 +54,14 @@ function cadastrarMedico(){
 
 
 /*Apagar*/
+function chamarModalConsultaDelete(id_consulta){
+    //alert("Tudo fuuncionado");
+    console.log('id_consulta,',id_consulta);
+    $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
+    
+
+
+}
 
 function apagarConsulta(id_consulta){
     //alert("Apgar")}
@@ -89,9 +97,42 @@ function apagarConsulta(id_consulta){
 
 
 
+/*remarcar - editar */
+/*var dataConsultaDado = document.getElementById('dataConsulta').value;
+    var motivoConsultaDado = document.getElementById('motivoConsulta').value;
+    let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
+    var medico_id_consulta = document.getElementById('selectMedico').value;*/
 
 
+function chamarModalConsultaRemarcar(id_consulta){
+    alert("Tudo fuuncionado");
+    console.log('id_consulta para remarcar,',id_consulta);
 
+    //$("#btnRemarcarConsulta").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
+
+    $.ajax({
+        url: 'http://localhost:5000/listar_consulta_esp/'+id_consulta,
+        method: "GET",
+        dataType: "json",
+        success: function(resposta){
+            $("#motivoConsultaRemarcar").val(resposta.motivo);
+            //$("#motivoConsultaRemarcar").val(resposta.medico.nome);
+            //$("#dataConsultaRemarcar").val(resposta.data); //data
+            
+
+            for (var i in resposta){
+                console.log("da consulta",i, "==", resposta[i]);
+            }
+
+        },
+        error: function(){
+            alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
+        }
+    })
+    
+
+
+}
 
 
 
