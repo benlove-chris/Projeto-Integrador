@@ -132,13 +132,35 @@ def desmarcar_consulta(id_consulta):
         #redistribuir_consulta()
         db.session.commit()
         
-        
     
         
     except Exception as e:  #Envie mensagem em caso de erro
         resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
         
     resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
+
+
+# Rota para remarcar uma consulta
+@app.route("/remarcar_consulta/<int:id_consulta>",  methods=['POST'])
+def remarcar_consulta(id_consulta):
+   
+    dados = request.get_json()
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
+    
+    try:
+        consulta = MarcarConsulta.query.get_or_404(id_consulta)
+        
+        consulta.motivo = dados["novo_motivo"]                                 
+        consulta.data = dados["nova_data"]
+        consulta.medico= dados["novo_medico"]
+        db.session.commit()
+        
+    except Exception as e:  #Envie mensagem em caso de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
 

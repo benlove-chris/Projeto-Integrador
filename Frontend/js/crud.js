@@ -108,7 +108,7 @@ function chamarModalConsultaRemarcar(id_consulta){
     alert("Tudo fuuncionado");
     console.log('id_consulta para remarcar,',id_consulta);
 
-    //$("#btnRemarcarConsulta").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
+    $("#btnRemarcarConsulta").attr('onClick', ("remarcarConsulta('"+id_consulta+"')"));
 
     $.ajax({
         url: 'http://localhost:5000/listar_consulta_esp/'+id_consulta,
@@ -136,7 +136,46 @@ function chamarModalConsultaRemarcar(id_consulta){
 
 
 
+function remarcarConsulta(id_consulta) {
+    /*novo_motivo = $("#motivoConsultaRemarcar").val();
+    nova_data =  $("#dataConsultaRemarcar").val();
+    novo_medico = $("#selectMedicoRemarcar").val();*/
+    novo_motivo = "teste testando";
+    nova_data =  "teste testando";
+    novo_medico = "teste testando";
 
+    var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
+    // body...
+
+    $.ajax({
+        url: 'http://localhost:5000/remarcar_consulta'+id_consulta,
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: dados,
+        success: consultaRemarcada,
+        error: erroConsultaRemarcada
+    });
+
+    function consultaRemarcada(retorno){
+        alert("Entrei por aqui");
+        if (retorno.resultado == "ok"){
+            alert("Consulta remacada com sucesso!");
+
+        }else{
+            alert(retorno.resultado+ ":"+retorno.detalhes);
+        }
+
+
+    };
+
+
+    function erroConsultaRemarcada(retorno){
+        //mensagem de erro 
+        alert("ERRO:" + retorno.resultado + ":" +retorno.detalhes);
+    };
+
+}
 
 
 
