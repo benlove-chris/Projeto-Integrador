@@ -140,9 +140,9 @@ function remarcarConsulta(id_consulta) {
     /*novo_motivo = $("#motivoConsultaRemarcar").val();
     nova_data =  $("#dataConsultaRemarcar").val();
     novo_medico = $("#selectMedicoRemarcar").val();*/
-    novo_motivo = "teste testando";
-    nova_data =  "teste testando";
-    novo_medico = "teste testando";
+    novo_motivo = "motivo do teste";
+    nova_data =  "data do teste";
+    novo_medico = "Medico testador";
 
     var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
     // body...
