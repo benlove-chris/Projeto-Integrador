@@ -179,7 +179,6 @@ function listar_consulta(paciente) {
 
 
 
-
 /*---------------------------------*/
 function MedicosParaSelecionar() {
     

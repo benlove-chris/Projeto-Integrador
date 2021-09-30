@@ -37,7 +37,7 @@ function cadastrarPaciente(){
         }
     }
     function erroCadastrarPaciente(resposta){
-        alert("Deu ruim");
+        alert("Deu ruim na comunicação com o backend");
     }
 
     };
@@ -98,10 +98,12 @@ function apagarConsulta(id_consulta){
 
 
 /*remarcar - editar */
-/*var dataConsultaDado = document.getElementById('dataConsulta').value;
+/*
+var dataConsultaDado = document.getElementById('dataConsulta').value;
     var motivoConsultaDado = document.getElementById('motivoConsulta').value;
     let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
-    var medico_id_consulta = document.getElementById('selectMedico').value;*/
+    var medico_id_consulta = document.getElementById('selectMedico').value;
+    */
 
 
 function chamarModalConsultaRemarcar(id_consulta){
@@ -137,15 +139,17 @@ function chamarModalConsultaRemarcar(id_consulta){
 
 
 function remarcarConsulta(id_consulta) {
-    /*novo_motivo = $("#motivoConsultaRemarcar").val();
+    /*
+    novo_motivo = $("#motivoConsultaRemarcar").val();
     nova_data =  $("#dataConsultaRemarcar").val();
-    novo_medico = $("#selectMedicoRemarcar").val();*/
+    novo_medico = $("#selectMedicoRemarcar").val();
+    */
     novo_motivo = "motivo do teste";
     nova_data =  "data do teste";
     novo_medico = "Medico testador";
 
     var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
-    // body...
+   
 
     $.ajax({
         url: 'http://localhost:5000/remarcar_consulta'+id_consulta,
