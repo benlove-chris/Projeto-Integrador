@@ -140,6 +140,7 @@ function chamarModalConsultaRemarcar(id_consulta){
 
 function remarcarConsulta(id_consulta) {
     /*
+    //editar
     novo_motivo = $("#motivoConsultaRemarcar").val();
     nova_data =  $("#dataConsultaRemarcar").val();
     novo_medico = $("#selectMedicoRemarcar").val();

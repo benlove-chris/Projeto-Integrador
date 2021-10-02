@@ -111,7 +111,7 @@ if __name__ == "__main__":
     #Cria as tabelas
     db.create_all()
 
-    #Teste da classe Paciente
+    #Teste da classe Pacienteca
     paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira")
     paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart")
     paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus")
