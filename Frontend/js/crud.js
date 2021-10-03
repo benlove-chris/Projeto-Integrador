@@ -75,6 +75,7 @@ function apagarConsulta(id_consulta){
         dataType: 'json', contentType: 'application/json',
         data: JSON.stringify({ id_consulta: id_consulta}), 
         success: function(retorno){
+            alert(retorno.detalhes);
             if (retorno.resultado == "ok") {
                 $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
                 alert("Consulta desmarcada com sucesso!");
@@ -84,11 +85,11 @@ function apagarConsulta(id_consulta){
             
         }
             else {
-                alert(retorno.resultado + " : " + retorno.detalhes);
+                alert("Respect"+retorno.resultado + " : " + retorno.detalhes);
             }
         },
         error: function (error){
-            alert("Ocorreu um erro ao marcar essa consulta!");
+            alert("Deu ruim na comunicação com o backend");
         }
     })
 };
@@ -139,31 +140,33 @@ function chamarModalConsultaRemarcar(id_consulta){
 
 
 function remarcarConsulta(id_consulta) {
-    /*
+    
     //editar
     novo_motivo = $("#motivoConsultaRemarcar").val();
     nova_data =  $("#dataConsultaRemarcar").val();
     novo_medico = $("#selectMedicoRemarcar").val();
-    */
-    novo_motivo = "motivo do teste";
-    nova_data =  "data do teste";
-    novo_medico = "Medico testador";
-
+    
+    //let novo_motivo = "motivo do teste";
+    //nova_data =  "data do teste";
+    //novo_medico = "Medico testador";
     var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
    
 
     $.ajax({
-        url: 'http://localhost:5000/remarcar_consulta'+id_consulta,
+        url: 'http://localhost:5000/remarcar_consulta/'+id_consulta,
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
         data: dados,
-        success: consultaRemarcada,
+        //success: consultaRemarcada,
+        success: function () {
+            alert('ola');
+        },
         error: erroConsultaRemarcada
     });
 
     function consultaRemarcada(retorno){
-        alert("Entrei por aqui");
+        alert("Sucesso");
         if (retorno.resultado == "ok"){
             alert("Consulta remacada com sucesso!");
 
@@ -177,7 +180,9 @@ function remarcarConsulta(id_consulta) {
 
     function erroConsultaRemarcada(retorno){
         //mensagem de erro 
-        alert("ERRO:" + retorno.resultado + ":" +retorno.detalhes);
+        alert("Sem sucesso");
+
+        //alert("Erro na comunicação com o backend\nAo enviar os dados\nou ao receber os dados");
     };
 
 }
@@ -188,6 +193,57 @@ function remarcarConsulta(id_consulta) {
 
 
 
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+// para resolver
+function xxxtestar() {
+    alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+    // body...
+    novo_nome = "Joao leonardo";
+    //novo_sobrenome = "novo";
+
+    var dados = JSON.stringify({novo_nome: novo_nome});
+
+    $.ajax({
+        url: 'http://localhost:5000/editar_paciente/1',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: dados,
+        success: function(){
+            alert("Sucesso");
+        },
+        error: function(){
+            alert('error');
+        }
+    });
+}
+
+
+function testar() {
+    alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+    // body...
+    
+    novo_motivo = "god bless us";
+
+    var dados = JSON.stringify({novo_motivo: novo_motivo});
+
+    $.ajax({
+        url: 'http://localhost:5000/editar_consulta/1',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: dados,
+        success: function(){
+            alert("Sucesso");
+        },
+        error: function(){
+            alert('error');
+        }
+    });
+}
 
 
 

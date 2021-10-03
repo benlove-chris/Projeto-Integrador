@@ -6,7 +6,7 @@ from modelo_cadastro import *
 def inicio():
     return ("Aqui vai uma mensagem de boas vindas (img/outro)")
 
-
+# listar todos os pacientes registrados
 @app.route("/listar_pacientes", methods=['GET'])
 
 def listar_pacientes():
@@ -19,6 +19,23 @@ def listar_pacientes():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
+
+# listar todas as consultas marcadas
+@app.route("/listar_consultas", methods=['GET'])
+
+def listar_consultas():
+    consultas = db.session.query(MarcarConsulta).all()
+    retorno = []
+
+    for consulta in consultas:
+        retorno.append(consulta.json())
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
+
+
+# listar todos os medicos registrados
 @app.route("/listar_medicos", methods=['GET'])
 
 def listar_medicos():
@@ -31,17 +48,9 @@ def listar_medicos():
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-"""
-# Rota para pegar os dados de uma sala específica
-@geral.route("/dados_sala/<int:id_sala>",  methods=['POST','GET'])
-def dados_sala(id_sala):
-    
-    sala_esp = Sala.query.get_or_404(id_sala)
-    
-    return (sala_esp.json())
-"""
 
-#listar dados de uma pessoa especifica
+
+# listar dados de uma pessoa especifica
 @app.route("/listar_paciente/<int:id_paciente>", methods=['GET'])
 
 def dados_paciente(id_paciente):
@@ -51,7 +60,7 @@ def dados_paciente(id_paciente):
 
 
 
-#listar dados de uma consulta especifica
+# listar dados de uma consulta especifica
 @app.route("/listar_consulta_esp/<int:id_consulta>", methods=['GET'])
 
 def dados_consulta_esp(id_consulta):
@@ -59,7 +68,7 @@ def dados_consulta_esp(id_consulta):
     dados = MarcarConsulta.query.get_or_404(id_consulta)
     return (dados.json())
 
-#listar consultas de um paciente
+# listar consultas de um paciente
 @app.route("/listar_consulta/<int:paciente_id>", methods=['GET'])
 
 def dados_consulta(paciente_id):
@@ -75,21 +84,10 @@ def dados_consulta(paciente_id):
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
 
-"""
-# Rota para pegar os dados de uma pessoa específica
-@app.route("/dados_consulta/<int:>",  methods=['POST','GET'])
-def dados_pessoa(cpf):
-    
-    if len(cpf) != 11:
-        cpf = "0" + cpf
-        
-    pessoa = Pessoa.query.get_or_404(cpf)
-    
-    return (pessoa.json())    
-"""
 
 
-#incluir/cadastrar
+
+# incluir/cadastrar um paciente
 @app.route("/cadastrar_paciente", methods=['POST'])
 
 def cadastrar_paciente():
@@ -119,6 +117,8 @@ def marcar_consulta():
     return resposta
 
 
+
+# desmarcar uma consulta para o paciente
 @app.route("/desmarcar_consulta/<int:id_consulta>", methods=['DELETE'])
 
 def desmarcar_consulta(id_consulta):
@@ -127,7 +127,7 @@ def desmarcar_consulta(id_consulta):
     
     try: #Tentar realizar a exclusão
         consulta = MarcarConsulta.query.get(id_consulta)
-
+        
         db.session.delete(consulta)
         #redistribuir_consulta()
         db.session.commit()
@@ -142,11 +142,12 @@ def desmarcar_consulta(id_consulta):
 
 
 
-# Rota para remarcar uma consulta
+# Remarcar uma consulta para o paciente
 @app.route("/remarcar_consulta/<int:id_consulta>",  methods=['POST'])
 def remarcar_consulta(id_consulta):
    
     dados = request.get_json()
+    
     resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     
     try:
@@ -162,6 +163,35 @@ def remarcar_consulta(id_consulta):
         
     resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta
+
+
+
+
+# editar dados do paciente - a resolver
+@app.route("/editar_paciente/<int:id_paciente>",  methods=['POST'])
+def editar_paciente(id_paciente):
+   
+    dados = request.get_json()
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
+    
+    
+    
+    try:
+        paciente = Paciente.query.get_or_404(id_paciente)
+        
+        
+        paciente.nome = dados["novo_nome"]
+        #paciente.sobrenome = dados["novo_sobrenome"]
+        db.session.commit()
+        
+    except Exception as e:  #Envie mensagem em caso de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
+
+
 
 
 app.run(debug = True)

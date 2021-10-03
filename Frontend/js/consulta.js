@@ -49,7 +49,7 @@ function marcarConsulta () {
     }
 	}
     function erroconsultaMarcado(resposta){
-        alert('erro N2 ');
+        alert("Erro na comunicação com o backend");
     }
 
 }
