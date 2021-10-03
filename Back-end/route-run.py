@@ -155,7 +155,7 @@ def remarcar_consulta(id_consulta):
         
         consulta.motivo = dados["novo_motivo"]                                 
         consulta.data = dados["nova_data"]
-        consulta.medico= dados["novo_medico"]
+        #consulta.medico = dados["novo_medico"]
         db.session.commit()
         
     except Exception as e:  #Envie mensagem em caso de erro

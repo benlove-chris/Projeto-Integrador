@@ -55,7 +55,6 @@ function cadastrarMedico(){
 
 /*Apagar*/
 function chamarModalConsultaDelete(id_consulta){
-    //alert("Tudo fuuncionado");
     console.log('id_consulta,',id_consulta);
     $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
     
@@ -108,7 +107,6 @@ var dataConsultaDado = document.getElementById('dataConsulta').value;
 
 
 function chamarModalConsultaRemarcar(id_consulta){
-    alert("Tudo fuuncionado");
     console.log('id_consulta para remarcar,',id_consulta);
 
     $("#btnRemarcarConsulta").attr('onClick', ("remarcarConsulta('"+id_consulta+"')"));
@@ -149,6 +147,10 @@ function remarcarConsulta(id_consulta) {
     //let novo_motivo = "motivo do teste";
     //nova_data =  "data do teste";
     //novo_medico = "Medico testador";
+    
+    //var dados = JSON.stringify({novo_motivo: novo_motivo});
+    
+    //var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data});
     var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
    
 
@@ -158,15 +160,12 @@ function remarcarConsulta(id_consulta) {
         dataType: 'json',
         contentType: 'application/json',
         data: dados,
-        //success: consultaRemarcada,
-        success: function () {
-            alert('ola');
-        },
+        success: consultaRemarcada,
         error: erroConsultaRemarcada
     });
 
     function consultaRemarcada(retorno){
-        alert("Sucesso");
+        
         if (retorno.resultado == "ok"){
             alert("Consulta remacada com sucesso!");
 
@@ -198,10 +197,10 @@ function remarcarConsulta(id_consulta) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // para resolver
-function xxxtestar() {
+function testar() {
     alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
     // body...
-    novo_nome = "Joao leonardo";
+    novo_nome = "Joao  s leonardo";
     //novo_sobrenome = "novo";
 
     var dados = JSON.stringify({novo_nome: novo_nome});
@@ -222,7 +221,7 @@ function xxxtestar() {
 }
 
 
-function testar() {
+function xxxxtestar() {
     alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
     // body...
     
