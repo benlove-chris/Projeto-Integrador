@@ -142,7 +142,7 @@ function remarcarConsulta(id_consulta) {
     //editar
     novo_motivo = $("#motivoConsultaRemarcar").val();
     nova_data =  $("#dataConsultaRemarcar").val();
-    novo_medico = $("#selectMedicoRemarcar").val();
+    var novo_medico = document.getElementById('selectMedicoRemarcar').value;
     
     //let novo_motivo = "motivo do teste";
     //nova_data =  "data do teste";
