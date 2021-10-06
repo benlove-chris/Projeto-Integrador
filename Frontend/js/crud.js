@@ -74,7 +74,6 @@ function apagarConsulta(id_consulta){
         dataType: 'json', contentType: 'application/json',
         data: JSON.stringify({ id_consulta: id_consulta}), 
         success: function(retorno){
-            alert(retorno.detalhes);
             if (retorno.resultado == "ok") {
                 $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
                 alert("Consulta desmarcada com sucesso!");
@@ -200,7 +199,7 @@ function remarcarConsulta(id_consulta) {
 function testar() {
     alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
     // body...
-    novo_nome = "Joao  s leonardo";
+    novo_nome = "Carlos";
     //novo_sobrenome = "novo";
 
     var dados = JSON.stringify({novo_nome: novo_nome});
