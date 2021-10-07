@@ -2,6 +2,21 @@
   height: 50px;
 
 }
+
+body{
+  background-color: ;
+    /*
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(circle at 95% 47%,#051933,#167bf7 74%),radial-gradient(circle at 95% 47%,#051933,#8e2de2 74%);
+    filter: blur(30px);
+    opacity: .3;
+    */
+    
+}
 table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
