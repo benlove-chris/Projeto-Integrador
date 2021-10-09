@@ -81,7 +81,7 @@ function listarDadosPaciente(){
         success: listar_paciente,
 
         error: function(){
-            alert("Erro ao ler os dados :) \nverifique o backend 1");
+            alert("Erro ao ler os dados :) \nverifique o backend ");
         }
 
 
@@ -118,7 +118,7 @@ function listarDadosConsulta(){
         success: listar_consulta,
 
         error: function(){
-            alert("Erro ao ler os dados :) \nverifique o backend 1");
+            alert("Erro ao ler os dados :) \nverifique o backend");
         }
 
 

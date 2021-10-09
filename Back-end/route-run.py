@@ -193,5 +193,32 @@ def editar_paciente(id_paciente):
 
 
 
+# login do usuario
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	
+    dados = request.get_json()
+
+    resposta = jsonify({"resultado":"ok"})
+    if dados["username"] != 'admin':
+        resposta = jsonify({"resultado":  "Senha invalida. Try again."})
+    else:
+        resposta = jsonify({"resultado":  "login"})
+    
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+
+    return resposta
+
+    """
+	if request.method == 'POST':
+		if request.form ['username'] != 'admin' or request.form['password'] != 'admin':
+			error = 'Senha invalida. Tente de novo.'
+		else:
+			#return redirect(url_for('home'))
+			return render_template('welcome.html')
+
+	return render_template('login.html', error = error)
+    """
+
 
 app.run(debug = True)

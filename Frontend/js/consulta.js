@@ -44,7 +44,7 @@ function marcarConsulta () {
             //
             
         } else{
-            alert('erro N1 ');
+            alert(resposta.resultado);
 
     }
 	}
