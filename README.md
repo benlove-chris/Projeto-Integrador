@@ -23,15 +23,19 @@
  # 👷 Como rodar
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/benlove-chris/Projeto-Integrador.git
-#
-#
-#
+Clonar o repositório
+# git clone https://github.com/benlove-chris/Projeto-Integrador.git
+# cd Projeto-Integrador
+Instala os requisitos
+
+python -m pip install -r backend/requirements.txt
+
+Roda o servidor backend
+# Python3 Backend/route-run.py
+
+💻 Navegue nos arquivos .html
 
 ```
-
-
 
 
 ## :mortar_board: Autores
