@@ -194,11 +194,28 @@ def editar_paciente(id_paciente):
 
 
 # login do usuario
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route("/logarpaciente/<string:nomeusuario>", methods=['GET', 'POST'])
+def logarpaciente(nomeusuario):
 	
-    dados = request.get_json()
+    #dados = request.get_json()
+    #retorno = []
+    resposta = jsonify({"resultado": "logoff"})
+    #dados = MarcarConsulta.query.get_or_404(paciente_id)
+    pacientes = db.session.query(Paciente).all()
+    for paciente in pacientes:
+        #retorno.append(paciente.nome)
 
+        #resposta = jsonify({"resultado":  f"{paciente.nome}{nomeusuario}"})
+
+        if paciente.nome == nomeusuario:
+            resposta = jsonify({"resultado":  "login"})
+        """
+        else:
+            resposta = jsonify({"resultado":  "login"})
+        """            
+        
+    return resposta 
+    """
     resposta = jsonify({"resultado":"ok"})
     if dados["username"] != 'admin':
         resposta = jsonify({"resultado":  "Senha invalida. Try again."})
@@ -208,8 +225,8 @@ def login():
     resposta.headers.add("Access-Control-Allow-Origin","*")
 
     return resposta
-
-    """
+    # -------------------------------------------------
+    
 	if request.method == 'POST':
 		if request.form ['username'] != 'admin' or request.form['password'] != 'admin':
 			error = 'Senha invalida. Tente de novo.'
