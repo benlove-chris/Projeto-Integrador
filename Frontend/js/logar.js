@@ -1,7 +1,5 @@
 function logarPaciente(){
 	usuario = $("#nomeusuario").val();
-	alert(usuario);
-
 	//var dados = JSON.stringify({username: usuario});
 
 	$.ajax({
@@ -17,10 +15,12 @@ function logarPaciente(){
 //"<td> <a href='../html/paciente.html?id_paciente="+pacientes[paciente].id_paciente+"'>"+ pacientes[paciente].nome + "</td>" + 
 
 	function loginEfetuado(resposta){
-        alert(resposta.resultado);
+        //alert(resposta.paciente_id);
+
+        paciente_id_login = resposta.paciente_id;
 		if (resposta.resultado == "login") {
-            //mensagem
-            alert('a');
+            window.location.href = 'paciente.html?id_paciente=' +paciente_id_login ;
+            //mensagem            
             //window.location.href = 'paciente.html?id_paciente=1';
             //
             

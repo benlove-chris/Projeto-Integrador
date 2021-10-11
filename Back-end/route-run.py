@@ -199,7 +199,7 @@ def logarpaciente(nomeusuario):
 	
     #dados = request.get_json()
     #retorno = []
-    resposta = jsonify({"resultado": "logoff"})
+    resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
     #dados = MarcarConsulta.query.get_or_404(paciente_id)
     pacientes = db.session.query(Paciente).all()
     for paciente in pacientes:
@@ -208,11 +208,12 @@ def logarpaciente(nomeusuario):
         #resposta = jsonify({"resultado":  f"{paciente.nome}{nomeusuario}"})
 
         if paciente.nome == nomeusuario:
-            resposta = jsonify({"resultado":  "login"})
+            resposta = jsonify({"resultado":  "login", "paciente_id": paciente.id_paciente})
         """
         else:
             resposta = jsonify({"resultado":  "login"})
-        """            
+        """     
+
         
     return resposta 
     """

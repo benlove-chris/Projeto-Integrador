@@ -112,9 +112,9 @@ if __name__ == "__main__":
     db.create_all()
 
     #Teste da classe Pacienteca
-    paciente1 = Paciente(nome = "Benlove", sobrenome = "Anelus")
+    paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus")
     paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart")
-    paciente3 = Paciente(nome = "Carlos", sobrenome = "Landeira")
+    paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira")
     
     #Persistir
     db.session.add(paciente1)
