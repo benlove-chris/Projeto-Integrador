@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <title>Sistema de ambulatório</title>
+  <title>Bem-vindo - Sistema de ambulatório</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -15,89 +15,177 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
     display: flex;
-    align-items: center;
+    
 }
 
 .login{
     position: absolute;
-    top: 50%;
+    padding: 3%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
-    height: 380px;
-    background: white;
+    height: 80%;
     border-radius: 10px;
-    text-align: center;
+    
 }
 
-.login h1{
-    text-align: center;
-    font-size: 32px;
-    color: #2C3E50; 
-    text-decoration: none;
-    line-height: 50px;
+.overlay{
+    position: absolute;
+    padding: 3%;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 80%;
+    background-color: wheat;
+    border-radius: 10px;
+    opacity: 0.9;
+
+}
+.login *{
+
 }
 
-.login p a{
-    text-decoration: none;
-}
 
-.login input[type = "text"], .login input[type = "password"]{
-    background: none;
 
-    display:flex;
+
+
+
+form [type="text"], .form [type="password"] {
+    background: white;    
     margin: 4px auto;
     padding: 12px 10px;
-    border: 2px solid #808080;
+    border: 2px solid wheat;
     border-radius: 9px;
-    width: 250px;
+    width: 100%;
     outline: none;
-    font-size: 18px;
+    font-family: "open-sans-regular";
+    margin-bottom: 5%;
+    
 }
 
-.login input[type = "submit"]{
-    background: none;
 
-    display: block;
-    margin: 6px auto;
-    text-align: center;
-    padding: 12px 10px;
-    border: 2px solid #808080;
-    border-radius: 24px;
-    width: 200px;
-    outline: none;
-    cursor: pointer;
-    font-size: 18px;
-}
+
+
+
+
+
 
 .login input:hover{
     border: 3px solid black;
 }
-     
+
+
+
+/* ------------------------------*/
+
+.logo {
+    display: block!important;
+}
+@media screen and (max-width: 780px){
+
+.logo {
+    display: none;
+}
+}
+
+/*
+.logo {
+    width: 100px;
+    height: 10px;
+    display: block;
+    text-indent: -9999px;
+    color: transparent;
+    background: url(https://serespecial.org.br/wp-content/uploads/2017/04/criacao-novo-logotipo-sirio-libanes.bd7d17a1b9db0f26a6a6f8ae38653441f779ccd0.png) no-repeat;
+}*/
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #454b52;
+}
+a {
+    background-color: transparent;
+}
+* {
+    font-weight: normal;
+}
+
+
+
+.mensagem {
+    background-color: #f9f190!important;
+    display: block; /*exibir*/
+    border-left: 6px solid #b7b7b6;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 10px 0 10px 10px;
+    margin-left: 10%;
+    font-family: 'open-sans-regular';
+
+}
+
+
+.faixa{
+    width: 100%;
+    top: 80px;
+    padding: 8px 0;
+    font-size: 1.8em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0966d5;
+
+}
+
+
+
+.borda-redonda {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+.login *{
+  
+
+}
+
+
+
+.logo {
+    width: 14%;
+    height: 10%;
+   
+
+}
+
 
  </style>
 
 </head>
 <body>
-
-<main id="corpo">
-    <a href="/conta/login" class="logo" title="Identificação - Portal do Médico">Hospital Sírio-Libanês</a>
-</main>
+<div class="overlay"></div>
 <div class="login">
+  <a href="#"  title="Identificação - Portal do Paciente">
+    <img src=".png" class="logo">
+  </a>
         <div class="faixa">Portal do Paciente</div>
-        <form method="POST">
+        <div class="mensagem"><ul><li>Suas credenciais não conferem ou houve uma falha no processo.</li>
+        </ul></div>
 
-            <!-- todas as input box estão aqui. -->
-            <input type="text" id="nomeusuario" placeholder="Informe seu usuário(nome)"> <br>
-            <!--<input type="password" id="password" placeholder="Senha"><br>-->
-            <input type="submit" value="Entrar">
-            <button>OK, ENTRAR</button>
-
+        <form class="form">
+            <input  type="text" id="nomeusuario" placeholder="Informe seu usuário(nome)" required> 
+            <input type="password" id="password" placeholder="Informe sua senha">    
+            <button type="submit" class="btn btn-primary mb-4" id="botao" onclick="logarPaciente()">OK, ENTRAR</button>
         </form>
 
-        <a href="cadastro_paciente.html"> Não Possuo login ou senha</a>
+        <a href="paciente_cadastro.html"> Não Possuo login ou senha</a>
     </div>
 
 </body>
