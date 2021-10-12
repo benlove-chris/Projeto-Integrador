@@ -17,7 +17,7 @@ function logarPaciente(){
 	function loginEfetuado(resposta){
         //alert(resposta.paciente_id);
 
-        paciente_id_login = resposta.paciente_id;
+        let paciente_id_login = resposta.paciente_id;
 		if (resposta.resultado == "login") {
             window.location.href = 'paciente.html?id_paciente=' +paciente_id_login ;
             //mensagem            
