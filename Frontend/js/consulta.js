@@ -41,6 +41,7 @@ function marcarConsulta () {
         if (resposta.resultado == "ok") {
             //mensagem
             alert('Consulta marcado com successo!');
+            document.location.reload(true);
             //
             
         } else{

@@ -42,13 +42,21 @@ class Paciente(db.Model):
     data_nasc = db.Column(db.date(255))?
     sexo =  db.Column(db.String(10))
     e_civil = db.Column(db.String(50))--select
-    c_SUS = db.Column(db.String(255))
+    cns = db.Column(db.String(255))
     
     #Endereço 
     logradouro =  db.Column(db.String(255))
     numero = db.Column(db.String(5))
+    bairro = db.Column(db.String(55))
     cidade = db.Column(db.String(100))
     estado = db.Column(db.String(30))
+
+    #contato
+    telefone1 =
+    telefone2 = 
+    email = 
+    senha = 
+
     """
 
     
