@@ -1,8 +1,9 @@
 
 //cadastrar paciente
+var link_backend = "https://pychris.pythonanywhere.com/";
 
 function cadastrarPaciente(){
- 
+    
     //obter dados do formulario
     nome = $("#nome").val();
     sobrenome = $("#sobrenome").val();
@@ -15,7 +16,7 @@ function cadastrarPaciente(){
     //mandar para o back-end -
 
     $.ajax({
-            url : 'http://localhost:5000/cadastrar_paciente',
+            url : link_backend +'/cadastrar_paciente',
             type : 'POST',
             contentType : 'application/json', // enviando dados em json
             dataType: 'json',
@@ -69,7 +70,7 @@ function apagarConsulta(id_consulta){
     
     $.ajax({
         
-        url: 'http://localhost:5000/desmarcar_consulta/'+id_consulta,
+        url: link_backend +'/desmarcar_consulta/'+id_consulta,
         type: 'DELETE',
         dataType: 'json', contentType: 'application/json',
         data: JSON.stringify({ id_consulta: id_consulta}), 
@@ -111,7 +112,7 @@ function chamarModalConsultaRemarcar(id_consulta){
     $("#btnRemarcarConsulta").attr('onClick', ("remarcarConsulta('"+id_consulta+"')"));
 
     $.ajax({
-        url: 'http://localhost:5000/listar_consulta_esp/'+id_consulta,
+        url: link_backend +'/listar_consulta_esp/'+id_consulta,
         method: "GET",
         dataType: "json",
         success: function(resposta){
@@ -154,7 +155,7 @@ function remarcarConsulta(id_consulta) {
    
 
     $.ajax({
-        url: 'http://localhost:5000/remarcar_consulta/'+id_consulta,
+        url: link_backend +'/remarcar_consulta/'+id_consulta,
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -205,7 +206,7 @@ function testar() {
     var dados = JSON.stringify({novo_nome: novo_nome});
 
     $.ajax({
-        url: 'http://localhost:5000/editar_paciente/1',
+        url: link_backend +'/editar_paciente/1',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -229,7 +230,7 @@ function xxxxtestar() {
     var dados = JSON.stringify({novo_motivo: novo_motivo});
 
     $.ajax({
-        url: 'http://localhost:5000/editar_consulta/1',
+        url: link_backend +'/editar_consulta/1',
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',

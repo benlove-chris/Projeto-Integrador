@@ -1,9 +1,10 @@
 // todos os pacientes
 function listarPacientes() {
+    let link_backend = "https://pychris.pythonanywhere.com/";
 
 
     $.ajax({
-        url: 'http://localhost:5000/listar_pacientes',
+        url: link_backend+'listar_pacientes',
         method: 'GET',
         dataType: 'json',
         success: listar_pacientes,
@@ -75,7 +76,7 @@ function listarDadosPaciente(){
     //alert("especifica");
     let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
-        url: 'http://localhost:5000/listar_paciente/'+id_paciente,
+        url: link_backend+ 'listar_paciente/'+id_paciente,
         method: "GET",
         dataType: "json",
         success: listar_paciente,
@@ -112,7 +113,7 @@ function listar_paciente(paciente){
 function listarDadosConsulta(){
     let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
-        url: 'http://localhost:5000/listar_consulta/'+id_paciente,
+        url: link_backend+ 'listar_consulta/'+id_paciente,
         method: "GET",
         dataType: "json",
         success: listar_consulta,
@@ -184,7 +185,7 @@ function MedicosParaSelecionar() {
     
 
     $.ajax({
-        url: 'http://localhost:5000/listar_medicos',
+        url: link_backend+ 'listar_medicos',
         method: 'GET',
         dataType: 'json',
         success: medicos_select,

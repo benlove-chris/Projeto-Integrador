@@ -109,7 +109,6 @@ class MarcarConsulta(db.Model):
             "medico": self.medico.json()
         }
 
-
 #Testes das classes
 if __name__ == "__main__":
     #Apaga o arquivo .bd, se houver
@@ -158,8 +157,8 @@ if __name__ == "__main__":
     # teste da classe MarcarConsulta
 
     consulta1 = MarcarConsulta(data="04/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
-    consulta2 = MarcarConsulta(data="06/09/2021", motivo="dor no joelho", paciente=paciente1, medico=medico2)
-    consulta3 = MarcarConsulta(data="07/10/2021", motivo="dor nas costas", paciente=paciente2, medico=medico3)
+    consulta2 = MarcarConsulta(data="06/09/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
+    consulta3 = MarcarConsulta(data="07/10/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
 
     #Persistir
     db.session.add(consulta1)

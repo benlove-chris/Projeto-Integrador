@@ -1,6 +1,7 @@
 
 function marcarConsulta () {
 	//alert('funcionado');
+    let link_backend = "https://pychris.pythonanywhere.com/";
 
 
 
@@ -27,7 +28,7 @@ function marcarConsulta () {
 	var dados = JSON.stringify({data: dataConsultaDado, motivo: motivoConsultaDado, paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
 
 	$.ajax({
-        url : 'http://localhost:5000/marcar_consulta',
+        url : link_backend+'marcar_consulta',
         type : 'POST',
         contentType : 'application/json', // enviando dados em json
         dataType: 'json',
