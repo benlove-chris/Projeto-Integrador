@@ -1,6 +1,6 @@
 // todos os pacientes
 function listarPacientes() {
-    let link_backend = "https://pychris.pythonanywhere.com/";
+    let link_backend = "http://localhost:5000/";
 
 
     $.ajax({

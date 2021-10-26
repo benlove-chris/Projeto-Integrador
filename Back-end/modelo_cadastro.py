@@ -108,7 +108,7 @@ class MarcarConsulta(db.Model):
             "medico_id_consulta": self.medico_id_consulta,
             "medico": self.medico.json()
         }
-
+"""
 class Exame(db.Model):
     id_exame = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(254)) # nome do exame
@@ -151,6 +151,7 @@ class ExameRealizado(db.Model):
             "exame_id":self.exame_id,
             "exame":self.exame.json()
         }
+"""
 
 #Testes das classes
 if __name__ == "__main__":

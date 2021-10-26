@@ -1,7 +1,7 @@
 function logarPaciente(){
 	usuario = $("#nomeusuario").val();
 	//var dados = JSON.stringify({username: usuario});
-    let link_backend = "https://pychris.pythonanywhere.com/";
+    let link_backend = "http://localhost:5000/";
       
 	$.ajax({
         url : link_backend+'logarpaciente/'+usuario,

@@ -1,6 +1,6 @@
 
 //cadastrar paciente
-var link_backend = "https://pychris.pythonanywhere.com/";
+let link_backend = "http://localhost:5000/";
 
 function cadastrarPaciente(){
     
