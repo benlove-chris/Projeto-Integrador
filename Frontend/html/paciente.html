@@ -30,9 +30,18 @@
 
 
     .nav-pills .nav-link.active{
-        background: grey;
-        color: yellow;
+        background-color: black;
+        color: white;
         }
+    
+
+    .nav-pills .nav-link:hover{
+        color: white;
+        background-color: gray;
+    }
+
+
+ 
         
 
     #modalConsulta, #modalConsultaRemarcar, #modalConsultaDelete{
@@ -121,10 +130,7 @@
                   <!-- -->
                   <!-- -->
               </tbody>
-          </table>
-            
-
-          
+          </table>   
       </div>
       
 
@@ -142,37 +148,9 @@
               </thead>
               
               <tbody id="corpoConsulta">
+                  <!-- 
                   
-                  <!--<tr>
-                  
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>
-                        <ul class="list-inline m-0">
-                          <li class="list-inline-item">
-                              <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
-                          </li>
-                      </ul>
-                    </td>
-
-                  </tr>-->
-                <!--dados no js-->
-                <!--
-                <tr>
-                 example
-                  <td>aaaa-dd-mm</td>
-                  <td>Dr Carlao</td>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                  <td><button>editar consulta</button><button id="delet">desmarcar consulta</button></td>
-                </tr>
-              
-              <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalConsultaDelete" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Delete</button>-->
+                  -->
               </tbody>
           </table>
         <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalConsulta" data-whatever="@mdo" onclick ="MedicosParaSelecionar()">Marcar consulta para o paciente {}</button>
@@ -322,31 +300,32 @@
 
 
         <div id="exames-paciente" class="container tab-pane fade">
-          <h4>Historicos de exames do paciente</h4>
-          <h4>Cabeçalho(tabela) - Data - médico solicitante - consulta?(data da consulta) </h4>
-          
+          <h4>Historicos de exames do paciente</h4>          
             <table id="tabelaPacientes" >  
               <thead>
                     <tr>
-                      <th scope="col">Data </th>
+                      <th scope="col">Data da realização do exame</th>
                       <th scope="col">Médico solicitante</th>
-                      <th scope="col">Data da consulta?</th>
+                      <th scope="col">Tipo do exame</th>
+                      <th scope="col">Resultado do exame</th>
+                      <th scope="col">Data da consulta do consulta</th>
                     </tr>
               </thead>
               
               <tbody id="corpoTabelaPacientes">
                   <!-- -->
-                <tr>
-                    <td scope="col" >Paciente</td>
-                    <td scope="col" >Sobrenome</td>
+                  <!-- -->
+                  <!-- -->
+                <img src="https://4.bp.blogspot.com/-2cLwRg7rwcY/WtzSOkStQgI/AAAAAAAAHpM/qrAxAlPsFmU-RF9KeTEr7IV8UxVUdEiIgCLcBGAs/s1600/hombres_trabajando-400x315.png">
                 </tr>
               </tbody>
             </table>
 
         </div>
     </div>
-
 </div>
+</div>
+
 
 
 
