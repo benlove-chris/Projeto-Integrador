@@ -5,17 +5,16 @@ class Medico(db.Model):
 
     #Atributos do médico
     id_medico = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255))
-    sobrenome = db.Column(db.String(255))
-    cpf = db.Column(db.String(11))
-    data_nasc = db.Column(db.String(255))
-    sexo =  db.Column(db.String(10))
+    nome = db.Column(db.String(55))
+    sobrenome = db.Column(db.String(55))
+    crm = db.Column(db.String(24))
+    
 
     
 
     #Expressão da classe em forma de texto
     def __str__(self):
-        return f"{self.id_medico}, {self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc}, {self.sexo}"
+        return f"{self.id_medico}, {self.nome}, {self.sobrenome}, {self.crm}"
 
     #Expressao da classe no formato json
     def json(self):
@@ -23,9 +22,7 @@ class Medico(db.Model):
             "id_medico": self.id_medico,
             "nome": self.nome,
             "sobrenome": self.sobrenome,
-            "cpf": self.cpf,
-            "data de nascimento": self.data_nasc,
-            "sexo": self.sexo
+            "cpf": self.crm
         }
 
 
@@ -186,9 +183,9 @@ if __name__ == "__main__":
 
     #Teste da classe Medico
 
-    medico1 = Medico(nome = "Paulo Cesar", sobrenome = "McCartney", cpf = "012.546.213-10", data_nasc = "12/09/1974", sexo = "Masculino")
-    medico2 = Medico(nome = "João Barra", sobrenome = "Lennon", cpf = "845.685.489-95", data_nasc = "26/07/1968", sexo = "Masculino")
-    medico3 = Medico(nome = "Jorge Santos", sobrenome = "Harrison", cpf = "365.781.259.58", data_nasc = "08/04/1984", sexo = "Masculino")
+    medico1 = Medico(nome = "Paulo Cesar", sobrenome = "McCartney", crm = "123456-78/SC")
+    medico2 = Medico(nome = "João Barra", sobrenome = "Lennon", crm = "123456-78/SC")
+    medico3 = Medico(nome = "Jorge Santos", sobrenome = "Harrison", crm = "123456-78/SC")
     
     #Persistir
     db.session.add(medico1)
