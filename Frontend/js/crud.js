@@ -33,7 +33,7 @@ function cadastrarPaciente(){
             $("#nome").val("");
             $("#sobrenome").val("");
         } else{
-            alert('erro na comunicação');
+            alert('erro na comunicação  - resposta not ok');
 
         }
     }
@@ -59,7 +59,7 @@ function cadastrarMedico(){
 
     //json - preparar para envio
     dados = JSON.stringify({nome: nome, sobrenome: sobrenome, crm: crm});
-    console.log(dados) //{"nome":"Benlove Anelus","sobrenome":"Hernandez"}
+    
 
     //mandar para o back-end -
 
@@ -80,8 +80,9 @@ function cadastrarMedico(){
             //
             $("#nome").val("");
             $("#sobrenome").val("");
+            $("#crm").val("");
         } else{
-            alert('erro na comunicação');
+            alert('erro na comunicação  - resposta not ok - resposta not ok');
 
         }
     }
@@ -221,7 +222,7 @@ function remarcarConsulta(id_consulta) {
         //mensagem de erro 
         alert("Sem sucesso");
 
-        //alert("Erro na comunicação com o backend\nAo enviar os dados\nou ao receber os dados");
+        //alert("Erro na comunicação  - resposta not ok com o backend\nAo enviar os dados\nou ao receber os dados");
     };
 
 }
