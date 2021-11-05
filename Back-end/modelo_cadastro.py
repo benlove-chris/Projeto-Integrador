@@ -22,7 +22,7 @@ class Medico(db.Model):
             "id_medico": self.id_medico,
             "nome": self.nome,
             "sobrenome": self.sobrenome,
-            "cpf": self.crm
+            "crm": self.crm
         }
 
 

@@ -48,8 +48,48 @@ function cadastrarPaciente(){
 
 
 function cadastrarMedico(){
+    alert("a");
     //
-};
+    //obter dados do formulario
+    nome = $("#nome").val();
+    sobrenome = $("#sobrenome").val();
+    crm = $("#crm").val();
+
+
+
+    //json - preparar para envio
+    dados = JSON.stringify({nome: nome, sobrenome: sobrenome, crm: crm});
+    console.log(dados) //{"nome":"Benlove Anelus","sobrenome":"Hernandez"}
+
+    //mandar para o back-end -
+
+    $.ajax({
+            url : link_backend +'/cadastrar_medico',
+            type : 'POST',
+            contentType : 'application/json', // enviando dados em json
+            dataType: 'json',
+            data: dados,
+            success: cadastrarMedico,
+            error: erroCadastrarMedico
+    });
+
+    function cadastrarMedico(resposta){
+        if (resposta.resultado == "ok") {
+            //mensagem
+            alert('O Medico foi cadastrado com sucesso! ');
+            //
+            $("#nome").val("");
+            $("#sobrenome").val("");
+        } else{
+            alert('erro na comunicação');
+
+        }
+    }
+    function erroCadastrarMedico(resposta){
+        alert("Deu ruim na comunicação com o backend");
+    }
+
+    };
 
 
 

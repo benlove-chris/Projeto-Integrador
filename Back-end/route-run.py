@@ -100,6 +100,22 @@ def cadastrar_paciente():
     return {"resultado":'ok'}
 
 
+
+# incluir/cadastrar um médico
+@app.route("/cadastrar_medico", methods=['POST'])
+
+def cadastrar_medico():
+    #db.create_all()
+    dados = request.get_json()
+    novo_medico = Medico(**dados)
+    db.session.add(novo_medico)
+    db.session.commit()
+
+    return {"resultado":'ok'}
+
+
+
+
 # marcar consulta
 @app.route("/marcar_consulta", methods=['POST'])
 
