@@ -73,6 +73,7 @@ class Paciente(db.Model):
         }
         
 class MarcarConsulta(db.Model):
+    id_consulta = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(255)) # data da consulta
     motivo = db.Column(db.String(255)) # motivo: consulta por dor de cabeça, de barriga(sitomas)
 
