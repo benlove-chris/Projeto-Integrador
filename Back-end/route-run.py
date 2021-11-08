@@ -217,7 +217,7 @@ def logarpaciente():
     #retorno = []
     resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
     #dados = MarcarConsulta.query.get_or_404(paciente_id)
-    paciente = db.session.query(Paciente).filter(Paciente.email== dados.email, Paciente.senha==dados.senha).first()
+    paciente = db.session.query(Paciente).filter(Paciente.email== dados["email"], Paciente.senha==dados["senha"]).first()
     if paciente:
         resposta = jsonify({"resultado":  "OK", "paciente_id": paciente.id_paciente})
     else:
