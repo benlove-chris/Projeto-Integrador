@@ -216,16 +216,6 @@ if __name__ == "__main__":
     db.session.add(paciente3)
     db.session.commit()
 
-    """
-    pacientes = db.session.query(Paciente).all()
-    for paciente in pacientes:
-        #Exibe o paciente
-        print(f"Olá, {paciente.nome}")
-        #Exibe o paciente em json
-        print(paciente.json())
-    """
-
-
 
     #Teste da classe Medico
 
@@ -247,35 +237,30 @@ if __name__ == "__main__":
     consulta2 = MarcarConsulta(data="06/09/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
     consulta3 = MarcarConsulta(data="07/10/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
 
-    
     #Persistir
     db.session.add(consulta1)
     db.session.add(consulta2)
     db.session.add(consulta3)
     db.session.commit()
-
-    # prints
-    """
-    print(paciente1)
-    print(medico2)
-    """
-    print(consulta1)
-    print(consulta2)
-    print(consulta3)
-    
-    print(f"\nDetalhado: {consulta2.strestiloso()}")
     print(f"\nDetalhado: {consulta1.strestiloso()}")
-    print(f"\nDetalhado: {consulta3.strestiloso()}")
+    
 
-    pacientes = db.session.query(Paciente).all()
-    for paciente in pacientes:
-        print("nome",paciente.nome,"nome")
+    
 
     #teste marcar exame 
     exame1 = ExamePaciente(data="04/08/2021", paciente= paciente1, medico=medico1, consulta=consulta1, resultado_exame = "1ML 300Kwh")
     exame2 = ExamePaciente(data="04/08/2021", paciente= paciente1, medico=medico1, consulta=consulta1, resultado_exame = "1ML 300Kwh")
     db.session.add(exame1)
     db.session.add(exame2)
-    db.session.commit
+    
+    db.session.commit()
     print(exame1)
     print(exame2)
+    
+
+    """
+    print all in a class
+    pacientes = db.session.query(Paciente).all()
+    for paciente in pacientes:
+        print(paciente.nome)
+    """
