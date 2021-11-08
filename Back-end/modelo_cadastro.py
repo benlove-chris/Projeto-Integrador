@@ -34,11 +34,11 @@ class Paciente(db.Model):
 
 
     #Essa parte está em comentário para dar uma agilizada na hora de testar, e não ter que botar muitas informações por agora
-    """
+    
     cpf = db.Column(db.String(11))
-    data_nasc = db.Column(db.date(255))?
+    data_nasc = db.Column(db.String(255))
     sexo =  db.Column(db.String(10))
-    e_civil = db.Column(db.String(50))--select
+    e_civil = db.Column(db.String(50))
     cns = db.Column(db.String(255))
     
     #Endereço 
@@ -49,25 +49,27 @@ class Paciente(db.Model):
     estado = db.Column(db.String(30))
 
     #contato
-    telefone1 =
-    telefone2 = 
-    email = 
-    senha = 
+    telefone1 = db.Column(db.String(255))
+    telefone2 = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    senha = db.Column(db.String(255))
 
-    """
+
 
     
 
     #Método para expressar o paciente em forma de texto
     def __str__(self):
-        return f"{self.id_paciente}, {self.nome}, {self.sobrenome}"
+        return f"{self.id_paciente}, {self.nome}, {self.sobrenome} ,  {self.email} "
 
     #Expressao da classe no formato json
     def json(self):
         return{
             "id_paciente": self.id_paciente,
             "nome": self.nome,
-            "sobrenome": self.sobrenome
+            "sobrenome": self.sobrenome,
+            "email": self.email,
+            "senha": self.senha
         }
         
 class MarcarConsulta(db.Model):
@@ -206,9 +208,9 @@ if __name__ == "__main__":
     db.create_all()
 
     #Teste da classe Pacienteca
-    paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus")
-    paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart")
-    paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira")
+    paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus", email="johnnydinheiro@gmail.com", senha = "8956")
+    paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart", email="espiga@gmail.com", senha = "5421")
+    paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira", email="ferrarigol123@gmail.com", senha = "1234")
     
     #Persistir
     db.session.add(paciente1)
@@ -264,3 +266,4 @@ if __name__ == "__main__":
     for paciente in pacientes:
         print(paciente.nome)
     """
+

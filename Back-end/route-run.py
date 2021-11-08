@@ -210,25 +210,18 @@ def editar_paciente(id_paciente):
 
 
 # login do usuario
-@app.route("/logarpaciente/<string:nomeusuario>", methods=['GET', 'POST'])
-def logarpaciente(nomeusuario):
+@app.route("/logarpaciente", methods=['GET'])
+def logarpaciente():
 	
-    #dados = request.get_json()
+    dados = request.get_json()
     #retorno = []
     resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
     #dados = MarcarConsulta.query.get_or_404(paciente_id)
-    pacientes = db.session.query(Paciente).all()
-    for paciente in pacientes:
-        #retorno.append(paciente.nome)
-
-        #resposta = jsonify({"resultado":  f"{paciente.nome}{nomeusuario}"})
-
-        if paciente.nome == nomeusuario:
-            resposta = jsonify({"resultado":  "login", "paciente_id": paciente.id_paciente})
-        """
-        else:
-            resposta = jsonify({"resultado":  "login"})
-        """     
+    paciente = db.session.query(Paciente).filter(Paciente.email== dados.email, Paciente.senha==dados.senha).first()
+    if paciente:
+        resposta = jsonify({"resultado":  "OK", "paciente_id": paciente.id_paciente})
+    else:
+        resposta = jsonify({"resultado":  "Erro"})
 
         
     return resposta 
@@ -255,4 +248,4 @@ def logarpaciente(nomeusuario):
     """
 
 
-app.run(debug = True)
+app.run(debug = True, host = "0.0.0.0")
