@@ -159,16 +159,16 @@ function chamarModalConsultaRemarcar(id_consulta){
         success: function(resposta){
             $("#motivoConsultaRemarcar").val(resposta.motivo);
             $("#dataConsultaRemarcar").val(resposta.data); //data
-            $('#selectMedicoRemarcar option').removeAttr('selected').filter('[value=3]').attr('selected', true);
+            $('#selectMedicoRemarcar option').removeAttr('selected').filter('[value=+'resposta.medico.id_medico+']').attr('selected', true);
 
             //$("#selectMedicoRemarcar option").removeAttr('selected').filter('[value=2]').attr('selected', true);
             //$("#selectMedicoRemarcar select").val("3");
             
             
-
+            console.log("===id_medico=====", resposta.medico.id_medico);
             for (var i in resposta){
                 console.log("========", resposta[i]);
-                console.log("===id_medico=====", resposta[i].id_medico);
+                //console.log("===id_medico=====", resposta[i].id_medico);
             }
 
         },
