@@ -6,18 +6,21 @@ function logarPaciente(){
 	var dados = JSON.stringify({email: email, senha: senha});
     console.log(dados);
     
-    //let link_backend = "http://localhost:5000/";
+    let link_backend = "http://localhost:5000/";
       
-	$.ajax({
-    
-        url : "https://localhost:5000/logarpaciente",
-        type: 'GET',
-        data: { "email": email, "senha": senha},
-        contentType: 'application/json',
-        dataType: "json",
-        success: loginEfetuado,
+	
+    $.ajax({
+            url : link_backend +'/logarpaciente',
+            type : 'POST',
+            contentType : 'application/json', // enviando dados em json
+            dataType: 'json',
+            data: dados,
+            success: loginEfetuado,
         error: errologinEfetuado
-	});
+    });
+
+
+
 
   
 

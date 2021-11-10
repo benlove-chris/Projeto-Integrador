@@ -47,9 +47,10 @@ function cadastrarPaciente(){
 //cadastrar médido
 
 
+
+
+
 function cadastrarMedico(){
-    alert("a");
-    //
     //obter dados do formulario
     nome = $("#nome").val();
     sobrenome = $("#sobrenome").val();
@@ -146,39 +147,28 @@ var dataConsultaDado = document.getElementById('dataConsulta').value;
     var medico_id_consulta = document.getElementById('selectMedico').value;
     */
 
+//?
 
 function chamarModalConsultaRemarcar(id_consulta){
-    console.log('id_consulta para remarcar,',id_consulta);
-
+    
     $("#btnRemarcarConsulta").attr('onClick', ("remarcarConsulta('"+id_consulta+"')"));
-
     $.ajax({
         url: link_backend +'/listar_consulta_esp/'+id_consulta,
         method: "GET",
         dataType: "json",
         success: function(resposta){
+            let i_m_c = resposta.medico.id_medico;
             $("#motivoConsultaRemarcar").val(resposta.motivo);
             $("#dataConsultaRemarcar").val(resposta.data); //data
-            $('#selectMedicoRemarcar option').removeAttr('selected').filter('[value=+'resposta.medico.id_medico+']').attr('selected', true);
-
-            //$("#selectMedicoRemarcar option").removeAttr('selected').filter('[value=2]').attr('selected', true);
-            //$("#selectMedicoRemarcar select").val("3");
-            
-            
-            console.log("===id_medico=====", resposta.medico.id_medico);
-            for (var i in resposta){
-                console.log("========", resposta[i]);
-                //console.log("===id_medico=====", resposta[i].id_medico);
-            }
-
+            $('#selectMedicoRemarcar option').removeAttr('selected').filter("[value="+i_m_c+"]").attr('selected', true);
+            //$("#selectMedicoRemarcar option").removeAttr('selected').filter('[value=2]').attr('selected', true);    
         },
+
         error: function(){
             alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
         }
     })
     
-
-
 }
 
 
@@ -186,17 +176,10 @@ function chamarModalConsultaRemarcar(id_consulta){
 function remarcarConsulta(id_consulta) {
     
     //editar
-    novo_motivo = $("#motivoConsultaRemarcar").val();
-    nova_data =  $("#dataConsultaRemarcar").val();
-    var novo_medico = document.getElementById('selectMedicoRemarcar').value;
-    
-    //let novo_motivo = "motivo do teste";
-    //nova_data =  "data do teste";
-    //novo_medico = "Medico testador";
-    
-    //var dados = JSON.stringify({novo_motivo: novo_motivo});
-    
-    //var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data});
+    let novo_motivo = $("#motivoConsultaRemarcar").val();
+    let nova_data =  $("#dataConsultaRemarcar").val();
+    let novo_medico = $("#selectMedicoRemarcar").val();
+        
     var dados = JSON.stringify({novo_motivo: novo_motivo, nova_data: nova_data, novo_medico:  novo_medico});
    
 
@@ -218,14 +201,13 @@ function remarcarConsulta(id_consulta) {
         }else{
             alert(retorno.resultado+ ":"+retorno.detalhes);
         }
-
-
     };
 
 
     function erroConsultaRemarcada(retorno){
         //mensagem de erro 
-        alert("Sem sucesso");
+        //alert("Sem sucesso");
+        alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
 
         //alert("Erro na comunicação  - resposta not ok com o backend\nAo enviar os dados\nou ao receber os dados");
     };
@@ -242,9 +224,9 @@ function remarcarConsulta(id_consulta) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-// para resolver
-function testar() {
-    alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+// para resolver 
+function editpaciente_talvez() {
+    
     // body...
     novo_nome = "Carlos";
     //novo_sobrenome = "novo";
@@ -267,28 +249,23 @@ function testar() {
 }
 
 
-function xxxxtestar() {
-    alert("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-    // body...
-    
-    novo_motivo = "god bless us";
 
-    var dados = JSON.stringify({novo_motivo: novo_motivo});
 
-    $.ajax({
-        url: link_backend +'/editar_consulta/1',
-        type: 'POST',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: dados,
-        success: function(){
-            alert("Sucesso");
-        },
-        error: function(){
-            alert('error');
-        }
-    });
+
+function testecrud(){
+    //alert("crud funcionando");
+
+    nome = $("#nome").val();
+    sobrenome = $("#sobrenome").val();
+    crm = $("#crm").val();
+
+    dados = JSON.stringify({nome: nome, sobrenome: sobrenome, crm: crm});
+    alert(dados);
+    console.log(dados);
+
 }
+
+
 
 
 

@@ -1,3 +1,7 @@
+function testelistar(){
+    alert("listar funcionando");
+}
+
 // todos os pacientes
 function listarPacientes() {
     let link_backend = "http://localhost:5000/";
@@ -111,9 +115,11 @@ function listar_paciente(paciente){
 
 //lista dados da consulta do paciente
 function listarDadosConsulta(){
-    let id_paciente = document.location.search.replace(/^.*?\=/,'');
+
+    //let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
-        url: link_backend+ 'listar_consulta/'+id_paciente,
+        //url: link_backend+ 'listar_consulta/'+id_paciente,
+        url: link_backend+ 'listar_consulta/1',
         method: "GET",
         dataType: "json",
         success: listar_consulta,

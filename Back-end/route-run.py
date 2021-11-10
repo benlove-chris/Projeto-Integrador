@@ -210,7 +210,7 @@ def editar_paciente(id_paciente):
 
 
 # login do usuario
-@app.route("/logarpaciente", methods=['GET'])
+@app.route("/logarpaciente", methods=['GET', 'POST'])
 def logarpaciente():
 	
     dados = request.get_json()
