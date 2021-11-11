@@ -2,15 +2,12 @@ body{
   background-color: white;
  }
 
-
-
 .content{
   width: 80%;
   height: auto;
   margin: 0 auto;
   padding: 30px;
   margin-top: 5%;
-  
   
 }
 
@@ -20,17 +17,19 @@ body{
   margin: 0 auto;
   border-radius: 2px;
   margin-top: 2%;
-
-
+  color: white;
   
 }
-
 
 .nav-item{
   width: 50%;
    /*80%-reponsive*/
 }
 
+.nav-link:hover{
+  color: white;
+  background-color: gray;
+}
 
 .nav-pills .nav-link{
   font-weight: bold;
@@ -39,18 +38,9 @@ body{
   color: white;
   height: 60px;
 
-
 }
 
-
-
-
-
-
-
 .tab-content{
- /*position: absolute;*/
-
   height: auto;
   color: white;
   border-radius: 30px;
@@ -68,7 +58,6 @@ body{
   
 }
 
-/* tab /> */
 
 #nome-paciente{
   text-align: center;
@@ -90,16 +79,23 @@ td, th {
       text-align: left;
       padding: 20px;
       position: relative;
-    }
+  }
 
 #corpoDados{
-
     color:  white;
-
-    }
+}
 
 #corpoTabelaPacientes{
-
     color:  white;
-
     }
+
+#modalConsulta, .modal-body, #modalConsultaRemarcar, #modalConsultaDelete{
+          color: darkblue;
+}
+      #modalConsultaDelete p{
+        color: darkblue;
+}
+
+    #motivoConsultaRemarcar{
+      height: 200px;
+}
