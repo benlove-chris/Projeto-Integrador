@@ -1,0 +1,129 @@
+
+body{
+  background-color: ; 
+}
+
+table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      position: relative;
+    }
+
+    th{
+        background-color: #dddddd;
+    }
+    h3{
+        text-align: center;
+    }
+
+table td input {
+  position: absolute;
+  display: block;
+  top:0;
+  left:0;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+header{
+    position: static;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+footer {
+
+  border-width: 1px;
+  color: white;
+  bottom: 0;
+  width: 100%;
+
+}
+
+
+p{
+  text-align: justify;
+  color: white;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+form {
+  border-radius: 1%;
+}
+
+.btn{
+
+  background-color: #222222;
+  border-color: #222222;
+
+
+}
+
+.page-footer{
+  border-style: solid;
+  border-color: #222222;
+  background-color: #222222 !important;
+  position: relative;
+
+}
+
+
+.text-uppercase{
+  color: white !important;
+}
+
+#logo{
+  height: 50px;
+
+}
+
+#hg{
+
+  height: 560px;
+
+}
+
+#hd{
+
+  height: 350px;
+
+}
+
+.container-fluid{
+  margin-bottom: 2%;
+}
+
+.conteudo-pagina{
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+#dados-paciente{
+  margin-bottom: 100%;
+
+}
+
+#historico-consulta{
+  margin-bottom: 100%;
+  
+}
+
+#exames-paciente{
+  margin-bottom: 100%;
+}
+
