@@ -31,10 +31,8 @@ class Paciente(db.Model):
     id_paciente = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     sobrenome = db.Column(db.String(255))
-
-
-    #Essa parte está em comentário para dar uma agilizada na hora de testar, e não ter que botar muitas informações por agora
     
+    #Essa parte está em comentário para dar uma agilizada na hora de testar, e não ter que botar muitas informações por agora
     cpf = db.Column(db.String(11))
     data_nasc = db.Column(db.String(255))
     sexo =  db.Column(db.String(10))
@@ -42,6 +40,7 @@ class Paciente(db.Model):
     cns = db.Column(db.String(255))
     
     #Endereço 
+    cep =  db.Column(db.String(50))
     logradouro =  db.Column(db.String(255))
     numero = db.Column(db.String(5))
     bairro = db.Column(db.String(55))
@@ -52,6 +51,10 @@ class Paciente(db.Model):
     telefone1 = db.Column(db.String(255))
     telefone2 = db.Column(db.String(255))
     email = db.Column(db.String(255))
+    
+
+    #login
+    usuario = db.Column(db.String(255))
     senha = db.Column(db.String(255))
 
 

@@ -8,9 +8,34 @@ function cadastrarPaciente(){
     nome = $("#nome").val();
     sobrenome = $("#sobrenome").val();
 
+    cpf = $("#cpf").val();
+    data_nasc = $("#data_nasc").val();
+    sexo = $("#sexo").val();
+    e_civil = $("#e_civil").val();
+    cns = $("#cns").val();
+    cep = $("#cep").val();
+    logradouro = $("#logradouro").val();
+    numero = $("#numero").val();
+    bairro = $("#bairro").val();
+    cidade = $("#cidade").val();
+    estado = $("#estado").val();
+    telefone1 = $("#telefone1").val();
+    telefone2 = $("#telefone2").val();
+    email = $("#email").val();
+    usuario = $("#usuario").val();
+    senha = $("#senha").val();
+
+
 
     //json - preparar para envio
-    dados = JSON.stringify({nome: nome, sobrenome: sobrenome});
+    dados = JSON.stringify({nome: nome, sobrenome: sobrenome, cpf: cpf,
+     data_nasc: data_nasc, sexo: sexo, e_civil: e_civil, cns: cns, cep: cep, 
+     logradouro: logradouro, numero: numero, bairro: bairro, cidade: cidade, 
+     estado: estado, telefone1: telefone1, telefone2: telefone2, 
+     email: email, usuario: usuario, senha: senha}); 
+
+
+
     console.log(dados) //{"nome":"Benlove Anelus","sobrenome":"Hernandez"}
 
     //mandar para o back-end -

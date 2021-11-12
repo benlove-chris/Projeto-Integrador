@@ -80,17 +80,17 @@
   <div class="row" >
     <div class="col-md-4 mb-3">
       <label for="nome">Nome *</label>
-      <input type="text" class="form-control" id="nome" placeholder="Nome"  required>
+      <input type="text" class="form-control" id="nome" placeholder="Nome"  ><!--required-->
     </div>
 
     <div class="col-md-4 mb-3">
       <label for="sobrenome">Sobrenome *</label>
-      <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome"  required>
+      <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome"  ><!--required-->
     </div>
 
     <div class="col-md-4 mb-3">
       <label for="cpf">CPF *</label>
-      <input type="text" class="form-control" id="cpf" placeholder="000.000.000 - 00" required>
+      <input type="text" class="form-control" id="cpf" placeholder="000.000.000 - 00" ><!--required-->
     </div>
   </div>
 
@@ -99,7 +99,7 @@
   <div class="row">     
     <div class="col-md-4 mb-3">
       <label for="datan">Data de Nascimento *</label>
-      <input type="date" class="form-control" id="datan" required>
+      <input type="date" class="form-control" id="datan" ><!--required-->
     </div>
 
     <div class="col-md-4 mb-3">
@@ -128,7 +128,7 @@
 
     <div class="col-md-3 mb-3">
       <label for="cns">CNS *</label>
-      <input type="text" class="form-control" id="cns" placeholder="000 0000 0000 0000" required>
+      <input type="text" class="form-control" id="cns" placeholder="000 0000 0000 0000" ><!--required-->
     </div>
   </div>
 
@@ -137,65 +137,74 @@
 
   
   <div class="mb-3 pb-2 mt-3">
-      <h6>Endereço</h6>
+      <h6>Endereço*</h6>
   </div>
   <hr>
 
   <div class="row">
-    <div class="col-md-3 mb-3">
-      <label for="cep">CEP</label>
-      <input type="text" class="form-control" id="cep" required>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="cep">CEP</label>
+        <input type="text" class="form-control" id="cep" ><!--required-->
+      </div>
+
+
+      <div class="col-md-3 mb-3">
+        <label for="rua">Logradouro</label>
+        <input type="text" class="form-control" id="rua" placeholder="Rua, Avenida..." ><!--required-->
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label for="numero">Numero</label>
+        <input type="number" class="form-control" id="numero"  ><!--required-->
+      </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="bairro">Bairro</label>
+        <input type="text" class="form-control" id="bairro" ><!--required-->
+      </div>
 
-    <div class="col-md-3 mb-3">
-      <label for="rua">Logradouro</label>
-      <input type="text" class="form-control" id="rua" placeholder="Rua, Avenida..." required>
-    </div>
+      <div class="col-md-3 mb-3">
+        <label for="cidade">Cidade</label>
+        <input type="text" class="form-control" id="cidade" ><!--required-->
+      </div>
 
-    <div class="col-md-3 mb-3">
-      <label for="numero">Numero</label>
-      <input type="number" class="form-control" id="numero"  required>
-    </div>
-
-    <div class="col-md-3 mb-3">
-      <label for="cidade">Cidade</label>
-      <input type="text" class="form-control" id="cidade" required>
-    </div>
-
-    <div class="col-md-3 mb-3">
-      <label for="estado">Estado</label>
-      
-        <select class="form-control" id="estado" >
-          <option>Selecionar</option>
-          <option>Acre</option>
-          <option>Alagoas</option>
-          <option>Amapá</option>
-          <option>Amazonas</option>
-          <option>Bahia</option>
-          <option>Ceará</option>
-          <option>Distrito Federal</option>
-          <option>Espírito Santo</option>
-          <option>Goiás</option>
-          <option>Maranhão</option>
-          <option>Mato Grosso</option>
-          <option>Mato Grosso do Sul</option>
-          <option>Minas Gerais</option>
-          <option>Pará</option>
-          <option>Paraíba</option>
-          <option>Paraná</option>
-          <option>Pernambuco</option>
-          <option>Piauí</option>
-          <option>Rio de Janeiro</option>
-          <option>Rio Grande do Norte</option>
-          <option>Rio Grande do Sul</option>
-          <option>Rondônia</option>
-          <option>Roraima</option>
-          <option>Santa Catarina</option>
-          <option>São Paulo</option>
-          <option>Sergipe</option>
-          <option>São Tocantins</option>
-        </select>
+      <div class="col-md-3 mb-3">
+        <label for="estado">Estado</label>
+        
+          <select class="form-control" id="estado" >
+            <option>Selecionar</option>
+            <option>Acre</option>
+            <option>Alagoas</option>
+            <option>Amapá</option>
+            <option>Amazonas</option>
+            <option>Bahia</option>
+            <option>Ceará</option>
+            <option>Distrito Federal</option>
+            <option>Espírito Santo</option>
+            <option>Goiás</option>
+            <option>Maranhão</option>
+            <option>Mato Grosso</option>
+            <option>Mato Grosso do Sul</option>
+            <option>Minas Gerais</option>
+            <option>Pará</option>
+            <option>Paraíba</option>
+            <option>Paraná</option>
+            <option>Pernambuco</option>
+            <option>Piauí</option>
+            <option>Rio de Janeiro</option>
+            <option>Rio Grande do Norte</option>
+            <option>Rio Grande do Sul</option>
+            <option>Rondônia</option>
+            <option>Roraima</option>
+            <option>Santa Catarina</option>
+            <option>São Paulo</option>
+            <option>Sergipe</option>
+            <option>São Tocantins</option>
+          </select>
+      </div>
     </div>
   </div>
 
@@ -209,18 +218,18 @@
     <div class="row">
         <div class="col-md-3 mb-3">
           <label for="email">E-mail</label>
-          <input type="email" class="form-control" id="email" autocomplete="on" required>
+          <input type="email" class="form-control" id="email" autocomplete="on" ><!--required-->
         </div>
 
 
         <div class="col-md-3 mb-3">
           <label for="telefone1">Telefone 1*</label>
-          <input type="text" class="form-control" id="telefone1"  required>
+          <input type="text" class="form-control" id="telefone1"  ><!--required-->
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="telefone2">Telefone 2</label>
-          <input type="text" class="form-control" id="telefone2" required>
+          <input type="text" class="form-control" id="telefone2" ><!--required-->
         </div>
     </div>
 
@@ -234,12 +243,12 @@
     <div class="row">
         <div class="col-md-3 mb-3">
           <label for="usuario">Usário</label>
-          <input type="text" class="form-control" id="usuario" required>
+          <input type="text" class="form-control" id="usuario" ><!--required-->
         </div>
 
         <div class="col-md-3 mb-3">
           <label for="senha">Senha</label>
-          <input type="password" class="form-control" id="senha"  required>
+          <input type="password" class="form-control" id="senha"  ><!--required-->
         </div>
     </div>
 
