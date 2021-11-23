@@ -24,7 +24,7 @@ def listar_pacientes():
 @app.route("/listar_consultas", methods=['GET'])
 
 def listar_consultas():
-    consultas = db.session.query(MarcarConsulta).all()
+    consultas = db.session.query(Consulta).all()
     retorno = []
 
     for consulta in consultas:
@@ -65,7 +65,7 @@ def dados_paciente(id_paciente):
 
 def dados_consulta_esp(id_consulta):
     #dados = Paciente.query.get()
-    dados = MarcarConsulta.query.get_or_404(id_consulta)
+    dados = Consulta.query.get_or_404(id_consulta)
     return (dados.json())
 
 # listar consultas de um paciente
@@ -74,8 +74,8 @@ def dados_consulta_esp(id_consulta):
 def dados_consulta(paciente_id):
     #dados = Paciente.query.get()
     retorno = []
-    #dados = MarcarConsulta.query.get_or_404(paciente_id)
-    consultas = db.session.query(MarcarConsulta).all()
+    #dados = Consulta.query.get_or_404(paciente_id)
+    consultas = db.session.query(Consulta).all()
     for consulta in consultas:
         if consulta.paciente_id_consulta == paciente_id:
             retorno.append(consulta.json())
@@ -85,6 +85,36 @@ def dados_consulta(paciente_id):
     return resposta
 
 
+# listar exames de um paciente
+@app.route("/listar_exames_paciente/<int:paciente_id>", methods=['GET'])
+
+def listar_exames_paciente(paciente_id):
+    #dados = Paciente.query.get()
+    retorno = []
+    #dados = Consulta.query.get_or_404(paciente_id)
+    exames = db.session.query(Exame).all()
+    for exame in exames:
+        if exame.paciente_id_exame == paciente_id:
+            retorno.append(exame.json())
+    
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
+
+
+# listar todos os medicos registrados
+@app.route("/listar_exames", methods=['GET'])
+
+def listar_exames():
+    exames = db.session.query(Exame).all()
+    retorno = []
+
+    for exame in exames:
+        retorno.append(exame.json())
+    resposta = jsonify(retorno)
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
 
 
 # incluir/cadastrar um paciente
@@ -123,7 +153,7 @@ def marcar_consulta():
 
     resposta = jsonify({"resultado": "ok"})
     dados = request.get_json()
-    nova_consulta = MarcarConsulta(**dados)
+    nova_consulta = Consulta(**dados)
     #nova_consulta.headers.add("Access-Control-Allow-Origin", "*")
     db.session.add(nova_consulta)
     db.session.commit()
@@ -142,7 +172,7 @@ def desmarcar_consulta(id_consulta):
     resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     
     try: #Tentar realizar a exclusão
-        consulta = MarcarConsulta.query.get(id_consulta)
+        consulta = Consulta.query.get(id_consulta)
         
         db.session.delete(consulta)
         #redistribuir_consulta()
@@ -167,7 +197,7 @@ def remarcar_consulta(id_consulta):
     resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     
     try:
-        consulta = MarcarConsulta.query.get_or_404(id_consulta)
+        consulta = Consulta.query.get_or_404(id_consulta)
         
         consulta.motivo = dados["novo_motivo"]                                 
         consulta.data = dados["nova_data"]
@@ -182,7 +212,7 @@ def remarcar_consulta(id_consulta):
 
 
 
-
+"""
 # editar dados do paciente - a resolver
 @app.route("/editar_paciente/<int:id_paciente>",  methods=['POST'])
 def editar_paciente(id_paciente):
@@ -205,7 +235,23 @@ def editar_paciente(id_paciente):
         
     resposta.headers.add("Access-Control-Allow-Origin","*")
     return resposta
+"""
 
+# marcar consulta
+@app.route("/marcar_exame", methods=['POST'])
+
+def marcar_exame():
+
+    resposta = jsonify({"resultado": "ok"})
+    dados = request.get_json()
+    novo_exame = Exame(**dados)
+    #nova_consulta.headers.add("Access-Control-Allow-Origin", "*")
+    db.session.add(novo_exame)
+    db.session.commit()
+
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+
+    return resposta
 
 
 
@@ -216,7 +262,7 @@ def logarpaciente():
     dados = request.get_json()
     #retorno = []
     resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
-    #dados = MarcarConsulta.query.get_or_404(paciente_id)
+    #dados = Consulta.query.get_or_404(paciente_id)
     paciente = db.session.query(Paciente).filter(Paciente.email== dados["email"], Paciente.senha==dados["senha"]).first()
     if paciente:
         resposta = jsonify({"resultado":  "OK", "paciente_id": paciente.id_paciente})

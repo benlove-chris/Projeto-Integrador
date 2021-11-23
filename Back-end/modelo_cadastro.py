@@ -75,9 +75,9 @@ class Paciente(db.Model):
             "senha": self.senha
         }
         
-class MarcarConsulta(db.Model):
+class Consulta(db.Model):
     id_consulta = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(255)) # data da consulta
+    dataConsulta = db.Column(db.String(255)) # dataConsulta da consulta
     motivo = db.Column(db.String(255)) # motivo: consulta por dor de cabeça, de barriga(sitomas)
 
     # atributo de chave estrangeira
@@ -91,19 +91,19 @@ class MarcarConsulta(db.Model):
     
     def __str__(self): 
         # expressão da classe em forma de texto
-        return f"{self.id_consulta}, {self.data}, {self.motivo}, {self.paciente}, {self.medico} " 
+        return f"{self.id_consulta}, {self.dataConsulta}, {self.motivo}, {self.paciente}, {self.medico} " 
 
     def strestiloso(self):
         # estiloso
         return f"O paciente {self.paciente.nome} tem uma consulta marcado para o dia \
-            {self.data} com o médico {self.medico.nome} devido à {self.motivo}."
+            {self.dataConsulta} com o médico {self.medico.nome} devido à {self.motivo}."
 
 
     def json(self):
         # expressao da classe no formato json
         return {
             "id_consulta": self.id_consulta,
-            "data": self.data,
+            "dataConsulta": self.dataConsulta,
             "motivo": self.motivo,
             "paciente_id_consulta": self.paciente_id_consulta,
             "paciente": self.paciente.json(),
@@ -114,29 +114,31 @@ class MarcarConsulta(db.Model):
 """
 *Data da realização do exame	
 *Médico solicitante	
-*Tipo do exame	
+*TipoExame do exame	
 *Resultado do exame	
 *Data da consulta em que foi solicitado
 """
-class ExamePaciente(db.Model):
+class Exame(db.Model):
     id_exame = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String(254))
+    dataExame = db.Column(db.String(254))
+    tipoExame = db.Column(db.String(254))
+    
     
     paciente_id_exame = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
     medico_id_exame = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
-    consulta_id_exame = db.Column(db.Integer, db.ForeignKey(MarcarConsulta.id_consulta), nullable=False)
+    consulta_id_exame = db.Column(db.Integer, db.ForeignKey(Consulta.id_consulta), nullable=False)
     
     paciente = db.relationship("Paciente", foreign_keys=paciente_id_exame)    
     medico = db.relationship("Medico", foreign_keys=medico_id_exame)    
-    consulta = db.relationship("MarcarConsulta", foreign_keys=consulta_id_exame)    
+    consulta = db.relationship("Consulta", foreign_keys=consulta_id_exame)    
     
     resultado_exame = db.Column(db.String(254))
 
     
     def __str__(self): 
         # expressão da classe em forma de texto
-        return f"{self.id_exame}, {self.data}, {self.paciente.nome} {self.paciente.sobrenome},\
-        {self.medico.nome}, {self.consulta.data}, {self.resultado_exame}" 
+        return f"{self.id_exame}, {self.dataExame}, {self.paciente.nome} {self.paciente.sobrenome},\
+        {self.consulta.dataConsulta}, {self.consulta.medico},{self.tipoExame}, {self.resultado_exame}" 
 
 
 
@@ -145,15 +147,24 @@ class ExamePaciente(db.Model):
         # expressao da classe no formato json
         return {
             "id_exame": self.id_exame,
-            "data": self.data,
+            "dataExame": self.dataExame,
+            "tipoExame": self.tipoExame,
+            "paciente": self.paciente.json(),
+            "medico": self.medico.json(),
+            "consulta": self.consulta.json(),
+            "resultado_exame": self.resultado_exame
+        }
+        """return {
+            "id_exame": self.id_exame,
+            "dataExame": self.dataExame,
             "paciente_id_exame": self.paciente_id_exame,
             "paciente": self.paciente.json(),
             "medico_id_exame": self.medico_id_exame,
             "medico": self.medico.json(),
             "consulta_id_exame": self.consulta_id_exame,
-            "consulta": self.consulta.json(),
+            #"consulta": self.consulta.json(),
             "resultado_exame": self.resultado_exame
-        }
+        }"""
 
 """
 class Exame(db.Model):
@@ -180,7 +191,7 @@ class Exame(db.Model):
 
 class ExameRealizado(db.Model):
     id_exame = db.Column(db.Integer, primary_key=True)
-    #data = db.Column(db.String(254)) # data do exame - relacao
+    #dataExame = db.Column(db.String(254)) # data do exame - relacao
     data = db.Column(db.Integer, db.ForeignKey(Paciente.id), nullable=False)
     resultado = db.Column(db.String(254)) # apenas o valor
     exame_id =  db.Column(db.Integer, db.ForeignKey(Exame.id), nullable=False)
@@ -236,11 +247,11 @@ if __name__ == "__main__":
 
 
 
-    # teste da classe MarcarConsulta
+    # teste da classe Consulta
 
-    consulta1 = MarcarConsulta(data="04/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
-    consulta2 = MarcarConsulta(data="06/09/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
-    consulta3 = MarcarConsulta(data="07/10/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
+    consulta1 = Consulta(dataConsulta="04/08/2021", motivo= "dor no ouvido esquerdo", paciente=paciente1, medico=medico1)
+    consulta2 = Consulta(dataConsulta="06/09/2021", motivo="dor no joelho", paciente=paciente2, medico=medico2)
+    consulta3 = Consulta(dataConsulta="07/10/2021", motivo="dor nas costas", paciente=paciente3, medico=medico3)
 
     #Persistir
     db.session.add(consulta1)
@@ -253,8 +264,8 @@ if __name__ == "__main__":
     
 
     #teste marcar exame 
-    exame1 = ExamePaciente(data="04/08/2021", paciente= paciente1, medico=medico1, consulta=consulta1, resultado_exame = "1ML 300Kwh")
-    exame2 = ExamePaciente(data="04/08/2021", paciente= paciente1, medico=medico1, consulta=consulta1, resultado_exame = "1ML 300Kwh")
+    exame1 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta1, medico=medico1, tipoExame="Sangue", resultado_exame = "1ML 300Kwh")
+    exame2 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta1, medico=medico1, tipoExame="Sangue",resultado_exame = "1ML 300Kwh")
     db.session.add(exame1)
     db.session.add(exame2)
     
