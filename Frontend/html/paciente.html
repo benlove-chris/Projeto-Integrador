@@ -21,12 +21,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   
 </head>
-<body onload="listarDadosPaciente(), listarDadosConsulta();" style="background-color:   white;">
+<body onload="listarDadosPaciente(), listarDadosExame(),listarDadosConsulta();" style="background-color:   white;">
+
+
+<!-- nav-bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="headerr">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../img/logo.png" height="25px">
+    </a>
+    
+    <a class="btn btn-primary me-1 auth-modal-toggle bg-danger" href="../index.html" id="sair">Sair</a>
+  </div>
+</nav>
+
+
+
 <!-- nav-bar -->
 <ul class="nav nav-pills nav-justified bg-dark" role="tablist">
+    <!--
     <li class="nav-item">
       <a class="nav-link" href="../index.html" id="home">Home</a>
     </li>
+    -->
     <li class="nav-item">
       <a class="nav-link active" data-toggle="pill" href="#dados-paciente">Dados</a>
     </li>
@@ -47,7 +64,7 @@
       <div id="dados-paciente" class="container tab-pane active">
           <h4>Dados do paciente - o cadastrado</h4>
           <table id="tabelaPacientes" >
-              <thead>
+              <thead class="t_head">
                 <tr>
                   <th scope="col">Nome</th>
                   <th scope="col">Sobrenome</th>
@@ -66,7 +83,7 @@
     <div id="historico-consulta" class="container tab-pane fade">
       <h4>Histórico de consulta do paciente</h4>
           <table id="tabelaConsulta">
-              <thead>
+              <thead class="t_head">
                 <tr>
                     <th scope="col">Data </th>
                     <th scope="col">Médico executante</th>
@@ -212,30 +229,206 @@
       
         <div id="exames-paciente" class="container tab-pane fade">
           <h4>Historicos de exames do paciente</h4>          
-            <table id="tabelaPacientes" >  
-              <thead>
+            <table>  
+              <thead class="t_head">
                     <tr>
-                      <th scope="col">Data da realização do exame</th>
+                      <th scope="col">Data do exame</th>
                       <th scope="col">Médico solicitante</th>
                       <th scope="col">Tipo do exame</th>
-                      <th scope="col">Resultado do exame</th>
-                      <th scope="col">Data da consulta em que foi solicitado</th>
+                      <th scope="col">Resultado</th>
+                      <th scope="col">Data da solicitação</th>
+                      <th scope="col">Ação</th>
                     </tr>
               </thead>
               
-              <tbody id="corpoTabelaPacientes">
+              
+              <tbody id="corpoExame">
+                
                   <!-- -->
                   <!-- -->
                   <!-- -->
-                <img src="https://4.bp.blogspot.com/-2cLwRg7rwcY/WtzSOkStQgI/AAAAAAAAHpM/qrAxAlPsFmU-RF9KeTEr7IV8UxVUdEiIgCLcBGAs/s1600/hombres_trabajando-400x315.png">
-                </tr>
+                
               </tbody>
             </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalExame" data-whatever="@mdo" onclick ="dataConsultaParaSelecionar(), MedicosParaSelecionar()">Marcar exame para<span id="spanPaciente"> o paciente </span> </button>
+            <!--aqui-->
+
+      <!--modal -->
+      <div class="modal fade" id="modalExame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+              aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h4 class="modal-title" id="marcarpara">Marcar exame para<span id="spanPaciente"> o paciente </span></h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      
+                      <div class="modal-body">
+                          <form onload="listarDadosExame()">
+
+                            <div class="form-group">
+                            <label for="dataExame" class="col-form-label">Data da realização do exame</label>
+                              <input type="date" class="form-control" id="dataExame">
+                            </div>                    
+                            
+
+                            <div class="form-group">
+                              <label for="selectMedicoSolicitante">Médico solicitante</label>
+                              <select class="form-control search-slt" id="selectMedicoSolicitante">
+                                <!--Dados no js-->
+
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="tipoExame" class="col-form-label">Tipo do exame</label>
+                              <input type="text" class="form-control" id="tipoExame">
+                            </div> 
+
+                            <div class="form-group">
+                              <label for="tipoExame" class="col-form-label">Resultado do exame</label>
+                              <input type="text" class="form-control" id="resultadoExame">
+                            </div> 
+                            
+                            
+                            <div class="form-group">
+                              <label for="dataSolicitacao" class="col-form-label">Data da solicitação</label>
+                              <select class="form-control search-slt" id="dataSolicitacao">
+                                <!--Dados no js-->
+
+                              </select>
+                            </div>
+
+                          </form>
+                    </div>
+                    <!--modal footer-->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary" onclick="marcarExame();">Marcar exame</button>
+                      </div>
+
+                  </div>
+              </div>
+            </div>
+
+<!------------------------------------------------delete e edit - ação---->
+
+            <!--modal delete-->
+            <div class="modal fade" id="modalExameDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+
+                          <h4 class="modal-title" id="myModalLabel">Desmarcar Consulta</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <p>Tem certeza que deseja continuar?</p>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-danger" id="modalExameDeleteBtn"
+                              data-dismiss="modal">Sim</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+
+            <!--modal remarcar consulta-->
+            <div class="modal fade" id="modalExameRemarcar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <h4 class="modal-title" id="myModalLabel">Remarcar essa consulta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                
+                  <div class="modal-body">
+                            <form onload="listarDadosConsulta()">
+
+                              <div class="form-group">
+
+                                <label for="motivoConsultaRemarcar" class="col-form-label">Motivo da consulta</label>
+                                <p class="text-muted small">*comentario - descrição </p>
+                                <textarea class="form-control mw-500" id="motivoConsultaRemarcar"></textarea>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="dataConsultaRemarcar" class="col-form-label">Data da consulta</label>
+                                <input type="text" class="form-control" id="dataConsultaRemarcar"><!--mudar-->
+                              </div>
+            
+                                    
+                              
+
+                              <div class="form-group">
+                                <label for="selectMedicoRemarcar">Médico executante</label>
+                                <select class="form-control search-slt" id="selectMedicoRemarcar" name="selectMedicoRemarcar">
+                                  <!--Dados no js-->
+                                  
+                                  
+
+                                </select>
+                              </div>
+                            </form>
+                      </div>
+
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-primary" id="btnRemarcarConsulta">Remarcar</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!--modals end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </div>
 </div>
 </div>
+
 
 <!--imports js -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>

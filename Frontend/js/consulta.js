@@ -55,3 +55,67 @@ function marcarConsulta () {
     }
 
 }
+
+
+//---------------marcar exame---------------------
+
+
+
+function marcarExame(){
+  
+  //alert('funcionado');
+    let link_backend = "http://localhost:5000/";
+
+
+
+  
+    //entrada
+    var dataExame = document.getElementById('dataExame').value;
+    var tipoExame = document.getElementById('tipoExame').value;
+    var resultado_exame = document.getElementById('resultadoExame').value;
+    
+
+    let paciente_id_exame = document.location.search.replace(/^.*?\=/,'');
+    var consulta_id_exame = document.getElementById('dataSolicitacao').value;
+    var medico_id_exame = document.getElementById('selectMedicoSolicitante').value;
+    
+
+
+
+    var dados = JSON.stringify({dataExame: dataExame, tipoExame: tipoExame, resultado_exame: resultado_exame, 
+      paciente_id_exame: paciente_id_exame, consulta_id_exame: consulta_id_exame, medico_id_exame:medico_id_exame});
+
+    console.log(dados);
+
+
+
+
+  $.ajax({
+        url : link_backend+'marcar_exame',
+        type : 'POST',
+        contentType : 'application/json', // enviando dados em json
+        dataType: 'json',
+        data: dados,
+        success: exameMarcado,
+        error: erroexameMarcado
+  });
+
+
+  function exameMarcado(resposta){
+        if (resposta.resultado == "ok") {
+            //mensagem
+            alert('Exame marcado com successo!');
+            document.location.reload(true);
+            //
+            
+        } else{
+            alert(resposta.resultado);
+
+    }
+  }
+    function erroexameMarcado(resposta){
+        alert("Erro na comunicação com o backend");
+    }
+
+}
+

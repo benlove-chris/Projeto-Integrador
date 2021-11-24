@@ -64,7 +64,9 @@ body{
   margin-top: 5%;
 }
 
-#tabelaPacientes{
+
+
+.t_head{
   color: black;
 
 }
@@ -89,7 +91,7 @@ td, th {
     color:  white;
     }
 
-#modalConsulta, .modal-body, #modalConsultaRemarcar, #modalConsultaDelete{
+#modalConsulta, #modalExame, .modal-body, #modalConsultaRemarcar, #modalConsultaDelete{
           color: darkblue;
 }
       #modalConsultaDelete p{
@@ -98,4 +100,12 @@ td, th {
 
     #motivoConsultaRemarcar{
       height: 200px;
+}
+
+
+#headerr{
+  height: 3.5em;
+}
+#headerr *{
+  margin-top: 0.4%;
 }

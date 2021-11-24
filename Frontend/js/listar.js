@@ -3,6 +3,8 @@ function testelistar(){
 }
 
 // todos os pacientes
+var id_paciente = document.location.search.replace(/^.*?\=/,'');
+
 function listarPacientes() {
     let link_backend = "http://localhost:5000/";
 
@@ -77,8 +79,6 @@ function listarPacientes() {
 
 // listar dados do paciente
 function listarDadosPaciente(){
-    //alert("especifica");
-    let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
         url: link_backend+ 'listar_paciente/'+id_paciente,
         method: "GET",
@@ -156,11 +156,8 @@ function listar_paciente(paciente){
 
 //lista dados da consulta do paciente
 function listarDadosConsulta(){
-
-    //let id_paciente = document.location.search.replace(/^.*?\=/,'');
     $.ajax({
-        //url: link_backend+ 'listar_consulta/'+id_paciente,
-        url: link_backend+ 'listar_consulta/1',
+        url: link_backend+ 'listar_consulta/'+id_paciente,
         method: "GET",
         dataType: "json",
         success: listar_consulta,
@@ -223,6 +220,55 @@ function listar_consulta(paciente) {
 }
 
 
+function listarDadosExame(){
+
+
+
+    $.ajax({
+        url: link_backend+ 'listar_exames_paciente/'+id_paciente,
+        method: "GET",
+        dataType: "json",
+        success: listar_exames_paciente,
+
+        error: function(){
+            alert("Erro ao ler os dados :) \nverifique o backend");
+        }
+
+
+
+    });
+    //if (Status === 444){}
+}
+
+
+
+function listar_exames_paciente(exames) {
+
+    for (var i in exames){
+        console.log("so much pain", exames[i]);
+        
+        lin =   "<tr id= 'tr_Exame" +  exames[i].id_exame+"' >" + 
+                    "<td>" + exames[i].dataExame+ "</td>" + 
+                    "<td>" + exames[i].consulta.medico.nome+ "</td>" + 
+                    "<td>" + exames[i].tipoExame+ "</td>" + 
+                    "<td>" + exames[i].resultado_exame+ "</td>" + 
+                    "<td>" + exames[i].consulta.data+ "</td>" + 
+
+                    // btn btn-primary btn-sm rounded-0 - edit/remarcar class
+                    // btn btn-danger btn-sm rounded-0 - delet/desmarcar class
+                    
+                
+                    
+                "</tr>"
+                 
+                
+        $("#corpoExame").append(lin)
+    }
+        
+
+}
+
+
 
 
 
@@ -247,8 +293,10 @@ function MedicosParaSelecionar() {
             opt = "<option value= '" + medicos[medico].id_medico+"'>"+ medicos[medico].nome + "</option>";
             console.log(opt);
 
-            $("#selectMedico").append(opt)
-            $("#selectMedicoRemarcar").append(opt)
+            $("#selectMedico").append(opt);
+            $("#selectMedicoRemarcar").append(opt);
+            $("#selectMedicoSolicitante").append(opt);
+            $("selectMedicoSolicitante").append(opt);
         }
 
     }
@@ -257,3 +305,24 @@ function MedicosParaSelecionar() {
 };
 
 
+function dataConsultaParaSelecionar() {
+    
+
+    $.ajax({
+        url: link_backend+ 'listar_consultas',
+        method: 'GET',
+        dataType: 'json',
+        success: function(datas){
+            for (var i in datas){
+                opt = "<option value= '" + datas[i].id_consulta+"'>"+ datas[i].dataConsulta + "</option>";
+                $("#dataSolicitacao").append(opt);
+            }
+
+
+        },
+        error: function(){
+            alert("Erro ao ler os dados :) \nverifique o backend");}
+    });
+
+
+};
