@@ -220,10 +220,13 @@ def remarcar_consulta(id_exame):
     
     try:
         exame = Exame.query.get_or_404(id_exame)
-        
-        exame.motivo = dados["novo_motivo"]                                 
-        exame.data = dados["nova_data"]
-        exame.medico_id_exame  = dados["novo_medico"]
+
+        exame.dataExame =  dados["dataExameRemarcar"]
+        exame.tipoExame = dados["tipoExameRemarcar"]
+        exame.medico_id_exame = dados["selectMedicoSolicitanteRemarcar"]
+        exame.consulta_id_exame = dados["dataSolicitacaoRemarcar"]
+        exame.resultado_exame = dados["resultadoExameRemarcar"]
+
         db.session.commit()
         
     except Exception as e:  #Envie mensagem em caso de erro
