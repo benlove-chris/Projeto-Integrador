@@ -163,6 +163,14 @@ def marcar_consulta():
     return resposta
 
 
+#listar um exame pelo id
+@app.route("/listar_exame_esp/<int:id_exame>", methods=['GET'])
+
+def dados_exame_esp(id_exame):
+    #dados = Paciente.query.get()
+    dados = Exame.query.get_or_404(id_exame)
+    return (dados.json())
+
 
 # desmarcar uma consulta para o paciente
 @app.route("/desmarcar_consulta/<int:id_consulta>", methods=['DELETE'])
@@ -188,6 +196,31 @@ def desmarcar_consulta(id_consulta):
 
 
 
+
+# desmarcar um exame
+@app.route("/desmarcar_exame/<int:id_exame>", methods=['DELETE'])
+
+def desmarcar_exame(id_exame):
+    
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
+    
+    try: #Tentar realizar a exclusão
+        exame = Exame.query.get(id_exame)
+        
+        db.session.delete(exame)
+        #redistribuir_consulta()
+        db.session.commit()
+        
+    
+        
+    except Exception as e:  #Envie mensagem em caso de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+    return resposta
+
+
+
 # Remarcar uma consulta para o paciente
 @app.route("/remarcar_consulta/<int:id_consulta>",  methods=['POST'])
 def remarcar_consulta(id_consulta):
@@ -200,8 +233,33 @@ def remarcar_consulta(id_consulta):
         consulta = Consulta.query.get_or_404(id_consulta)
         
         consulta.motivo = dados["novo_motivo"]                                 
-        consulta.data = dados["nova_data"]
+        consulta.dataConsulta = dados["nova_data"]
         consulta.medico_id_consulta  = dados["novo_medico"]
+        db.session.commit()
+        
+    except Exception as e:  #Envie mensagem em caso de erro
+        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
+    return resposta
+
+# Remarcar um exame para o paciente
+@app.route("/remarcar_exame/<int:id_exame>",  methods=['POST'])
+def remarcar_exame(id_exame):
+   
+    dados = request.get_json()
+    
+    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
+    
+    try:
+        exame = Exame.query.get_or_404(id_exame)
+
+        exame.dataExame =  dados["dataExameRemarcar"]
+        exame.tipoExame = dados["tipoExameRemarcar"]
+        exame.medico_id_exame = dados["selectMedicoSolicitanteRemarcar"]
+        exame.consulta_id_exame = dados["dataSolicitacaoRemarcar"]
+        exame.resultado_exame = dados["resultadoExameRemarcar"]
+
         db.session.commit()
         
     except Exception as e:  #Envie mensagem em caso de erro

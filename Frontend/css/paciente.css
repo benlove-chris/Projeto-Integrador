@@ -94,6 +94,10 @@ td, th {
 #modalConsulta, #modalExame, .modal-body, #modalConsultaRemarcar, #modalConsultaDelete{
           color: darkblue;
 }
+
+#modalExameDelete *{
+  color: black;
+}
       #modalConsultaDelete p{
         color: darkblue;
 }

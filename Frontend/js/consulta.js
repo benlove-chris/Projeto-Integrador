@@ -25,7 +25,8 @@ function marcarConsulta () {
     */
 
 
-	var dados = JSON.stringify({data: dataConsultaDado, motivo: motivoConsultaDado, paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
+	var dados = JSON.stringify({dataConsulta: dataConsultaDado, motivo: motivoConsultaDado, 
+        paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
 
 	$.ajax({
         url : link_backend+'marcar_consulta',
@@ -51,7 +52,7 @@ function marcarConsulta () {
     }
 	}
     function erroconsultaMarcado(resposta){
-        alert("Erro na comunicação com o backend");
+        alert("Erro na comunicação com o backend - consulta");
     }
 
 }
@@ -72,7 +73,7 @@ function marcarExame(){
     //entrada
     var dataExame = document.getElementById('dataExame').value;
     var tipoExame = document.getElementById('tipoExame').value;
-    var resultado_exame = document.getElementById('resultadoExame').value;
+    var resultadoExame = document.getElementById('resultadoExame').value;
     
 
     let paciente_id_exame = document.location.search.replace(/^.*?\=/,'');
@@ -82,7 +83,7 @@ function marcarExame(){
 
 
 
-    var dados = JSON.stringify({dataExame: dataExame, tipoExame: tipoExame, resultado_exame: resultado_exame, 
+    var dados = JSON.stringify({dataExame: dataExame, tipoExame: tipoExame, resultadoExame: resultadoExame, 
       paciente_id_exame: paciente_id_exame, consulta_id_exame: consulta_id_exame, medico_id_exame:medico_id_exame});
 
     console.log(dados);

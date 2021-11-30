@@ -154,13 +154,14 @@ function listar_paciente(paciente){
 }
 
 
-//lista dados da consulta do paciente
+
+//listar consultas do paciente
 function listarDadosConsulta(){
     $.ajax({
         url: link_backend+ 'listar_consulta/'+id_paciente,
         method: "GET",
         dataType: "json",
-        success: listar_consulta,
+        success: listar_consultas_paciente,
 
         error: function(){
             alert("Erro ao ler os dados :) \nverifique o backend");
@@ -176,21 +177,21 @@ function listarDadosConsulta(){
 
 /*---------------------------------*/
 
-function listar_consulta(paciente) {
-    //$("#nome-paciente").text(paciente.nome + " "+paciente.sobrenome) 
+function listar_consultas_paciente(consultas) {
+    //$("#nome-consultas").text(consultas.nome + " "+consultas.sobrenome) 
     
-    console.log(paciente.data);
+    console.log(consultas.dataConsulta);
 
-    console.log("AAAAAA",paciente.data)
+    console.log("AAAAAA",consultas.dataConsulta)
     
 
-    for (var consulta in paciente){
-        console.log("consulta: ", paciente[consulta].id_consulta);
+    for (var i in consultas){
+        console.log("consulta: ", consultas[i].id_consulta);
         
-        lin =   "<tr id= 'tr_Consulta" +  paciente[consulta].id_consulta+"' >" + 
-                    "<td>" + paciente[consulta].data+ "</td>" + 
-                    "<td>" + paciente[consulta].medico.nome+ "</td>" + 
-                    "<td>" + paciente[consulta].motivo+ "</td>" + 
+        lin =   "<tr id= 'tr_Consulta" +  consultas[i].id_consulta+"' >" + 
+                    "<td>" + consultas[i].dataConsulta+ "</td>" + 
+                    "<td>" + consultas[i].medico.nome+ "</td>" + 
+                    "<td>" + consultas[i].motivo+ "</td>" + 
 
                     // btn btn-primary btn-sm rounded-0 - edit/remarcar class
                     // btn btn-danger btn-sm rounded-0 - delet/desmarcar class
@@ -198,12 +199,12 @@ function listar_consulta(paciente) {
                     "<td>"+                             
                         '<ul class="list-inline m-0">'+
                             '<li class="list-inline-item">'+
-                              '<button class="" data-toggle="modal" data-target="#modalConsultaRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalConsultaRemarcar('+paciente[consulta].id_consulta+ '), MedicosParaSelecionar() ; ">'+
+                              '<button class="" data-toggle="modal" data-target="#modalConsultaRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalConsultaRemarcar('+consultas[i].id_consulta+ '), MedicosParaSelecionar() ; ">'+
                               '<i class="fa fa-edit"></i></button>'+
                             '</li>'+
                             
                             '<li class="list-inline-item">'+
-                              '<button class="" data-toggle="modal" data-target="#modalConsultaDelete"  type="button" data-toggle="tooltip" data-placement="top" title="Desmarcar" onclick="chamarModalConsultaDelete('+paciente[consulta].id_consulta+ '); ">'+
+                              '<button class="" data-toggle="modal" data-target="#modalConsultaDelete"  type="button" data-toggle="tooltip" data-placement="top" title="Desmarcar" onclick="chamarModalConsultaDelete('+consultas[i].id_consulta+ '); ">'+
                               '<i class="fa fa-trash"></i></button>'+
                             '</li>'+
                             
@@ -220,6 +221,7 @@ function listar_consulta(paciente) {
 }
 
 
+//listar exames do paciente
 function listarDadosExame(){
 
 
@@ -251,14 +253,27 @@ function listar_exames_paciente(exames) {
                     "<td>" + exames[i].dataExame+ "</td>" + 
                     "<td>" + exames[i].consulta.medico.nome+ "</td>" + 
                     "<td>" + exames[i].tipoExame+ "</td>" + 
-                    "<td>" + exames[i].resultado_exame+ "</td>" + 
-                    "<td>" + exames[i].consulta.data+ "</td>" + 
+                    "<td>" + exames[i].resultadoExame+ "</td>" + 
+                    "<td>" + exames[i].consulta.dataConsulta+ "</td>" + 
 
                     // btn btn-primary btn-sm rounded-0 - edit/remarcar class
                     // btn btn-danger btn-sm rounded-0 - delet/desmarcar class
                     
-                
-                    
+                    "<td>"+                             
+                        '<ul class="list-inline m-0">'+
+                            '<li class="list-inline-item">'+
+                              '<button class="" data-toggle="modal" data-target="#modalExameRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalExameRemarcar('+exames[i].id_exame+ '), dataConsultaParaSelecionar(), MedicosParaSelecionar(); ">'+
+                              '<i class="fa fa-edit"></i></button>'+
+                            '</li>'+
+                            
+                            '<li class="list-inline-item">'+
+                              '<button class="" data-toggle="modal" data-target="#modalExameDelete"  type="button" data-toggle="tooltip" data-placement="top" title="Desmarcar" onclick="chamarModalExameDelete('+exames[i].id_exame+ '); ">'+
+                              '<i class="fa fa-trash"></i></button>'+
+                            '</li>'+
+                            
+                        '</ul>'+
+                    "</td>"+
+
                 "</tr>"
                  
                 
@@ -296,7 +311,7 @@ function MedicosParaSelecionar() {
             $("#selectMedico").append(opt);
             $("#selectMedicoRemarcar").append(opt);
             $("#selectMedicoSolicitante").append(opt);
-            $("selectMedicoSolicitante").append(opt);
+            $("#selectMedicoSolicitanteRemarcar").append(opt);
         }
 
     }
@@ -316,6 +331,7 @@ function dataConsultaParaSelecionar() {
             for (var i in datas){
                 opt = "<option value= '" + datas[i].id_consulta+"'>"+ datas[i].dataConsulta + "</option>";
                 $("#dataSolicitacao").append(opt);
+                $("#dataSolicitacaoRemarcar").append(opt);
             }
 
 

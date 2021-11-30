@@ -21,7 +21,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   
 </head>
-<body onload="listarDadosPaciente(), listarDadosExame(),listarDadosConsulta();" style="background-color:   white;">
+<body onload="listarDadosPaciente(), listarDadosExame(),listarDadosConsulta(), dataConsultaParaSelecionar();" style="background-color:   white;">
 
 
 <!-- nav-bar -->
@@ -335,7 +335,7 @@
                   <div class="modal-content">
                       <div class="modal-header">
 
-                          <h4 class="modal-title" id="myModalLabel">Desmarcar Consulta</h4>
+                          <h4 class="modal-title" id="myModalLabel">Desmarcar exame</h4>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
@@ -353,42 +353,50 @@
             </div>
 
 
-            <!--modal remarcar consulta-->
+            <!--modal remarcar exane-->
             <div class="modal fade" id="modalExameRemarcar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
 
-                    <h4 class="modal-title" id="myModalLabel">Remarcar essa consulta</h4>
+                    <h4 class="modal-title" id="myModalLabel">Remarcar esse exame</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                 
                   <div class="modal-body">
-                            <form onload="listarDadosConsulta()">
+                            <form onload="listarDadosExame()">
 
                               <div class="form-group">
-
-                                <label for="motivoConsultaRemarcar" class="col-form-label">Motivo da consulta</label>
-                                <p class="text-muted small">*comentario - descrição </p>
-                                <textarea class="form-control mw-500" id="motivoConsultaRemarcar"></textarea>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="dataConsultaRemarcar" class="col-form-label">Data da consulta</label>
-                                <input type="text" class="form-control" id="dataConsultaRemarcar"><!--mudar-->
-                              </div>
-            
-                                    
+                              <label for="dataExameRemarcar" class="col-form-label">Data da realização do exame</label>
+                                <input type="date" class="form-control" id="dataExameRemarcar">
+                              </div>                    
                               
 
                               <div class="form-group">
-                                <label for="selectMedicoRemarcar">Médico executante</label>
-                                <select class="form-control search-slt" id="selectMedicoRemarcar" name="selectMedicoRemarcar">
+                                <label for="selectMedicoSolicitanteRemarcar">Médico solicitante</label>
+                                <select class="form-control search-slt" id="selectMedicoSolicitanteRemarcar">
                                   <!--Dados no js-->
-                                  
-                                  
+
+                                </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="tipoExameRemarcar" class="col-form-label">Tipo do exame</label>
+                                <input type="text" class="form-control" id="tipoExameRemarcar">
+                              </div> 
+
+                              <div class="form-group">
+                                <label for="resultadoExameRemarcar" class="col-form-label">Resultado do exame</label>
+                                <input type="text" class="form-control" id="resultadoExameRemarcar">
+                              </div> 
+                              
+                              
+                              <div class="form-group">
+                                <label for="dataSolicitacaoRemarcar" class="col-form-label">Data da solicitação</label>
+                                <select class="form-control search-slt" id="dataSolicitacaoRemarcar">
+                                  <!--Dados no js-->
 
                                 </select>
                               </div>
@@ -397,7 +405,7 @@
 
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-primary" id="btnRemarcarConsulta">Remarcar</button>
+                      <button type="button" class="btn btn-primary" id="btnRemarcarExame">Remarcar</button>
                   </div>
             </div>
         </div>

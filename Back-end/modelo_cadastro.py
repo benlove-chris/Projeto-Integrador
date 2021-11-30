@@ -124,6 +124,7 @@ class Exame(db.Model):
     tipoExame = db.Column(db.String(254))
     
     
+    
     paciente_id_exame = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
     medico_id_exame = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
     consulta_id_exame = db.Column(db.Integer, db.ForeignKey(Consulta.id_consulta), nullable=False)
@@ -132,13 +133,13 @@ class Exame(db.Model):
     medico = db.relationship("Medico", foreign_keys=medico_id_exame)    
     consulta = db.relationship("Consulta", foreign_keys=consulta_id_exame)    
     
-    resultado_exame = db.Column(db.String(254))
+    resultadoExame = db.Column(db.String(254))
 
     
     def __str__(self): 
         # expressão da classe em forma de texto
         return f"{self.id_exame}, {self.dataExame}, {self.paciente.nome} {self.paciente.sobrenome},\
-        {self.consulta.dataConsulta}, {self.consulta.medico},{self.tipoExame}, {self.resultado_exame}" 
+        {self.consulta.dataConsulta}, {self.consulta.medico},{self.tipoExame}, {self.resultadoExame}" 
 
 
 
@@ -152,7 +153,7 @@ class Exame(db.Model):
             "paciente": self.paciente.json(),
             "medico": self.medico.json(),
             "consulta": self.consulta.json(),
-            "resultado_exame": self.resultado_exame
+            "resultadoExame": self.resultadoExame
         }
         """return {
             "id_exame": self.id_exame,
@@ -163,7 +164,7 @@ class Exame(db.Model):
             "medico": self.medico.json(),
             "consulta_id_exame": self.consulta_id_exame,
             #"consulta": self.consulta.json(),
-            "resultado_exame": self.resultado_exame
+            "resultadoExame": self.resultadoExame
         }"""
 
 """
@@ -264,8 +265,8 @@ if __name__ == "__main__":
     
 
     #teste marcar exame 
-    exame1 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta1, medico=medico1, tipoExame="Sangue", resultado_exame = "1ML 300Kwh")
-    exame2 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta1, medico=medico1, tipoExame="Sangue",resultado_exame = "1ML 300Kwh")
+    exame1 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta1, medico=medico1, tipoExame="Sangue", resultadoExame = "1ML 300Kwh")
+    exame2 = Exame(dataExame="04/08/2021", paciente= paciente1, consulta=consulta2, medico=medico2, tipoExame="Sangue",resultadoExame = "1ML 300Kwh")
     db.session.add(exame1)
     db.session.add(exame2)
     

@@ -121,7 +121,7 @@ function cadastrarMedico(){
 
 
 
-/*Apagar*/
+// Desmarcar consulta
 function chamarModalConsultaDelete(id_consulta){
     console.log('id_consulta,',id_consulta);
     $("#modalConsultaDeleteBtn").attr('onClick', ("apagarConsulta('"+id_consulta+"')"));
@@ -160,6 +160,46 @@ function apagarConsulta(id_consulta){
     })
 };
 
+
+
+// Desmarcar exame
+
+function chamarModalExameDelete(id_exame){
+
+    $("#modalExameDeleteBtn").attr('onClick', ("apagarExame('"+id_exame+"')"));
+    
+
+
+}
+
+function apagarExame(id_exame){    
+    
+    $.ajax({
+        
+        url: link_backend +'/desmarcar_exame/'+id_exame,
+        type: 'DELETE',
+        dataType: 'json', 
+        contentType: 'application/json',
+        data: JSON.stringify({ id_exame: id_exame}), 
+        success: function(retorno){
+            if (retorno.resultado == "ok") {
+                $("#tr_Exame" + id_exame).fadeOut(600, function(){ 
+                alert("Exame desmarcada com sucesso!");
+                
+                
+            });
+            
+        }
+            else {
+                alert("Respect"+retorno.resultado + " : " + retorno.detalhes);
+            }
+        },
+        error: function (error){
+            alert("Deu ruim na comunicação com o backend");
+        }
+    })
+};
+
 /*Apagar </> */
 
 
@@ -174,6 +214,10 @@ var dataConsultaDado = document.getElementById('dataConsulta').value;
 
 //?
 
+
+
+//Remarcar consulta <>
+
 function chamarModalConsultaRemarcar(id_consulta){
     
     $("#btnRemarcarConsulta").attr('onClick', ("remarcarConsulta('"+id_consulta+"')"));
@@ -182,10 +226,10 @@ function chamarModalConsultaRemarcar(id_consulta){
         method: "GET",
         dataType: "json",
         success: function(resposta){
-            let i_m_c = resposta.medico.id_medico;
+            let id_medico = resposta.medico.id_medico;
             $("#motivoConsultaRemarcar").val(resposta.motivo);
-            $("#dataConsultaRemarcar").val(resposta.data); //data
-            $('#selectMedicoRemarcar option').removeAttr('selected').filter("[value="+i_m_c+"]").attr('selected', true);
+            $("#dataConsultaRemarcar").val(resposta.dataConsulta); //data
+            $('#selectMedicoRemarcar option').removeAttr('selected').filter("[value="+id_medico+"]").attr('selected', true);
             //$("#selectMedicoRemarcar option").removeAttr('selected').filter('[value=2]').attr('selected', true);    
         },
 
@@ -239,6 +283,89 @@ function remarcarConsulta(id_consulta) {
 
 }
 
+//Remarcar consulta </>
+
+
+
+
+//Remarcar exame <>
+function chamarModalExameRemarcar(id_exame){
+    
+    $("#btnRemarcarExame").attr('onClick', ("remarcarExame('"+id_exame+"')"));
+    $.ajax({
+        url: link_backend +'/listar_exame_esp/'+id_exame,
+        method: "GET",
+        dataType: "json",
+        success: function(resposta){
+            //os valores a ser trocados
+            let id_medico = resposta.medico.id_medico; //id do medico
+            let id_consulta = resposta.consulta.id_consulta;
+            $("#dataConsultaRemarcar").val(resposta.dataExame);
+            $("#tipoExameRemarcar").val(resposta.tipoExame);
+            $('#selectMedicoSolicitanteRemarcar option').removeAttr('selected').filter("[value="+id_medico+"]").attr('selected', true);
+            $("#resultadoExameRemarcar").val(resposta.resultadoExame);
+            $('#dataSolicitacaoRemarcar option').removeAttr('selected').filter("[value="+id_consulta+"]").attr('selected', true);
+        },
+
+        error: function(){
+            alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
+        }
+    })
+    
+}
+
+
+
+function remarcarExame(id_exame) {
+    
+    //editar
+    
+    
+    let dataExameRemarcar = $("#dataExameRemarcar").val();
+    let selectMedicoSolicitanteRemarcar = $("#selectMedicoSolicitanteRemarcar").val();
+    let tipoExameRemarcar = $("#tipoExameRemarcar").val();
+    let resultadoExameRemarcar = $("#resultadoExameRemarcar").val();
+    let dataSolicitacaoRemarcar = $("#dataSolicitacaoRemarcar").val();
+
+    var dados = JSON.stringify({dataExameRemarcar: dataExameRemarcar, selectMedicoSolicitanteRemarcar: selectMedicoSolicitanteRemarcar,
+    tipoExameRemarcar: tipoExameRemarcar, resultadoExameRemarcar: resultadoExameRemarcar,
+    dataSolicitacaoRemarcar: dataSolicitacaoRemarcar});
+        
+    
+   
+
+    $.ajax({
+        url: link_backend +'/remarcar_exame/'+id_exame,
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: dados,
+        success: exameRemarcada,
+        error: erroExameRemarcada
+    });
+
+    function exameRemarcada(retorno){
+        
+        if (retorno.resultado == "ok"){
+            alert("Exame remarcada com sucesso!");
+
+        }else{
+            alert(retorno.resultado+ ":"+retorno.detalhes);
+        }
+    };
+
+
+    function erroExameRemarcada(retorno){
+        //mensagem de erro 
+        //alert("Sem sucesso");
+        alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
+
+        //alert("Erro na comunicação  - resposta not ok com o backend\nAo enviar os dados\nou ao receber os dados");
+    };
+
+}
+
+//Remarcar exame </>
 
 
 
