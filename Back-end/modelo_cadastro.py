@@ -10,7 +10,6 @@ class Medico(db.Model):
     crm = db.Column(db.String(24))
     
 
-    
 
     #Expressão da classe em forma de texto
     def __str__(self):
@@ -31,8 +30,6 @@ class Paciente(db.Model):
     id_paciente = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     sobrenome = db.Column(db.String(255))
-    
-    #Essa parte está em comentário para dar uma agilizada na hora de testar, e não ter que botar muitas informações por agora
     cpf = db.Column(db.String(11))
     data_nasc = db.Column(db.String(255))
     sexo =  db.Column(db.String(10))
@@ -57,13 +54,13 @@ class Paciente(db.Model):
     usuario = db.Column(db.String(255))
     senha = db.Column(db.String(255))
 
-
-
-    
-
     #Método para expressar o paciente em forma de texto
     def __str__(self):
-        return f"{self.id_paciente}, {self.nome}, {self.sobrenome} ,  {self.email} "
+    
+        return f"{self.nome}, {self.sobrenome}, {self.cpf}, {self.data_nasc},\
+                {self.sexo}, {self.e_civil}, {self.cns}, {self.cep}, {self.logradouro},\
+                {self.numero}, {self.bairro}, {self.cidade},{self.estado}, {self.telefone1},\
+                    {self.telefone2}, {self.email}, {self.usuario}, {self.senha}"
 
     #Expressao da classe no formato json
     def json(self):
@@ -71,7 +68,21 @@ class Paciente(db.Model):
             "id_paciente": self.id_paciente,
             "nome": self.nome,
             "sobrenome": self.sobrenome,
+            "cpf": self.cpf,
+            "data_nasc": self.data_nasc,
+            "sexo": self.sexo,
+            "e_civil": self.e_civil,
+            "cns": self.cns,
+            "cep": self.cep,
+            "logradouro": self.logradouro,
+            "numero": self.numero,
+            "bairro": self.bairro,
+            "cidade": self.cidade,
+            "estado": self.estado,
+            "telefone1": self.telefone1,
+            "telefone2": self.telefone2,
             "email": self.email,
+            "usuario": self.usuario,
             "senha": self.senha
         }
         
@@ -111,19 +122,11 @@ class Consulta(db.Model):
             "medico": self.medico.json()
         }
 
-"""
-*Data da realização do exame	
-*Médico solicitante	
-*TipoExame do exame	
-*Resultado do exame	
-*Data da consulta em que foi solicitado
-"""
+
 class Exame(db.Model):
     id_exame = db.Column(db.Integer, primary_key=True)
     dataExame = db.Column(db.String(254))
     tipoExame = db.Column(db.String(254))
-    
-    
     
     paciente_id_exame = db.Column(db.Integer, db.ForeignKey(Paciente.id_paciente), nullable=False)
     medico_id_exame = db.Column(db.Integer, db.ForeignKey(Medico.id_medico), nullable=False)
@@ -155,62 +158,8 @@ class Exame(db.Model):
             "consulta": self.consulta.json(),
             "resultadoExame": self.resultadoExame
         }
-        """return {
-            "id_exame": self.id_exame,
-            "dataExame": self.dataExame,
-            "paciente_id_exame": self.paciente_id_exame,
-            "paciente": self.paciente.json(),
-            "medico_id_exame": self.medico_id_exame,
-            "medico": self.medico.json(),
-            "consulta_id_exame": self.consulta_id_exame,
-            #"consulta": self.consulta.json(),
-            "resultadoExame": self.resultadoExame
-        }"""
+        
 
-"""
-class Exame(db.Model):
-    id_exame = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(254)) # nome do exame
-    unidade = db.Column(db.String(254)) # unidade de medida
-    vr = db.Column(db.String(254)) # valores de referência
-    paciente_id_exame = db.Column(db.Integer, db.ForeignKey(Paciente.id), nullable=False)
-    paciente = db.relationship("Paciente")
-    def __str__(self):
-        return f"{self.nome} [{self.id_exame}], unidade={self.unidade} ({self.vr})"  
-
-    def json(self):
-        return {
-            "id_exame":self.id_exame,
-            "nome":self.nome,
-            "unidade":self.unidade,
-            "vr":self.vr,
-            "paciente_id_exame":self.paciente_id_exame,
-            "paciente":self.paciente.json()
-            
-        }
-    
-
-class ExameRealizado(db.Model):
-    id_exame = db.Column(db.Integer, primary_key=True)
-    #dataExame = db.Column(db.String(254)) # data do exame - relacao
-    data = db.Column(db.Integer, db.ForeignKey(Paciente.id), nullable=False)
-    resultado = db.Column(db.String(254)) # apenas o valor
-    exame_id =  db.Column(db.Integer, db.ForeignKey(Exame.id), nullable=False)
-    exame = db.relationship("Exame")
-
-    def __str__(self): # expressão da classe em forma de texto
-        return f"{self.data}, {self.resultado}, {self.exame}""
-             
-
-    def json(self):
-        return {
-            "id":self.id,
-            "data":self.data,
-            "resultado":self.resultado,
-            "exame_id":self.exame_id,
-            "exame":self.exame.json()
-        }
-"""
 
 
 #Testes das classes
@@ -222,7 +171,8 @@ if __name__ == "__main__":
     #Cria as tabelas
     db.create_all()
 
-    #Teste da classe Pacienteca
+    
+    #Teste da classe Pacient
     paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus", email="johnnydinheiro@gmail.com", senha = "8956")
     paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart", email="espiga@gmail.com", senha = "5421")
     paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira", email="ferrarigol123@gmail.com", senha = "1234")
@@ -275,10 +225,6 @@ if __name__ == "__main__":
     print(exame2)
     
 
-    """
-    print all in a class
-    pacientes = db.session.query(Paciente).all()
-    for paciente in pacientes:
-        print(paciente.nome)
-    """
+    
 
+    

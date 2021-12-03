@@ -41,7 +41,7 @@ function cadastrarPaciente(){
     //mandar para o back-end -
 
     $.ajax({
-            url : link_backend +'/cadastrar_paciente',
+            url : link_backend +'/cadastrar/Paciente',
             type : 'POST',
             contentType : 'application/json', // enviando dados em json
             dataType: 'json',
@@ -54,9 +54,8 @@ function cadastrarPaciente(){
         if (resposta.resultado == "ok") {
             //mensagem
             alert('O paciente foi cadastrado com sucesso! ');
-            //
-            $("#nome").val("");
-            $("#sobrenome").val("");
+            document.location.reload(true);
+
         } else{
             alert('erro na comunicação  - resposta not ok');
 
@@ -90,7 +89,7 @@ function cadastrarMedico(){
     //mandar para o back-end -
 
     $.ajax({
-            url : link_backend +'/cadastrar_medico',
+            url : link_backend +'/cadastrar/Medico',
             type : 'POST',
             contentType : 'application/json', // enviando dados em json
             dataType: 'json',
@@ -108,7 +107,7 @@ function cadastrarMedico(){
             $("#sobrenome").val("");
             $("#crm").val("");
         } else{
-            alert('erro na comunicação  - resposta not ok - resposta not ok');
+            alert('erro na comunicação  - resposta not ok');
 
         }
     }
@@ -145,6 +144,7 @@ function apagarConsulta(id_consulta){
             if (retorno.resultado == "ok") {
                 $("#tr_Consulta" + id_consulta).fadeOut(600, function(){ 
                 alert("Consulta desmarcada com sucesso!");
+                document.location.reload(true);
                 
                 
             });
@@ -185,6 +185,7 @@ function apagarExame(id_exame){
             if (retorno.resultado == "ok") {
                 $("#tr_Exame" + id_exame).fadeOut(600, function(){ 
                 alert("Exame desmarcada com sucesso!");
+                document.location.reload(true);
                 
                 
             });
@@ -265,7 +266,8 @@ function remarcarConsulta(id_consulta) {
     function consultaRemarcada(retorno){
         
         if (retorno.resultado == "ok"){
-            alert("Consulta remacada com sucesso!");
+            alert("Consulta remarcada com sucesso!");
+            document.location.reload(true);
 
         }else{
             alert(retorno.resultado+ ":"+retorno.detalhes);
@@ -348,6 +350,7 @@ function remarcarExame(id_exame) {
         
         if (retorno.resultado == "ok"){
             alert("Exame remarcada com sucesso!");
+            document.location.reload(true);
 
         }else{
             alert(retorno.resultado+ ":"+retorno.detalhes);

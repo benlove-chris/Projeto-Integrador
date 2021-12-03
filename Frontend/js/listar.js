@@ -10,7 +10,7 @@ function listarPacientes() {
 
 
     $.ajax({
-        url: link_backend+'listar_pacientes',
+        url: link_backend+'listar/Paciente',
         method: 'GET',
         dataType: 'json',
         success: listar_pacientes,
@@ -178,16 +178,10 @@ function listarDadosConsulta(){
 /*---------------------------------*/
 
 function listar_consultas_paciente(consultas) {
-    //$("#nome-consultas").text(consultas.nome + " "+consultas.sobrenome) 
     
-    console.log(consultas.dataConsulta);
-
-    console.log("AAAAAA",consultas.dataConsulta)
     
 
     for (var i in consultas){
-        console.log("consulta: ", consultas[i].id_consulta);
-        
         lin =   "<tr id= 'tr_Consulta" +  consultas[i].id_consulta+"' >" + 
                     "<td>" + consultas[i].dataConsulta+ "</td>" + 
                     "<td>" + consultas[i].medico.nome+ "</td>" + 
@@ -199,7 +193,7 @@ function listar_consultas_paciente(consultas) {
                     "<td>"+                             
                         '<ul class="list-inline m-0">'+
                             '<li class="list-inline-item">'+
-                              '<button class="" data-toggle="modal" data-target="#modalConsultaRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalConsultaRemarcar('+consultas[i].id_consulta+ '), MedicosParaSelecionar() ; ">'+
+                              '<button class="" data-toggle="modal" data-target="#modalConsultaRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalConsultaRemarcar('+consultas[i].id_consulta+ '); ">'+
                               '<i class="fa fa-edit"></i></button>'+
                             '</li>'+
                             
@@ -247,7 +241,7 @@ function listarDadosExame(){
 function listar_exames_paciente(exames) {
 
     for (var i in exames){
-        console.log("so much pain", exames[i]);
+    
         
         lin =   "<tr id= 'tr_Exame" +  exames[i].id_exame+"' >" + 
                     "<td>" + exames[i].dataExame+ "</td>" + 
@@ -256,13 +250,12 @@ function listar_exames_paciente(exames) {
                     "<td>" + exames[i].resultadoExame+ "</td>" + 
                     "<td>" + exames[i].consulta.dataConsulta+ "</td>" + 
 
-                    // btn btn-primary btn-sm rounded-0 - edit/remarcar class
-                    // btn btn-danger btn-sm rounded-0 - delet/desmarcar class
+        
                     
                     "<td>"+                             
                         '<ul class="list-inline m-0">'+
                             '<li class="list-inline-item">'+
-                              '<button class="" data-toggle="modal" data-target="#modalExameRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalExameRemarcar('+exames[i].id_exame+ '), dataConsultaParaSelecionar(), MedicosParaSelecionar(); ">'+
+                              '<button class="" data-toggle="modal" data-target="#modalExameRemarcar"  type="button" data-toggle="tooltip" data-placement="top" title="Remarcar"  onclick="chamarModalExameRemarcar('+exames[i].id_exame+ ');">'+
                               '<i class="fa fa-edit"></i></button>'+
                             '</li>'+
                             
@@ -293,7 +286,7 @@ function MedicosParaSelecionar() {
     
 
     $.ajax({
-        url: link_backend+ 'listar_medicos',
+        url: link_backend+ 'listar/Medico',
         method: 'GET',
         dataType: 'json',
         success: medicos_select,
@@ -324,7 +317,7 @@ function dataConsultaParaSelecionar() {
     
 
     $.ajax({
-        url: link_backend+ 'listar_consultas',
+        url: link_backend+ 'listar/Consulta',
         method: 'GET',
         dataType: 'json',
         success: function(datas){

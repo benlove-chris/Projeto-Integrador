@@ -29,7 +29,7 @@ function marcarConsulta () {
         paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
 
 	$.ajax({
-        url : link_backend+'marcar_consulta',
+        url : link_backend+'cadastrar/Consulta',
         type : 'POST',
         contentType : 'application/json', // enviando dados em json
         dataType: 'json',
@@ -92,7 +92,7 @@ function marcarExame(){
 
 
   $.ajax({
-        url : link_backend+'marcar_exame',
+        url : link_backend+'cadastrar/Exame',
         type : 'POST',
         contentType : 'application/json', // enviando dados em json
         dataType: 'json',

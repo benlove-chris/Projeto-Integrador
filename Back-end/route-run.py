@@ -1,52 +1,73 @@
+from flask.wrappers import Request
 from config import *
 from modelo_cadastro import *
 
 @app.route("/")
 
-def inicio():
+def menu_padrão():
     return ("Aqui vai uma mensagem de boas vindas (img/outro)")
 
+
+
 # listar todos os pacientes registrados
-@app.route("/listar_pacientes", methods=['GET'])
+@app.route("/listar/<string:classe>", methods=['GET'])
 
-def listar_pacientes():
-    pacientes = db.session.query(Paciente).all()
-    retorno = []
+def listar(classe):
+    # obter os dados da classe informada
+    dados = None 
+    if classe == "Paciente":
+        dados = db.session.query(Paciente).all() 
+    elif classe == "Medico": 
+        dados = db.session.query(Medico).all() 
+    elif classe == "Consulta": 
+        dados = db.session.query(Consulta).all() 
+    elif classe == "Exame":
+        dados = db.session.query(Exame).all() 
+   
+    # converter dados para json 
+    lista_jsons = [ x.json() for x in dados ]
+    
+    # converter a lista do python para json 
+    resposta = jsonify(lista_jsons) 
+    # PERMITIR resposta para outras pedidos oriundos de outras tecnologias 
+    resposta.headers.add("Access-Control-Allow-Origin", "*") 
+    return resposta
 
-    for paciente in pacientes:
-        retorno.append(paciente.json())
-    resposta = jsonify(retorno)
-    resposta.headers.add("Access-Control-Allow-Origin", "*")
+   
+
+@app.route("/cadastrar/<string:classe>", methods=['POST'])
+
+def cadastrar(classe):
+    # obter os dados da classe informada
+    resposta = jsonify({"resultado": "ok"})
+    dados = request.get_json()
+    if classe == "Paciente":
+        novo_paciente = Paciente(**dados)
+        db.session.add(novo_paciente)
+        db.session.commit()
+    
+    elif classe == "Medico":
+        novo_medico = Medico(**dados)
+        db.session.add(novo_medico)
+        db.session.commit()
+
+    elif classe == "Consulta":
+        novo_consulta = Consulta(**dados)
+        db.session.add(novo_consulta)
+        db.session.commit()
+    
+    elif classe == "Exame":
+        novo_exame = Exame(**dados)
+        db.session.add(novo_exame)
+        db.session.commit()
+   
+
+    resposta.headers.add("Access-Control-Allow-Origin","*")
+
     return resposta
 
 
-# listar todas as consultas marcadas
-@app.route("/listar_consultas", methods=['GET'])
 
-def listar_consultas():
-    consultas = db.session.query(Consulta).all()
-    retorno = []
-
-    for consulta in consultas:
-        retorno.append(consulta.json())
-    resposta = jsonify(retorno)
-    resposta.headers.add("Access-Control-Allow-Origin", "*")
-    return resposta
-
-
-
-# listar todos os medicos registrados
-@app.route("/listar_medicos", methods=['GET'])
-
-def listar_medicos():
-    medicos = db.session.query(Medico).all()
-    retorno = []
-
-    for medico in medicos:
-        retorno.append(medico.json())
-    resposta = jsonify(retorno)
-    resposta.headers.add("Access-Control-Allow-Origin", "*")
-    return resposta
 
 
 
@@ -102,65 +123,6 @@ def listar_exames_paciente(paciente_id):
     return resposta
 
 
-
-# listar todos os medicos registrados
-@app.route("/listar_exames", methods=['GET'])
-
-def listar_exames():
-    exames = db.session.query(Exame).all()
-    retorno = []
-
-    for exame in exames:
-        retorno.append(exame.json())
-    resposta = jsonify(retorno)
-    resposta.headers.add("Access-Control-Allow-Origin", "*")
-    return resposta
-
-
-# incluir/cadastrar um paciente
-@app.route("/cadastrar_paciente", methods=['POST'])
-
-def cadastrar_paciente():
-    #db.create_all()
-    dados = request.get_json()
-    novo_paciente = Paciente(**dados)
-    db.session.add(novo_paciente)
-    db.session.commit()
-
-    return {"resultado":'ok'}
-
-
-
-# incluir/cadastrar um médico
-@app.route("/cadastrar_medico", methods=['POST'])
-
-def cadastrar_medico():
-    #db.create_all()
-    dados = request.get_json()
-    novo_medico = Medico(**dados)
-    db.session.add(novo_medico)
-    db.session.commit()
-
-    return {"resultado":'ok'}
-
-
-
-
-# marcar consulta
-@app.route("/marcar_consulta", methods=['POST'])
-
-def marcar_consulta():
-
-    resposta = jsonify({"resultado": "ok"})
-    dados = request.get_json()
-    nova_consulta = Consulta(**dados)
-    #nova_consulta.headers.add("Access-Control-Allow-Origin", "*")
-    db.session.add(nova_consulta)
-    db.session.commit()
-
-    resposta.headers.add("Access-Control-Allow-Origin","*")
-
-    return resposta
 
 
 #listar um exame pelo id
@@ -269,50 +231,6 @@ def remarcar_exame(id_exame):
     return resposta
 
 
-
-"""
-# editar dados do paciente - a resolver
-@app.route("/editar_paciente/<int:id_paciente>",  methods=['POST'])
-def editar_paciente(id_paciente):
-   
-    dados = request.get_json()
-    resposta = jsonify({"resultado":"ok","detalhes": "ok"})
-    
-    
-    
-    try:
-        paciente = Paciente.query.get_or_404(id_paciente)
-        
-        
-        paciente.nome = dados["novo_nome"]
-        #paciente.sobrenome = dados["novo_sobrenome"]
-        db.session.commit()
-        
-    except Exception as e:  #Envie mensagem em caso de erro
-        resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
-        
-    resposta.headers.add("Access-Control-Allow-Origin","*")
-    return resposta
-"""
-
-# marcar consulta
-@app.route("/marcar_exame", methods=['POST'])
-
-def marcar_exame():
-
-    resposta = jsonify({"resultado": "ok"})
-    dados = request.get_json()
-    novo_exame = Exame(**dados)
-    #nova_consulta.headers.add("Access-Control-Allow-Origin", "*")
-    db.session.add(novo_exame)
-    db.session.commit()
-
-    resposta.headers.add("Access-Control-Allow-Origin","*")
-
-    return resposta
-
-
-
 # login do usuario
 @app.route("/logarpaciente", methods=['GET', 'POST'])
 def logarpaciente():
@@ -329,27 +247,7 @@ def logarpaciente():
 
         
     return resposta 
-    """
-    resposta = jsonify({"resultado":"ok"})
-    if dados["username"] != 'admin':
-        resposta = jsonify({"resultado":  "Senha invalida. Try again."})
-    else:
-        resposta = jsonify({"resultado":  "login"})
     
-    resposta.headers.add("Access-Control-Allow-Origin","*")
-
-    return resposta
-    # -------------------------------------------------
-    
-	if request.method == 'POST':
-		if request.form ['username'] != 'admin' or request.form['password'] != 'admin':
-			error = 'Senha invalida. Tente de novo.'
-		else:
-			#return redirect(url_for('home'))
-			return render_template('welcome.html')
-
-	return render_template('login.html', error = error)
-    """
 
 
 app.run(debug = True, host = "0.0.0.0")
