@@ -5,20 +5,8 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    display: flex;
     
-}
-
-form [type="text"], .form [type="password"] {
-    background: white;    
-    margin: 4px auto;
-    padding: 12px 10px;
-    border: 2px solid wheat;
-    border-radius: 9px;
-    width: 100%;
-    outline: none;
-    font-family: "open-sans-regular";
-    margin-bottom: 5%;
+    display: flex;
     
 }
 
@@ -47,11 +35,61 @@ form [type="text"], .form [type="password"] {
     opacity: 0.85;
 
 }
+/*
+.overlay{
+    position: absolute;
+    width: 20em;
+    height: 35em;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    padding: 25px 35px;
+    background-color: #e8e2d6;
+    background-color: rgba(232,226,214,.9);
+    box-shadow: 0 0 120px -42px #0966d5;
+    margin-top: 8%;
+    margin-bottom: 10%;
+
+}
+*/
+
+
+.login *{
+
+}
+
+
+
+
+
+
+form [type="text"], .form [type="password"] {
+    background: white;    
+    margin: 4px auto;
+    padding: 12px 10px;
+    border: 2px solid wheat;
+    border-radius: 9px;
+    width: 100%;
+    outline: none;
+    font-family: "open-sans-regular";
+    margin-bottom: 5%;
+    
+}
+
+
+
+
+
+
 
 
 .login input:hover{
     border: 3px solid black;
 }
+
+
+
+/* ------------------------------*/
 
 .logo {
     display: block!important;
@@ -61,6 +99,9 @@ form [type="text"], .form [type="password"] {
 .logo {
     display: none;
 }
+}
+
+
 
 a {
     cursor: pointer;
@@ -74,6 +115,8 @@ a {
     font-weight: normal;
 }
 
+
+
 #mensagem {
     background-color: #f9f190!important;
     display: none; /*exibir*/
@@ -86,6 +129,7 @@ a {
 
 }
 
+
 .faixa{
     width: 100%;
     top: 80px;
@@ -97,6 +141,8 @@ a {
 
 }
 
+
+
 .borda-redonda {
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -105,9 +151,17 @@ a {
     -o-border-radius: 5px;
 }
 
+
+.login *{
+  
+
+}
+
+
+
 .logo {
     width: 8em;
     height: 8em;
     margin-left: 31%;
 
-}
+

@@ -40,6 +40,7 @@ function logarPaciente(){
         	//alert(resposta.resultado); //logoff
             document.getElementById('mensagem').style.display = 'block';
             usuario = $("#email").val("");
+
         }
 		
 	

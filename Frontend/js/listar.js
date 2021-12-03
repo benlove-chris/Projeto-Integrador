@@ -102,48 +102,39 @@ function listar_paciente(paciente){
     
     console.log(paciente.nome);
     linha =     '<tr>'+
-                /*"<td>" + paciente.id_paciente+ "</td>" + */
-                "<td>" + paciente.nome+ "</td>" + 
-                "<td>" + paciente.sobrenome+ "</td>" + 
-                
+                    "<td>" + paciente.nome+ "</td>" + 
+                    "<td>" + paciente.sobrenome+ "</td>" + 
+                    "<td>" + paciente.cpf+ "</td>" + 
+                '</tr>'+
 
-                /*"<td>" + paciente.cpf+ "</td>" + 
+                '<tr>'+
                 "<td>" + paciente.data_nasc+ "</td>" + 
                 "<td>" + paciente.sexo+ "</td>" + 
                 "<td>" + paciente.e_civil+ "</td>" + 
+                '</tr>'+                
+
+                '<tr>'+
                 "<td>" + paciente.cns+ "</td>" + 
                 "<td>" + paciente.cep+ "</td>" + 
                 "<td>" + paciente.logradouro+ "</td>" + 
+                '</tr>'+
+
+                '<tr>'+
                 "<td>" + paciente.numero+ "</td>" + 
                 "<td>" + paciente.bairro+ "</td>" + 
                 "<td>" + paciente.cidade+ "</td>" + 
+
+                '<tr>'+
                 "<td>" + paciente.estado+ "</td>" + 
                 "<td>" + paciente.telefone1+ "</td>" + 
                 "<td>" + paciente.telefone2+ "</td>" + 
+                '</tr>'+
+
+                '<tr>'+
                 "<td>" + paciente.email+ "</td>" + 
                 "<td>" + paciente.usuario+ "</td>" + 
-                "<td>" + paciente.senha+ "</td>" + 
-
-            '</tr>'
-
-    linha2 =
-              '<thead>'+
-                '<tr>'+
-                  '<th scope="col">Nome</th>'+
-                  '<th scope="col">Sobrenome</th>'+
-                  '<th scope="col">CPF</th>'+
-                '</tr>'+
-                '<tr>'+
-                  '<th scope="col">Data de nascimento</th>'+
-                  '<th scope="col">Sexo</th>'+
-                  '<th scope="col"Estado Civil</th>'+
-                '</tr>'+
-              '</thead>'+
-              
-              '<tbody id="corpoDados">'+
-                  
-              '</tbody>'*/
-          
+                '</tr>'
+                
 
 
     
