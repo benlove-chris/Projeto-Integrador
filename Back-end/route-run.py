@@ -238,14 +238,15 @@ def logarpaciente():
     dados = request.get_json()
     #retorno = []
     resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
-    #dados = Consulta.query.get_or_404(paciente_id)
-    paciente = db.session.query(Paciente).filter(Paciente.email== dados["email"], Paciente.senha==dados["senha"]).first()
-    if paciente:
+    
+    paciente = db.session.query(Paciente).filter((Paciente.usuario == dados["usuario"]) | (Paciente.email == dados["usuario"])).first()
+    
+    if paciente.senha == dados["senha"]:
         resposta = jsonify({"resultado":  "OK", "paciente_id": paciente.id_paciente})
     else:
         resposta = jsonify({"resultado":  "Erro"})
 
-        
+    resposta.headers.add("Access-Control-Allow-Origin", "*")
     return resposta 
     
 
