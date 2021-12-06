@@ -1,0 +1,6 @@
+Flask
+request
+Flask-CORS
+Flask-SQLAlchemy
+SQLAlchemy
+
