@@ -70,10 +70,6 @@ function cadastrarPaciente(){
 
 //cadastrar médido
 
-
-
-
-
 function cadastrarMedico(){
     //obter dados do formulario
     nome = $("#nome").val();
@@ -205,18 +201,6 @@ function apagarExame(id_exame){
 
 
 
-/*remarcar - editar */
-/*
-var dataConsultaDado = document.getElementById('dataConsulta').value;
-    var motivoConsultaDado = document.getElementById('motivoConsulta').value;
-    let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
-    var medico_id_consulta = document.getElementById('selectMedico').value;
-    */
-
-//?
-
-
-
 //Remarcar consulta <>
 
 function chamarModalConsultaRemarcar(id_consulta){
@@ -277,10 +261,9 @@ function remarcarConsulta(id_consulta) {
 
     function erroConsultaRemarcada(retorno){
         //mensagem de erro 
-        //alert("Sem sucesso");
         alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
 
-        //alert("Erro na comunicação  - resposta not ok com o backend\nAo enviar os dados\nou ao receber os dados");
+
     };
 
 }
@@ -360,66 +343,15 @@ function remarcarExame(id_exame) {
 
     function erroExameRemarcada(retorno){
         //mensagem de erro 
-        //alert("Sem sucesso");
+
         alert("Erro ao receber os dados da consulta :) \nverifique o backend!");
 
-        //alert("Erro na comunicação  - resposta not ok com o backend\nAo enviar os dados\nou ao receber os dados");
+
     };
 
 }
 
 //Remarcar exame </>
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-// para resolver 
-function editpaciente_talvez() {
-    
-    // body...
-    novo_nome = "Carlos";
-    //novo_sobrenome = "novo";
-
-    var dados = JSON.stringify({novo_nome: novo_nome});
-
-    $.ajax({
-        url: link_backend +'/editar_paciente/1',
-        type: 'POST',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: dados,
-        success: function(){
-            alert("Sucesso");
-        },
-        error: function(){
-            alert('error');
-        }
-    });
-}
-
-
-
-
-
-function testecrud(){
-    //alert("crud funcionando");
-
-    nome = $("#nome").val();
-    sobrenome = $("#sobrenome").val();
-    crm = $("#crm").val();
-
-    dados = JSON.stringify({nome: nome, sobrenome: sobrenome, crm: crm});
-    alert(dados);
-    console.log(dados);
-
-}
-
 
 
 

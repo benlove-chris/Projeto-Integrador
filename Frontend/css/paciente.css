@@ -83,13 +83,8 @@ td, th {
       position: relative;
   }
 
-#corpoDados{
-    color:  white;
-}
 
-#corpoTabelaPacientes{
-    color:  white;
-    }
+
 
 #modalConsulta, #modalExame, .modal-body, #modalConsultaRemarcar, #modalConsultaDelete{
           color: darkblue;

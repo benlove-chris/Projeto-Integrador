@@ -113,17 +113,10 @@ form {
   margin-bottom: 5%;
 }
 
-#dados-paciente{
-  margin-bottom: 100%;
+#dados-paciente, #historico-consulta, #exames-paciente{
+  margin-bottom: 10%;
 
 }
 
-#historico-consulta{
-  margin-bottom: 100%;
-  
-}
 
-#exames-paciente{
-  margin-bottom: 100%;
-}
 

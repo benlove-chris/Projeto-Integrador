@@ -5,7 +5,7 @@ from modelo_cadastro import *
 @app.route("/")
 
 def menu_padrão():
-    return ("Aqui vai uma mensagem de boas vindas (img/outro)")
+    return ("Servidor ok")
 
 
 
@@ -13,7 +13,6 @@ def menu_padrão():
 @app.route("/listar/<string:classe>", methods=['GET'])
 
 def listar(classe):
-    # obter os dados da classe informada
     dados = None 
     if classe == "Paciente":
         dados = db.session.query(Paciente).all() 
@@ -24,12 +23,12 @@ def listar(classe):
     elif classe == "Exame":
         dados = db.session.query(Exame).all() 
    
-    # converter dados para json 
+    
     lista_jsons = [ x.json() for x in dados ]
     
-    # converter a lista do python para json 
+
     resposta = jsonify(lista_jsons) 
-    # PERMITIR resposta para outras pedidos oriundos de outras tecnologias 
+    
     resposta.headers.add("Access-Control-Allow-Origin", "*") 
     return resposta
 
@@ -75,7 +74,6 @@ def cadastrar(classe):
 @app.route("/listar_paciente/<int:id_paciente>", methods=['GET'])
 
 def dados_paciente(id_paciente):
-    #dados = Paciente.query.get()
     dados = Paciente.query.get_or_404(id_paciente)
     return (dados.json())
 
@@ -85,7 +83,7 @@ def dados_paciente(id_paciente):
 @app.route("/listar_consulta_esp/<int:id_consulta>", methods=['GET'])
 
 def dados_consulta_esp(id_consulta):
-    #dados = Paciente.query.get()
+    
     dados = Consulta.query.get_or_404(id_consulta)
     return (dados.json())
 
@@ -93,9 +91,7 @@ def dados_consulta_esp(id_consulta):
 @app.route("/listar_consulta/<int:paciente_id>", methods=['GET'])
 
 def dados_consulta(paciente_id):
-    #dados = Paciente.query.get()
     retorno = []
-    #dados = Consulta.query.get_or_404(paciente_id)
     consultas = db.session.query(Consulta).all()
     for consulta in consultas:
         if consulta.paciente_id_consulta == paciente_id:
@@ -110,9 +106,7 @@ def dados_consulta(paciente_id):
 @app.route("/listar_exames_paciente/<int:paciente_id>", methods=['GET'])
 
 def listar_exames_paciente(paciente_id):
-    #dados = Paciente.query.get()
     retorno = []
-    #dados = Consulta.query.get_or_404(paciente_id)
     exames = db.session.query(Exame).all()
     for exame in exames:
         if exame.paciente_id_exame == paciente_id:
@@ -129,7 +123,6 @@ def listar_exames_paciente(paciente_id):
 @app.route("/listar_exame_esp/<int:id_exame>", methods=['GET'])
 
 def dados_exame_esp(id_exame):
-    #dados = Paciente.query.get()
     dados = Exame.query.get_or_404(id_exame)
     return (dados.json())
 
@@ -141,16 +134,14 @@ def desmarcar_consulta(id_consulta):
     
     resposta = jsonify({"resultado":"ok","detalhes": "ok"})
     
-    try: #Tentar realizar a exclusão
+    try: 
         consulta = Consulta.query.get(id_consulta)
-        
         db.session.delete(consulta)
-        #redistribuir_consulta()
         db.session.commit()
         
     
         
-    except Exception as e:  #Envie mensagem em caso de erro
+    except Exception as e:  
         resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
         
     resposta.headers.add("Access-Control-Allow-Origin","*")
@@ -170,7 +161,6 @@ def desmarcar_exame(id_exame):
         exame = Exame.query.get(id_exame)
         
         db.session.delete(exame)
-        #redistribuir_consulta()
         db.session.commit()
         
     
@@ -236,7 +226,6 @@ def remarcar_exame(id_exame):
 def logarpaciente():
 	
     dados = request.get_json()
-    #retorno = []
     resposta = jsonify({"resultado": "logoff", "id_pac": "int"})
     
     paciente = db.session.query(Paciente).filter((Paciente.usuario == dados["usuario"]) | (Paciente.email == dados["usuario"])).first()

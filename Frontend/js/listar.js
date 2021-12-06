@@ -96,50 +96,135 @@ function listarDadosPaciente(){
 }
 
 
+
+
+                  
+
 /*---------------------------------*/
 function listar_paciente(paciente){
     $("#nome-paciente").text(paciente.nome + " "+paciente.sobrenome) 
     
     console.log(paciente.nome);
-    linha =     '<tr>'+
+    linha =                 '</tbody>'+/*
+
+            '<thead class="bg-secondary">'+
+                             '<tr>'+
+                                '<th scope="col">Nome</th>'+
+                                '<th scope="col">Sobrenome</th>'+
+                                '<th scope="col">CPF</th>'+
+                             '</tr>'+
+            '</thead>'+
+            
+            '<tbody>'
+                            '<tr>'+
+                                '<td scope="col">' +paciente.nome+'</td>'+
+                                '<td scope="col">' +paciente.sobrenome+'</td>'+
+                                '<td scope="col">' +paciente.cpf+'</td>'+
+                            '</tr>'+
+                                
+                             
+            '</tbody>'*/
+            '<thead class="bg-secondary">'+
+                             '<tr>'+
+                                '<th scope="col">Nome</th>'+
+                                '<th scope="col">Sobrenome</th>'+
+                                '<th scope="col">CPF</th>'+
+                             '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
+                '<tr>'+
                     "<td>" + paciente.nome+ "</td>" + 
                     "<td>" + paciente.sobrenome+ "</td>" + 
                     "<td>" + paciente.cpf+ "</td>" + 
                 '</tr>'+
+            '</tbody>'+
+            
 
+            '<thead class="bg-secondary">'+
+                     '<tr>'+
+                        '<th scope="col">Data de Nascimento</th>'+
+                        '<th scope="col">Sexo</th>'+
+                        '<th scope="col">Estado civil</th>'+
+                     '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
                 '<tr>'+
-                "<td>" + paciente.data_nasc+ "</td>" + 
-                "<td>" + paciente.sexo+ "</td>" + 
-                "<td>" + paciente.e_civil+ "</td>" + 
+                    "<td>" + paciente.data_nasc+ "</td>" + 
+                    "<td>" + paciente.sexo+ "</td>" + 
+                    "<td>" + paciente.e_civil+ "</td>" + 
                 '</tr>'+                
+            '</tbody>'+
 
+            '<thead class="bg-secondary">'+
+                     '<tr>'+
+                        '<th scope="col">CNS</th>'+
+                        '<th scope="col">CEP</th>'+
+                        '<th scope="col">Logradouro</th>'+
+                     '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
                 '<tr>'+
                 "<td>" + paciente.cns+ "</td>" + 
                 "<td>" + paciente.cep+ "</td>" + 
                 "<td>" + paciente.logradouro+ "</td>" + 
                 '</tr>'+
 
-                '<tr>'+
-                "<td>" + paciente.numero+ "</td>" + 
-                "<td>" + paciente.bairro+ "</td>" + 
-                "<td>" + paciente.cidade+ "</td>" + 
+            '</tbody>'+
+
+            '<thead class="bg-secondary">'+
+                     '<tr>'+
+                        '<th scope="col">Numero</th>'+
+                        '<th scope="col">Bairro</th>'+
+                        '<th scope="col">Cidade</th>'+
+                     '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
 
                 '<tr>'+
-                "<td>" + paciente.estado+ "</td>" + 
-                "<td>" + paciente.telefone1+ "</td>" + 
-                "<td>" + paciente.telefone2+ "</td>" + 
+                    "<td>" + paciente.numero+ "</td>" + 
+                    "<td>" + paciente.bairro+ "</td>" + 
+                    "<td>" + paciente.cidade+ "</td>" + 
+            '</tbody>'+
+
+            '<thead class="bg-secondary">'+
+                         '<tr>'+
+                            '<th scope="col">Estado</th>'+
+                            '<th scope="col">Telefone 1</th>'+
+                            '<th scope="col">Telefone 2</th>'+
+                         '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
+                '<tr>'+
+                    "<td>" + paciente.estado+ "</td>" + 
+                    "<td>" + paciente.telefone1+ "</td>" + 
+                    "<td>" + paciente.telefone2+ "</td>" + 
+                    '</tr>'+            
+            '</tbody>'+
+
+            '<thead class="bg-secondary">'+
+                     '<tr>'+
+                        '<th scope="col" colspan="2">Email</th>'+
+                        '<th scope="col">Usuario</th>'+
+                     '</tr>'+
+            '</thead>'+
+
+            '<tbody>'+
+
+                '<tr>'+
+                    "<td colspan='2'>" + paciente.email+ "</td>" + 
+                    "<td>" + paciente.usuario+ "</td>" + 
                 '</tr>'+
-
-                '<tr>'+
-                "<td>" + paciente.email+ "</td>" + 
-                "<td>" + paciente.usuario+ "</td>" + 
-                '</tr>'
-                
+            '</tbody>'
 
 
     
     
-    $("#corpoDados").html(linha);
+    $("#tabelaPacientes").html(linha);
     //$("#tabelaPacientes").html(linha);
 
 }

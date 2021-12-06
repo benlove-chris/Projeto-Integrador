@@ -1,10 +1,8 @@
+//parte do crud - marcar
+
 
 function marcarConsulta () {
-	//alert('funcionado');
     let link_backend = "http://localhost:5000/";
-
-
-
 	
     //entrada
 	
@@ -15,16 +13,6 @@ function marcarConsulta () {
     
    	
     
-    /*
-    //para teste
-    let paciente_id_consulta = document.location.search.replace(/^.*?\=/,'');
-   	var motivoConsultaDado = "dor no joelho";
-   	var dataConsultaDado = "20-10-2021";
-   	var medico_id_consulta = 2;
-    
-    */
-
-
 	var dados = JSON.stringify({dataConsulta: dataConsultaDado, motivo: motivoConsultaDado, 
         paciente_id_consulta: paciente_id_consulta, medico_id_consulta: medico_id_consulta});
 
@@ -104,7 +92,6 @@ function marcarExame(){
 
   function exameMarcado(resposta){
         if (resposta.resultado == "ok") {
-            //mensagem
             alert('Exame marcado com successo!');
             document.location.reload(true);
             //
