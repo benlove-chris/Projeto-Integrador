@@ -26,12 +26,12 @@
 Clonar o repositório
 # git clone https://github.com/benlove-chris/Projeto-Integrador.git
 # cd Projeto-Integrador
-Instala os requisitos
 
-python -m pip install -r backend/requirements.txt
+Instala os requisitos
+# python -m pip install -r Back-end/requirements.txt
 
 Roda o servidor backend
-# Python3 Backend/route-run.py
+# Python3 Back-end/route-run.py
 
 💻 Navegue nos arquivos .html
 
