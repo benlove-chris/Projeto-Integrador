@@ -35,7 +35,7 @@ function marcarConsulta () {
             //
             
         } else{
-            alert(resposta.resultado);
+            alert('Consulta não marcada!\nVerifique e insira os dados corretamente.');
 
     }
 	}
@@ -97,7 +97,7 @@ function marcarExame(){
             //
             
         } else{
-            alert(resposta.resultado);
+            alert('Exame não marcada!\nVerifique e insira os dados corretamente.');
 
     }
   }

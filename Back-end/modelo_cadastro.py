@@ -5,11 +5,12 @@ class Medico(db.Model):
 
     #Atributos do médico
     id_medico = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(55))
+    nome = db.Column(db.String(55), nullable=False)
     sobrenome = db.Column(db.String(55))
-    crm = db.Column(db.String(24))
+    crm = db.Column(db.String(24), nullable=False, unique=True) #unique
     
 
+    #t1 = Column(db.String(80), unique=True, )
 
     #Expressão da classe em forma de texto
     def __str__(self):
@@ -30,7 +31,7 @@ class Paciente(db.Model):
     id_paciente = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255))
     sobrenome = db.Column(db.String(255))
-    cpf = db.Column(db.String(11))
+    cpf = db.Column(db.String(11), nullable=False, unique=True) #unique
     data_nasc = db.Column(db.String(255))
     sexo =  db.Column(db.String(10))
     e_civil = db.Column(db.String(50))
@@ -47,11 +48,11 @@ class Paciente(db.Model):
     #contato
     telefone1 = db.Column(db.String(255))
     telefone2 = db.Column(db.String(255))
-    email = db.Column(db.String(255))
+    email = db.Column(db.String(255), nullable=False, unique=True) #unique
     
 
     #login
-    usuario = db.Column(db.String(255))
+    usuario = db.Column(db.String(255), nullable=False, unique=True)#unique
     senha = db.Column(db.String(255))
 
     #Método para expressar o paciente em forma de texto
@@ -161,21 +162,15 @@ class Exame(db.Model):
         
 
 
-
-#Testes das classes
-if __name__ == "__main__":
-    #Apaga o arquivo .bd, se houver
-    if os.path.exists(arquivobd):
-        os.remove(arquivobd)
-    
-    #Cria as tabelas
+def testar():
+    #Cria as tabela
     db.create_all()
 
     
     #Teste da classe Pacient
-    paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus", email="johnnydinheiro@gmail.com", senha = "8956")
-    paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart", email="espiga@gmail.com", senha = "5421")
-    paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira", email="ferrarigol123@gmail.com", senha = "1234")
+    paciente3 = Paciente(nome = "Benlove", sobrenome = "Anelus", email="johnnydinheiro@gmail.com", senha = "8956", usuario="2beloved", cpf ="123456789")
+    paciente2 = Paciente(nome = "Gabriel", sobrenome = "Speckart", email="espiga@gmail.com", senha = "5421", usuario="espiga", cpf ="1234567894")
+    paciente1 = Paciente(nome = "Carlos", sobrenome = "Landeira", email="ferrarigol123@gmail.com", senha = "1234", usuario="carlota", cpf ="1234567895")
     
     #Persistir
     db.session.add(paciente1)
@@ -187,8 +182,8 @@ if __name__ == "__main__":
     #Teste da classe Medico
 
     medico1 = Medico(nome = "Paulo Cesar", sobrenome = "McCartney", crm = "123456-78/SC")
-    medico2 = Medico(nome = "João Barra", sobrenome = "Lennon", crm = "123456-78/SC")
-    medico3 = Medico(nome = "Jorge Santos", sobrenome = "Harrison", crm = "123456-78/SC")
+    medico2 = Medico(nome = "João Barra", sobrenome = "Lennon", crm = "12345fg6-78/SC")
+    medico3 = Medico(nome = "Jorge Santos", sobrenome = "Harrison", crm = "123f45f6-78/SC")
     
     #Persistir
     db.session.add(medico1)
@@ -223,8 +218,19 @@ if __name__ == "__main__":
     db.session.commit()
     print(exame1)
     print(exame2)
-    
 
+#Testes das classes
+if __name__ == "__main__":
+    #Apaga o arquivo .bd, se houver
+    if os.path.exists(arquivobd):
+        os.remove(arquivobd)
     
+    try:
+        testar()
+            
+    except Exception as e:  
+        print("Inserção não realizado!\n\nPossivelmente: Uma das colunas já exite ou\
+            uma das colunas obrigatórias não foi inserido. \n\nErro:", e)
+        
 
     

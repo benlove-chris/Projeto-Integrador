@@ -41,24 +41,41 @@ def cadastrar(classe):
     resposta = jsonify({"resultado": "ok"})
     dados = request.get_json()
     if classe == "Paciente":
-        novo_paciente = Paciente(**dados)
-        db.session.add(novo_paciente)
-        db.session.commit()
+        try:    
+            novo_paciente = Paciente(**dados)
+            db.session.add(novo_paciente)
+            db.session.commit()
+        except Exception as e:
+            resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
     
     elif classe == "Medico":
-        novo_medico = Medico(**dados)
-        db.session.add(novo_medico)
-        db.session.commit()
+        try:   
+            novo_medico = Medico(**dados)
+            db.session.add(novo_medico)
+            db.session.commit()
+        except Exception as e:
+            resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+            
 
     elif classe == "Consulta":
-        novo_consulta = Consulta(**dados)
-        db.session.add(novo_consulta)
-        db.session.commit()
+        try:    
+            novo_consulta = Consulta(**dados)
+            db.session.add(novo_consulta)
+            db.session.commit()
+        except Exception as e:
+            resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+        
     
     elif classe == "Exame":
-        novo_exame = Exame(**dados)
-        db.session.add(novo_exame)
-        db.session.commit()
+        try:    
+            novo_exame = Exame(**dados)
+            db.session.add(novo_exame)
+            db.session.commit()
+        except Exception as e:
+            resposta = jsonify({"resultado":"erro", "detalhes":str(e)}) 
+        
+        
    
 
     resposta.headers.add("Access-Control-Allow-Origin","*")
@@ -210,7 +227,7 @@ def remarcar_exame(id_exame):
         exame.tipoExame = dados["tipoExameRemarcar"]
         exame.medico_id_exame = dados["selectMedicoSolicitanteRemarcar"]
         exame.consulta_id_exame = dados["dataSolicitacaoRemarcar"]
-        exame.resultado_exame = dados["resultadoExameRemarcar"]
+        exame.resultadoExame = dados["resultadoExameRemarcar"]
 
         db.session.commit()
         

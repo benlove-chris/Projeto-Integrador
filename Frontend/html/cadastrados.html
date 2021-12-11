@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/estilo.css">
   <link rel="shortcut icon" href="../img/logo.png" >
 </head>
-<body onload="listarPacientes() ">
+<body onload="listarPacientes(), listarMedicos() ">
 
 <!-- nav-bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
@@ -25,10 +25,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cadastrados.html">Mostrar Cadastrados</a>
-        </li>
-
+        
        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,8 +46,9 @@
 
 <div class="conteudo-pagina mt-4 ">
     <div class="container" id="corpoDaPagina">  
-      <h1>Para adms</h1>
-
+      <h4>Olá adm,<br> Seja bem vindo de volta.</h4>
+      <br>
+        <h5>Esses são todos os pacientes cadastrados.</h5>
           <table id="tabelaPacientes" >
               <thead>
                 <tr>
@@ -62,6 +60,23 @@
               
 
               <tbody id="corpoTabelaPacientes">
+              </tbody>
+            </table>
+            <br>
+            <br>
+
+            <h5>Esses são todos os medicos cadastrados.</h5>
+            <table id="tabelaMedicos" >
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Sobrenome</th>
+                </tr>
+              </thead>
+
+              
+
+              <tbody id="corpoTabelaMedicos">
               </tbody>
             </table>
 

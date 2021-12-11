@@ -1,10 +1,8 @@
-function testelistar(){
-    alert("listar funcionando");
-}
 
-// todos os pacientes
+
 var id_paciente = document.location.search.replace(/^.*?\=/,'');
 
+// todos os pacientes - funcão para adm
 function listarPacientes() {
     let link_backend = "http://localhost:5000/";
 
@@ -18,66 +16,68 @@ function listarPacientes() {
             alert("Erro ao ler os dados :) \nverifique o backend");}
     });
 
-    //ccccccccccccccccccccccccccccccccc
-
 
     function listar_pacientes(pacientes){
-        //
+        
         linhas = ""
-        linhass = "Alguma coisa"
-
-        //
-
-
         for (var paciente in pacientes) {
-            if (pacientes[paciente].nome === 'Carlos'){
-                //if (pacientes[paciente].nome === 'nomeclicado'){
-                console.log(pacientes[paciente].nome);    
-            }
-           
-           
-            
-            //var link = pacientes[paciente].nome;
 
             lin = "<tr>" + 
                     
-                    "<td> <a href='../html/paciente.html?id_paciente="+pacientes[paciente].id_paciente+"'>"+ pacientes[paciente].nome + "</td>" + 
-                    //"<td> <a href='../html/paciente.html#historico-consulta"+ pacientes[paciente].nome + "</td>" + "</a>"+ 
-                    "<td>" + pacientes[paciente].sobrenome+ "</td>" + 
-                    "<td>" + pacientes[paciente].id_paciente+ "</td>" + 
-                    
+                    "<td> <a href='../html/paciente.html?id_paciente="+pacientes[paciente].id_paciente+"'>"+ pacientes[paciente].nome + "</td>" +                 
+                    "<td>" + pacientes[paciente].sobrenome+ "</td>" +     
+            
                 "</tr>"
             
-
-            //
             linhas = linhas + lin;
         }
 
             //colocar as linhas na tabela
             $("#corpoTabelaPacientes").html(linhas);
-
-            $("#htmls").html(linhass)
-
-            // exibir a tabela
-           // $("#conteudoInicial").addClass("invisible");
             
         }
-
 
     };
 
 
+// todos os pacientes - funcão para adm
+function listarMedicos() {
+    let link_backend = "http://localhost:5000/";
 
 
+    $.ajax({
+        url: link_backend+'listar/Medico',
+        method: 'GET',
+        dataType: 'json',
+        success: listar_medicos,
+        error: function(){
+            alert("Erro ao ler os dados :) \nverifique o backend");}
+    });
 
 
+    function listar_medicos(medicos){
+        
+        linhas2 = ""
+        for (var i in medicos) {
 
+            lin = "<tr>" + 
+                    
+                    "<td>" + medicos[i].nome+ "</td>" +     
+                    "<td>" + medicos[i].sobrenome+ "</td>" +     
+            
+                "</tr>"
+            
+            linhas2 = linhas2 + lin;
+        }
 
+            //colocar as linhas na tabela
+            $("#corpoTabelaMedicos").html(linhas2);
+            
+        }
 
+    };
 
-
-
-// listar dados do paciente
+// listar dados de um paciente 
 function listarDadosPaciente(){
     $.ajax({
         url: link_backend+ 'listar_paciente/'+id_paciente,
@@ -105,25 +105,7 @@ function listar_paciente(paciente){
     $("#nome-paciente").text(paciente.nome + " "+paciente.sobrenome) 
     
     console.log(paciente.nome);
-    linha =                 '</tbody>'+/*
-
-            '<thead class="bg-secondary">'+
-                             '<tr>'+
-                                '<th scope="col">Nome</th>'+
-                                '<th scope="col">Sobrenome</th>'+
-                                '<th scope="col">CPF</th>'+
-                             '</tr>'+
-            '</thead>'+
-            
-            '<tbody>'
-                            '<tr>'+
-                                '<td scope="col">' +paciente.nome+'</td>'+
-                                '<td scope="col">' +paciente.sobrenome+'</td>'+
-                                '<td scope="col">' +paciente.cpf+'</td>'+
-                            '</tr>'+
-                                
-                             
-            '</tbody>'*/
+    linha =                 
             '<thead class="bg-secondary">'+
                              '<tr>'+
                                 '<th scope="col">Nome</th>'+

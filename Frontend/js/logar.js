@@ -1,14 +1,21 @@
-function logarPaciente(){
-	usuario = $("#usuario").val();
-    senha = $("#senha").val();
-    
+//validação simples/demonstração
 
-	var dados = JSON.stringify({usuario: usuario, senha: senha});
+function logarPaciente(){
+    usuario = $("#usuario").val();
+    senha = $("#senha").val();
+
+	if (usuario == "sol que ja era") {
+        window.location.href = 'html/cadastrados.html';
+
+    }
+
+    else{
+    var dados = JSON.stringify({usuario: usuario, senha: senha});
     
     
     let link_backend = "http://localhost:5000/";
       
-	
+    
     $.ajax({
             url : link_backend +'/logarpaciente',
             type : 'POST',
@@ -24,9 +31,9 @@ function logarPaciente(){
 
 
 
-	function loginEfetuado(resposta){
+    function loginEfetuado(resposta){
         let paciente_id_login = resposta.paciente_id;
-		if (resposta.resultado == "OK") {
+        if (resposta.resultado == "OK") {
             window.location.href = 'html/paciente.html?id_paciente=' +paciente_id_login ;
             
             
@@ -36,12 +43,17 @@ function logarPaciente(){
             $("#senha").val("");
 
         }
-		
-	
+        
+    
     }
 
     function errologinEfetuado(resposta){
-        alert("Erro na comunicação com o backend - login");
+        document.getElementById('mensagem').style.display = 'block';
+        $("#usuario").val("");
+        $("#senha").val("");
+    }
+
+        
     }
 
 }

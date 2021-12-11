@@ -57,7 +57,7 @@ function cadastrarPaciente(){
             document.location.reload(true);
 
         } else{
-            alert('erro na comunicação  - resposta not ok');
+            alert('Paciente\nCadastro não realizado!\nVerifique e insira os dados corretamente.');
 
         }
     }
@@ -103,7 +103,7 @@ function cadastrarMedico(){
             $("#sobrenome").val("");
             $("#crm").val("");
         } else{
-            alert('erro na comunicação  - resposta not ok');
+            alert('Cadastro não realizado!\nVerifique e insira os dados corretamente.');
 
         }
     }
@@ -317,7 +317,6 @@ function remarcarExame(id_exame) {
     dataSolicitacaoRemarcar: dataSolicitacaoRemarcar});
         
     
-   
 
     $.ajax({
         url: link_backend +'/remarcar_exame/'+id_exame,
