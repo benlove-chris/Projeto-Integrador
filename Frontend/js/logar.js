@@ -58,3 +58,20 @@ function logarPaciente(){
     }
 
 }
+
+$(function() {
+    if (document.URL == "https://benlove.pythonanywhere.com/front/") {
+        window.location.href = "http://benlove.pythonanywhere.com/front/";
+        //location.replace(`https:${location.href.substring(location.protocol.length)}`);
+
+        //window.location.replace("http:www.example.com");
+        //url.replace(/^http:\/\//i, 'https://');
+        //window.location.replace("http://benlove.pythonanywhere.com/front/html/cadastrados.html");
+        //window.location.replace('https://','http://');
+    
+    } 
+});
+
+
+
+//https://stackoverflow.com/questions/5491196/rewriting-http-url-to-https-using-regular-expression-and-javascript/5491311
