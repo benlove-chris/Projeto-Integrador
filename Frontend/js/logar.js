@@ -1,5 +1,5 @@
 //validação simples/demonstração
-let link_backend = "http://pychris.pythonanywhere.com/";
+let link_backend = "http://benlove.pythonanywhere.com/";
 
 function logarPaciente(){
     usuario = $("#usuario").val();
