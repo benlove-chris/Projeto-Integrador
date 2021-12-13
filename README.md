@@ -37,9 +37,9 @@ Roda o servidor backend
 
 ```
 
-<!--## 👾 Live demo
+## 👾 Live demo
 O sistema está hospedado temporariamente em um servidor gratuito do PyAnywhere, com velocidade limitada, principalmenten nos cadastros, porém funciona bem para visualizar o geral.
-Para acessá-lo, [clique nesse link](https://pychris.pythonanywhere.com/front/).-->
+Para acessá-lo, [clique nesse link](https://benlove.pythonanywhere.com/front/).
 
 ## :mortar_board: Autores
 
