@@ -4,7 +4,7 @@ var id_paciente = document.location.search.replace(/^.*?\=/,'');
 
 // todos os pacientes - funcão para adm
 function listarPacientes() {
-    let link_backend = "http://localhost:5000/";
+    
 
 
     $.ajax({
@@ -42,7 +42,7 @@ function listarPacientes() {
 
 // todos os pacientes - funcão para adm
 function listarMedicos() {
-    let link_backend = "http://localhost:5000/";
+    
 
 
     $.ajax({

@@ -1,4 +1,5 @@
 //validação simples/demonstração
+let link_backend = "http://pychris.pythonanywhere.com/";
 
 function logarPaciente(){
     usuario = $("#usuario").val();
@@ -13,7 +14,7 @@ function logarPaciente(){
     var dados = JSON.stringify({usuario: usuario, senha: senha});
     
     
-    let link_backend = "http://localhost:5000/";
+    
       
     
     $.ajax({

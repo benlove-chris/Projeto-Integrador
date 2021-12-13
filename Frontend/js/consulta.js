@@ -2,7 +2,7 @@
 
 
 function marcarConsulta () {
-    let link_backend = "http://localhost:5000/";
+    
 	
     //entrada
 	
@@ -53,7 +53,7 @@ function marcarConsulta () {
 function marcarExame(){
   
   //alert('funcionado');
-    let link_backend = "http://localhost:5000/";
+    
 
 
 

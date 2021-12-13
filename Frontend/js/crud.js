@@ -1,6 +1,6 @@
 
 //cadastrar paciente
-let link_backend = "http://localhost:5000/";
+//let link_backend = "http://localhost:5000/";
 
 function cadastrarPaciente(){
     
